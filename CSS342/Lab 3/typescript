@@ -1,0 +1,210 @@
+Script started on Sat 02 May 2020 12:18:06 AM PDT
+]0;tonthong@csslab1:~/assignment3[?1034h[tonthong@csslab1 assignment3]$ g++ -std=c++ [K11 lab3.cpp nodedata.cpp[K[Kpp employee.coo[K[Kpp
+]0;tonthong@csslab1:~/assignment3[tonthong@csslab1 assignment3]$ valgrind ./a.out
+==22979== Memcheck, a memory error detector
+==22979== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==22979== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==22979== Command: ./a.out
+==22979== 
+mylist:
+10 f
+16 u
+20 n
+25 !
+
+mylist2:
+14 s
+15 t
+16 u
+18 f
+19 f
+25 !
+
+mylist3:
+16 u
+25 !
+
+test -- merge 1 and 2 into 5
+----------------------------
+Company1:
+ 311  31100  31FirstName1 31LastName1
+ 312  31200  31FirstName2 31LastName2
+ 313  31300  31FirstName3 31LastName3
+ 314  31400  31FirstName4 31LastName4
+
+Company2:
+ 321  32100  32FirstName1 32LastName1
+ 322  32200  32FirstName2 32LastName2
+ 323  32300  32FirstName3 32LastName3
+ 324  32400  32FirstName4 32LastName4
+
+company1 is empty
+company2 is empty
+Company5:
+ 311  31100  31FirstName1 31LastName1
+ 312  31200  31FirstName2 31LastName2
+ 313  31300  31FirstName3 31LastName3
+ 314  31400  31FirstName4 31LastName4
+ 321  32100  32FirstName1 32LastName1
+ 322  32200  32FirstName2 32LastName2
+ 323  32300  32FirstName3 32LastName3
+ 324  32400  32FirstName4 32LastName4
+
+test == 
+--------
+Company10:
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+
+Company11:
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+
+company10 equals company11
+Company11:
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+
+company10 equals company11
+test == and !=: merge 7 and 8 into 9 (same as 5)
+------------------------------------------------
+Company7:
+ 311  31100  31FirstName1 31LastName1
+ 312  31200  31FirstName2 31LastName2
+ 313  31300  31FirstName3 31LastName3
+ 314  31400  31FirstName4 31LastName4
+
+Company8:
+ 321  32100  32FirstName1 32LastName1
+ 322  32200  32FirstName2 32LastName2
+ 323  32300  32FirstName3 32LastName3
+ 324  32400  32FirstName4 32LastName4
+
+Company9:
+ 311  31100  31FirstName1 31LastName1
+ 312  31200  31FirstName2 31LastName2
+ 313  31300  31FirstName3 31LastName3
+ 314  31400  31FirstName4 31LastName4
+ 321  32100  32FirstName1 32LastName1
+ 322  32200  32FirstName2 32LastName2
+ 323  32300  32FirstName3 32LastName3
+ 324  32400  32FirstName4 32LastName4
+
+company5 equals company9
+company5 equals company9
+test -- merge 3 and 4 into 4
+----------------------------
+Company3:
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+
+Company4:
+ 341  34100  34FirstName1 34LastName1
+ 342  34200  34FirstName2 34LastName2
+ 343  34300  34FirstName3 34LastName3
+ 344  34400  34FirstName4 34LastName4
+
+company3 is empty
+Company4:
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+ 341  34100  34FirstName1 34LastName1
+ 342  34200  34FirstName2 34LastName2
+ 343  34300  34FirstName3 34LastName3
+ 344  34400  34FirstName4 34LastName4
+
+test -- merge empty 3 and 4 into 4, no change to 4
+--------------------------------------------------
+Company3:
+
+Company4:
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+ 341  34100  34FirstName1 34LastName1
+ 342  34200  34FirstName2 34LastName2
+ 343  34300  34FirstName3 34LastName3
+ 344  34400  34FirstName4 34LastName4
+
+company3 is empty
+Company4 again (same):
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+ 341  34100  34FirstName1 34LastName1
+ 342  34200  34FirstName2 34LastName2
+ 343  34300  34FirstName3 34LastName3
+ 344  34400  34FirstName4 34LastName4
+
+test -- merge 4 and empty 3 into 4, no change to 4
+--------------------------------------------------
+company3 is empty
+Company4 again (same):
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+ 341  34100  34FirstName1 34LastName1
+ 342  34200  34FirstName2 34LastName2
+ 343  34300  34FirstName3 34LastName3
+ 344  34400  34FirstName4 34LastName4
+
+test -- merge 6 and empty 3 into 4
+----------------------------------
+company3 is empty
+company6 is empty
+Company4:
+ 341  34100  34FirstName1 34LastName1
+ 342  34200  34FirstName2 34LastName2
+ 343  34300  34FirstName3 34LastName3
+ 344  34400  34FirstName4 34LastName4
+
+test remove and retrieve on 4
+-----------------------------
+Did not find aaaaa in list
+Did not find zzzzz in list
+Did not find ghost in list
+Did not find rella in list
+Did not find bear in list
+Company4 after removes:
+ 341  34100  34FirstName1 34LastName1
+ 342  34200  34FirstName2 34LastName2
+ 343  34300  34FirstName3 34LastName3
+ 344  34400  34FirstName4 34LastName4
+
+Test Copy Constructor and Destructor
+------------------------------------
+after emptying, byRefList is: 
+
+byValList is: 
+ 331  33100  33FirstName1 33LastName1
+ 332  33200  33FirstName2 33LastName2
+ 333  33300  33FirstName3 33LastName3
+ 334  33400  33FirstName4 33LastName4
+
+back in main, Company10:
+
+==22979== 
+==22979== HEAP SUMMARY:
+==22979==     in use at exit: 0 bytes in 0 blocks
+==22979==   total heap usage: 117 allocs, 117 frees, 111,840 bytes allocated
+==22979== 
+==22979== All heap blocks were freed -- no leaks are possible
+==22979== 
+==22979== For counts of detected and suppressed errors, rerun with: -v
+==22979== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+]0;tonthong@csslab1:~/assignment3[tonthong@csslab1 assignment3]$ exit
+
+Script done on Sat 02 May 2020 12:18:54 AM PDT
