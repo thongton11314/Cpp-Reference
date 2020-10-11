@@ -9,6 +9,7 @@ void testOperatorPlusEqual();
 void testOperatorMinus();
 void testOperatorMultiple();
 void testOperatorMultipleEqual();
+void testIfstream();
 
 int main() {
 
@@ -21,7 +22,7 @@ int main() {
     cout << "get and setCoeff test" << endl;
     testCoeff();
     cout << endl;
-   
+
     // test operator+
     cout << "Operator+" << endl;
     testOperatorPlus();
@@ -46,6 +47,11 @@ int main() {
     cout << "Opertor*=" << endl;
     testOperatorMultipleEqual();
     cout << endl;
+
+    // test ifstream
+    cout << "Test iftream" << endl;
+    testIfstream();
+    cout << endl;
     return 0;
 }
 
@@ -57,7 +63,7 @@ void testConstructor() {
     Poly test15(-100, 20);  // case 5
     Poly test16(-100, -1);  // case 6
     Poly test17(20, 99);    // case 7
-    
+
     // Copy contructor case 8
     Poly beingCopy;
     beingCopy.setCoeff(-1, 1);
@@ -75,15 +81,15 @@ void testConstructor() {
         cout << "Constructor case 1:" << "\t*FAILED" << endl;
 
     // Test constructor case 2
-    if ((test12.getCoeff(0) == 20) 
-        && (test12.getCoeff(-1) == 0) 
+    if ((test12.getCoeff(0) == 20)
+        && (test12.getCoeff(-1) == 0)
         && (test12.getCoeff(2) == 0))
         cout << "Constructor case 2:" << "\tPASSED" << endl;
     else
         cout << "Constructor case 2:" << "\tFAILED******" << endl;
-    
+
     // Test constructor case 3
-    if (test13.getCoeff(20) == 20 
+    if (test13.getCoeff(20) == 20
         && test13.getCoeff(21) == 0
         && test13.getCoeff(19) == 0)
         cout << "Constructor case 3:" << "\tPASSED" << endl;
@@ -173,7 +179,7 @@ void testCoeff() {
 void testOperatorPlus() {
     Poly test1;
     Poly test2;
-    
+
     // assign test1
     test1.setCoeff(1, 1);
     test1.setCoeff(10, 10);
@@ -422,4 +428,11 @@ void testOperatorMultipleEqual() {
 
     // Case 3, test zero multiple
     // Case 4, test one zero other has value
+}
+
+void testIfstream() {
+    cout << "Type in poly, exit -1 -1:" << endl;
+    Poly test;
+    cin >> test;
+    cout << test;
 }

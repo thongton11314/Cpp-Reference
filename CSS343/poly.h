@@ -4,7 +4,8 @@
 // Creation Date: 10/4/2020
 // Date of Last Modification: 10/8/2020
 // ----------------------------------------------------------------------------
-// Purpose: This is the first assignment of CSS343 class
+// Purpose: 
+//  - This project is to create the abstract data type (ADT) for a polynomial
 // ----------------------------------------------------------------------------
 
 #ifndef _POLY_
@@ -17,13 +18,21 @@ const int DEFAULTVALUE = 0; // use to set all array's element to zero
 const int DEFAULTSIZE = 1;  // use for set initialsize
 
 
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 // Poly class:
-//
+//  - This class implement the internal representation of a polynomial 
+//    (nonnegative exponents) as an array of terms
 //
 // Implementation and assumptions:
+//  - One polynomial is stored in one array element
+//  - Each polynomial contains an exponent and a coefficient
+//  - Array element subscript is exponent, and content is coeffficient
+//  - Applying dynamic allocation to grow array size but not shrink it
+//  - Constructor receives at most two values,
+//    which first is coefficient, second is maximum power
+//  - If instance object without input parameter then polinomial = 0, size = 0
 //  - Any input exponent less than 0 then their coefficient will be set 0
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 class Poly {
 
     // overloaded input operator for class Poly
