@@ -17,6 +17,9 @@ public:
 	bool operator!=(const BinTree &) const;
 	bool insert(NodeData*);
 	bool retrieve(...) const;
+	int getHeight(const NodeData &) const;
+	void arrayToBSTree(NodeData* []);
+	void bstreeToArray(NodeData* []);
 	void displaySideways() const;			// provided below, displays the tree sideways
 private:
 	struct Node {
