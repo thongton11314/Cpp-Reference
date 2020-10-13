@@ -5,14 +5,14 @@
 
 using namespace std;
 
-class BinTree {				// you add class/method comments and assumptions
+class BinTree {
 public:
 	BinTree();								// constructor
 	BinTree(const BinTree &);				// copy constructor
 	~BinTree();								// destructor, calls makeEmpty	
 	bool isEmpty() const;					// true if tree is empty, otherwise false
 	void makeEmpty();						// make the tree empty so isEmpty returns true
-	BinTree& operator=(const BinTree &);
+	BinTree& operator=(const BinTree &);	
 	bool operator==(const BinTree &) const;
 	bool operator!=(const BinTree &) const;
 	bool insert(NodeData*);
