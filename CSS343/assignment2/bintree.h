@@ -16,7 +16,7 @@ public:
 	bool operator==(const BinTree &) const;
 	bool operator!=(const BinTree &) const;
 	bool insert(NodeData*);
-	bool retrieve(...) const;
+	bool retrieve(const NodeData &, NodeData* &) const;
 	int getHeight(const NodeData &) const;
 	void arrayToBSTree(NodeData* []);
 	void bstreeToArray(NodeData* []);
