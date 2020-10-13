@@ -6,32 +6,59 @@
 using namespace std;
 
 class BinTree {
-public:
-	BinTree();								// constructor
-	BinTree(const BinTree &);				// copy constructor
-	~BinTree();								// destructor, calls makeEmpty	
-	bool isEmpty() const;					// true if tree is empty, otherwise false
-	void makeEmpty();						// make the tree empty so isEmpty returns true
-	BinTree& operator=(const BinTree &);	
-	bool operator==(const BinTree &) const;
-	bool operator!=(const BinTree &) const;
-	bool insert(NodeData*);
-	bool retrieve(const NodeData &, NodeData* &) const;
-	int getHeight(const NodeData &) const;
-	void arrayToBSTree(NodeData* []);
-	void bstreeToArray(NodeData* []);
-	void displaySideways() const;			// provided below, displays the tree sideways
-private:
-	struct Node {
-		NodeData* data;						// pointer to data object
-		Node* left;							// left subtree pointer
-		Node* right;						// right subtree pointer
-	};
-	Node* root;								// root of the tree
 
-// utility functions
-void inorderHelper( ... ) const;
-void sideways(Node*, int) const;			// provided below, helper for displaySideways()
+    // overloaded output operator for class Poly
+    friend ostream& operator<<(ostream &, const BinTree &);
+
+    // overloaded input operator for class Poly
+    friend istream& operator>>(istream &, BinTree &);
+
+public:
+
+    // constructor
+    BinTree();					  // constructor
+    BinTree(const BinTree &);	  // copy constructor
+                        
+    // deconstructor
+    ~BinTree();
+
+    // true if tree is empty, otherwise false
+    bool isEmpty() const;
+
+    // make the tree empty so isEmpty returns true
+    void makeEmpty();
+    
+    // overload operator
+    BinTree& operator=(const BinTree &);
+    bool operator==(const BinTree &) const;
+    bool operator!=(const BinTree &) const;
+
+    // insert node
+    bool insert(NodeData*);
+
+    // retrieve node
+    bool retrieve(const NodeData &, NodeData* &) const;
+
+    // get node height
+    int getHeight(const NodeData &) const;
+
+    // convert tree to array and vice versa
+    void arrayToBSTree(NodeData* []);       // array to tree
+    void bstreeToArray(NodeData* []);       // bts to tree
+    
+    // provided below, displays the tree sideways
+    void displaySideways() const;
+private:
+    struct Node {
+        NodeData* data;						// pointer to data object
+        Node* left;							// left subtree pointer
+        Node* right;						// right subtree pointer
+    };
+    Node* root;								// root of the tree
+
+    // utility functions
+    void inorderHelper( ... ) const;
+    void sideways(Node*, int) const;		// provided below, helper for displaySideways()
 };
 
 //------------------------- displaySideways ---------------------------------
@@ -40,7 +67,7 @@ void sideways(Node*, int) const;			// provided below, helper for displaySideways
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
 void BinTree::displaySideways() const {
-	sideways(root, 0);
+    sideways(root, 0);
 }
 
 //---------------------------- Sideways -------------------------------------
@@ -48,17 +75,17 @@ void BinTree::displaySideways() const {
 // Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
 void BinTree::sideways(Node* current, int level) const {
-	if (current != NULL) {
-		level++;
-		sideways(current->right, level);
+    if (current != NULL) {
+        level++;
+        sideways(current->right, level);
 
-		// indent for readability, 4 spaces per depth level 
-		for (int i = level; i >= 0; i--) {
-			cout << "    ";
-		}
+        // indent for readability, 4 spaces per depth level 
+        for (int i = level; i >= 0; i--) {
+            cout << "    ";
+        }
 
-		cout << *current->data << endl;        // display information of object
-		sideways(current->left, level);
-	}
+        cout << *current->data << endl;        // display information of object
+        sideways(current->left, level);
+    }
 }
 #endif //!_Bin_Tree_
