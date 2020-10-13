@@ -27,18 +27,20 @@ const int DEFAULTSIZE = 1;  // use for set initialsize
 //  - One polynomial is stored in one array element
 //  - Each polynomial contains an exponent and a coefficient
 //  - Array element subscript is exponent, and content is coeffficient
+//  - Coefficient and exponent is integer
 //  - Applying dynamic allocation to grow array size but not shrink it
 //  - Constructor receives at most two values,
 //    which first is coefficient, second is maximum power
 //  - If instance object without input parameter then polinomial = 0, size = 0
 //  - Any input exponent less than 0 then their coefficient will be set 0
+//  - Set polynomial by istream will be terminated if input -1 -1, ignore char
 //-----------------------------------------------------------------------------
 class Poly {
 
-    // overloaded input operator for class Poly
+    // overloaded output operator for class Poly
     friend ostream& operator<<(ostream &, const Poly &);
 
-    // overloaded output operator for class Poly
+    // overloaded input operator for class Poly
     friend istream& operator>>(istream &, Poly &);
 
 public:

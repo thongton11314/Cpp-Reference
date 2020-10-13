@@ -1,13 +1,13 @@
 // ------------------------------- poly.cpp -----------------------------------
 // Programmer: Thong Ton
-// Course: CSS343, assignment 1
+// Course: CSS343
 // Creation Date: 10/4/2020
-// Date of Last Modification: 10/9/2020
+// Date of Last Modification: 10/11/2020
 // ----------------------------------------------------------------------------
 // Purpose: This is the implementation of poly.h
 // ----------------------------------------------------------------------------
 
-#include "poly.h" // use to get header function from Poly class
+#include "poly.h" // use to get poly header
 
 // ----------------------------------- Poly -----------------------------------
 // Description: Poly class constructor, by using default parameter
@@ -64,17 +64,21 @@ void Poly::setCoeff(int co, int exp) {
         int *temp = arr;        // keep old array's element
         arr = new int[newSize]; // new array
 
-        // assign old array element to new one
-        for (int i = 0; i < size; i++) {
-            arr[i] = temp[i];
-        }
+        // assign new value for new array
+        for (int i = 0; i < newSize; i++) {
 
-        // assign value to 0
-        for (int i = size; i < newSize; i++) {
-            arr[i] = DEFAULTVALUE;
+            // copy old array to new array
+            if (i < size) {
+                arr[i] = temp[i];
+            }
+
+            // set default value for new array
+            else {
+                arr[i] = DEFAULTVALUE;
+            }
         }
-        arr[exp] = co;
-        size = newSize;
+        arr[exp] = co;  // set coeffient
+        size = newSize; // new size
 
         // delete temporary memory
         delete[] temp;
@@ -105,8 +109,8 @@ int Poly::getCoeff(int exp) const {
 //              this function will be called in copy constructor and operator=
 // ----------------------------------------------------------------------------
 void Poly::copy(const Poly &other) {
-    size = other.size;  // initial size
-    arr = new int[size];// create new array by other size
+    size = other.size;      // initial size
+    arr = new int[size];    // create new array by other size
 
     // copy element by element
     for (int i = 0; i < other.size; i++)
@@ -114,36 +118,31 @@ void Poly::copy(const Poly &other) {
 } // end of copy
 
 // -------------------------------- operator+ ---------------------------------
-// Description: overloaded addition operator for class Poly;
+// Description: overloaded addition operator for class Poly
 // ----------------------------------------------------------------------------
 Poly Poly::operator+(const Poly &other) const {
-
-    // create temporary polynomial
-    Poly temp;
-
-    // create value for max
-    int maxSize;
+    int maxSize;    // create value for max
 
     // using ternary operator to get max
     size < other.size ? maxSize = other.size : maxSize = size;
+    Poly temp(DEFAULTVALUE, maxSize);      // create temporary polynomial
 
-    // continuous adding until smallest size
+    // continuous adding until 0 index
     // add from the last index to the first index
     for (int i = maxSize - 1; i >= 0; i--) {
 
-        // from last index to equal index of arrays
-        // decreased iter greater than or equal size 
+        // from last index to equal index
         if (i >= size) {
-            temp.setCoeff(other.arr[i], i);
+            temp.arr[i] = other.arr[i];
         }
 
-        // decreased iter less than
+        // from equal to first
         else {
             if (i >= other.size) {
-                temp.setCoeff(arr[i], i);
+                temp.arr[i] = arr[i]; // copy value
             }
             else {
-                temp.setCoeff(arr[i] + other.arr[i], i);
+                temp.arr[i] = arr[i] + other.arr[i]; // perform math
             }
         }
     }
@@ -156,33 +155,28 @@ Poly Poly::operator+(const Poly &other) const {
 // Description: overloaded subtraction operator for Poly class
 // ----------------------------------------------------------------------------
 Poly Poly::operator-(const Poly &other) const {
-
-    // create temporary polynomial
-    Poly temp;
-  
-    // check the largest size
-    int maxSize;
+    int maxSize;    // check the largest size
 
     // using ternary operator to get max
     size < other.size ? maxSize = other.size : maxSize = size;
+    Poly temp(DEFAULTVALUE, maxSize); // create temporary polynomial
 
     // continuous adding until largest size
     // add from the last index to the first index
     for (int i = maxSize - 1; i >= 0; i--) {
 
-        // from last index to equal index of arrays
-        // decread iter greater than or equal size 
+        // from last index to equal index
         if (i >= size) {
-            temp.setCoeff(-other.arr[i], i);            
+            temp.arr[i] = -other.arr[i];
         }
 
-        // decread iter less than
+        // from equal to first
         else {
             if (i >= other.size) {
-                temp.setCoeff(arr[i], i);                
+                temp.arr[i] = arr[i]; // copy value
             }
             else {
-                temp.setCoeff(arr[i] - other.arr[i], i);                
+                temp.arr[i] = arr[i] - other.arr[i]; // perform math
             }
         }
     }
@@ -196,8 +190,8 @@ Poly Poly::operator-(const Poly &other) const {
 // ----------------------------------------------------------------------------
 Poly Poly::operator*(const Poly &other) const {
 
-    // reserve size for return poly
-    Poly temp(DEFAULTVALUE, size + other.size - 2);
+    int sumTwoSize = size + other.size - 2;     // sum of two size, maxSize
+    Poly temp(DEFAULTVALUE, sumTwoSize);        // reserve size for return poly
 
     // get current exponent
     for (int i = size - 1; i >= 0; i--) {
@@ -240,8 +234,7 @@ Poly & Poly::operator=(const Poly &other) {
 // ----------------------------------------------------------------------------
 Poly & Poly::operator+=(const Poly &other) {
 
-    // check the largest size
-    int maxSize;
+    int maxSize;    // create value for max
 
     // using ternary operator to get max
     size < other.size ? maxSize = other.size : maxSize = size;
@@ -250,20 +243,14 @@ Poly & Poly::operator+=(const Poly &other) {
     // add from the last index to the first index
     for (int i = maxSize - 1; i >= 0; i--) {
 
-        // from last index to equal index of arrays
-        // decread iter greater than or equal size 
+        // from last index to equal index
         if (i >= size) {
-            setCoeff(other.arr[i], i);
+            setCoeff(other.arr[i], i);  // this also resize
         }
 
-        // decread iter less than
+        // from equal to first index
         else {
-            if (i >= other.size) {
-                setCoeff(arr[i], i);
-            }
-            else {
-                setCoeff(arr[i] + other.arr[i], i);
-            }
+            arr[i] += other.arr[i];
         }
     }
 
@@ -286,20 +273,14 @@ Poly & Poly::operator-=(const Poly &other) {
     // add from the last index to the first index
     for (int i = maxSize - 1; i >= 0; i--) {
 
-        // from last index to equal index of arrays
-        // decread iter greater than or equal size 
+        // from last index to equal index
         if (i >= size) {
-            setCoeff(-other.arr[i], i);
+            setCoeff(-other.arr[i], i); // this also resize
         }
 
-        // decread iter less than
+        // from equal index to first index
         else {
-            if (i >= other.size) {
-                setCoeff(arr[i], i);
-            }
-            else {
-                setCoeff(arr[i] - other.arr[i], i);
-            }
+            arr[i] -= other.arr[i];            
         }
     }
 
@@ -313,7 +294,8 @@ Poly & Poly::operator-=(const Poly &other) {
 Poly & Poly::operator*=(const Poly &other) {
     
     // reserve new size
-    setCoeff(0, size + other.size - 2);
+    int sumTwoSize = size + other.size - 2;     // sum of two size, maxSize
+    setCoeff(DEFAULTVALUE, sumTwoSize);         // reserve size for return poly
 
     // get current exponent
     for (int i = size - 1; i >= 0; i--) {
@@ -344,12 +326,12 @@ bool Poly::operator==(const Poly &other) const {
     // use to check equal
     bool isEqual = true;
 
-    // early exit if two object address is dentical
+    // early exit if two object addresses are identical
     if (&other == this) {
         return true;
     }
 
-    // continue check each subscrip
+    // continue check each subscript
     else {
        
         // declare max and min size
@@ -361,26 +343,26 @@ bool Poly::operator==(const Poly &other) const {
         size > other.size ? maxSize = size : maxSize = other.size;
 
         // check equal
-        for (int i = 0; i < maxSize && isEqual == true; i++) {
+        for (int i = 0; (i < maxSize) && (isEqual == true); i++) {
 
-            // check until reach minumum size
+            // check until reach minimum size
             if (i < minSize) {
                 if (arr[i] != other.arr[i]) {
                     isEqual = false;
                 }
             }
 
-            // must check until the end of max size
+            // check from minimum size to max size
             else {
 
-                // this size as termination point
+                // check current array
                 if (size > other.size) {
                     if (arr[i] != 0) {
                         isEqual = false;
                     }
                 }
 
-                // other's size as termination point
+                // check other array
                 else {
                     if (other.arr[i] != 0) {
                         isEqual = false;
@@ -400,12 +382,12 @@ bool Poly::operator!=(const Poly &other) const {
 } // end of operator!=
 
 // -------------------------------- operator<< --------------------------------
-// Description: overloaded input operator for Poly class
+// Description: overloaded output operator for Poly class
 // ----------------------------------------------------------------------------
 ostream & operator<<(ostream &out, const Poly &poly) {
 
     // use to check if entire polynomial is zero
-    bool checkEntireZero = true;
+    bool isEntireZero = true;
 
     // check each exponent
     for (int i = poly.size - 1; i >= 0; i--) {
@@ -413,19 +395,22 @@ ostream & operator<<(ostream &out, const Poly &poly) {
         // check if coefficient is not zero
         if (poly.arr[i] != 0) {
 
-            // coefficient is positive, add posivite sign
+            // one space between each term
+            out << ' ';
+
+            // coefficient is positive, add positive sign
             if (poly.arr[i] > 0) {
                 out << '+';
             }
 
             // print polynomial if greater 1
             if (i > 1) {
-                out << poly.arr[i] << "x^" << i << ' ';
+                out << poly.arr[i] << "x^" << i;
             }
 
             // not print polynomial if equal 1
             else if (i == 1) {
-                out << poly.arr[i] << 'x' << ' ';
+                out << poly.arr[i] << 'x';
             }
 
             // polynomial is zero, constant number
@@ -434,18 +419,18 @@ ostream & operator<<(ostream &out, const Poly &poly) {
             }
 
             // non zero polynomial
-            checkEntireZero = false;
+            isEntireZero = false;
         }
     }
 
     // entire polynomial is zero return 0
-    if (checkEntireZero)
+    if (isEntireZero)
         out << 0;
     return out;
 } // end of operator<<
 
 // -------------------------------- operator>> --------------------------------
-// Description: overloaded output operator for Poly class
+// Description: overloaded input operator for Poly class
 // ----------------------------------------------------------------------------
 istream & operator>>(istream &in, Poly &expresion) {
 
@@ -453,7 +438,7 @@ istream & operator>>(istream &in, Poly &expresion) {
     int co = DEFAULTVALUE, exp = DEFAULTVALUE;
     
     // loop until user user type -1 -1 in pair
-    while ((co != -1) || (exp != -1)) {
+    while (!(co == -1 && exp == -1)) {
 
         // get coefficient and exponent
         in >> co >> exp;
@@ -464,7 +449,8 @@ istream & operator>>(istream &in, Poly &expresion) {
             in.ignore(99, '\n');
 
             // break out of loop
-            co = -1, exp = -1;
+            co = -1;
+            exp = -1;
         }
 
         // insert to polynomial
