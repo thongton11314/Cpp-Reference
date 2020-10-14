@@ -16,7 +16,7 @@ class BinTree {
 public:
 
     // constructor
-    BinTree();					  // constructor
+    BinTree();                    // constructor
     BinTree(const BinTree &);	  // copy constructor
                         
     // deconstructor
@@ -43,22 +43,22 @@ public:
     int getHeight(const NodeData &) const;
 
     // convert tree to array and vice versa
-    void arrayToBSTree(NodeData* []);       // array to tree
-    void bstreeToArray(NodeData* []);       // bts to tree
+    void arrayToBSTree(NodeData* []);   // array to tree
+    void bstreeToArray(NodeData* []);   // bts to tree
     
     // provided below, displays the tree sideways
     void displaySideways() const;
 private:
     struct Node {
-        NodeData* data;						// pointer to data object
-        Node* left;							// left subtree pointer
-        Node* right;						// right subtree pointer
+        NodeData* data;                 // pointer to data object
+        Node* left;	                    // left subtree pointer
+        Node* right;					// right subtree pointer
     };
-    Node* root;								// root of the tree
+    Node* root;						    // root of the tree
 
     // utility functions
     void inorderHelper( ... ) const;
-    void sideways(Node*, int) const;		// provided below, helper for displaySideways()
+    void sideways(Node*, int) const;    // provided below, helper for displaySideways()
 };
 
 //------------------------- displaySideways ---------------------------------
@@ -84,7 +84,7 @@ void BinTree::sideways(Node* current, int level) const {
             cout << "    ";
         }
 
-        cout << *current->data << endl;        // display information of object
+        cout << *current->data << endl;   // display information of object
         sideways(current->left, level);
     }
 }
