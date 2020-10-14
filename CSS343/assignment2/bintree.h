@@ -5,6 +5,9 @@
 
 using namespace std;
 
+// Assumption:
+//  - Duplicate notes will be discard
+//  - Smaller note will be stored at left, bigger will be stored at right
 class BinTree {
 
     // overloaded output operator for class Poly
@@ -21,6 +24,7 @@ public:
                         
     // deconstructor
     ~BinTree();
+    
 
     // true if tree is empty, otherwise false
     bool isEmpty() const;
@@ -59,35 +63,7 @@ private:
     Node* root;						    // root of the tree
 
     // utility functions
-    void inorderHelper( ... ) const;
-    void sideways(Node*, int) const;    // provided below, helper for displaySideways()
+    void inorderHelper() const;
+    void sideways(Node*, int) const;    // helper for displaySideways()
 };
-
-//------------------------- displaySideways ---------------------------------
-// Displays a binary tree as though you are viewing it from the side;
-// hard coded displaying to standard output.
-// Preconditions: NONE
-// Postconditions: BinTree remains unchanged.
-void BinTree::displaySideways() const {
-    sideways(root, 0);
-}
-
-//---------------------------- Sideways -------------------------------------
-// Helper method for displaySideways
-// Preconditions: NONE
-// Postconditions: BinTree remains unchanged.
-void BinTree::sideways(Node* current, int level) const {
-    if (current != NULL) {
-        level++;
-        sideways(current->right, level);
-
-        // indent for readability, 4 spaces per depth level 
-        for (int i = level; i >= 0; i--) {
-            cout << "    ";
-        }
-
-        cout << *current->data << endl;   // display information of object
-        sideways(current->left, level);
-    }
-}
 #endif //!_Bin_Tree_
