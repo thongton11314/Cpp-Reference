@@ -68,6 +68,4 @@ private:
                         NodeData*&) const; // helper for retrieve
     void sideways(Node*, int) const;       // helper for displaySideways()
 };
-
-
 #endif //!_Bin_Tree_
