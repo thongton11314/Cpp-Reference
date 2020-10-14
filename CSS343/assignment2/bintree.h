@@ -27,11 +27,6 @@ public:
 
     // make the tree empty so isEmpty returns true
     void makeEmpty();
-    
-    // overload operator
-    BinTree& operator=(const BinTree &);
-    bool operator==(const BinTree &) const;
-    bool operator!=(const BinTree &) const;
 
     // insert node
     bool insert(NodeData*);
@@ -48,6 +43,12 @@ public:
     
     // provided below, displays the tree sideways
     void displaySideways() const;
+
+    // overload operator
+    BinTree& operator=(const BinTree &);
+    bool operator==(const BinTree &) const;
+    bool operator!=(const BinTree &) const;
+    
 private:
     struct Node {
         NodeData* data;                 // pointer to data object
