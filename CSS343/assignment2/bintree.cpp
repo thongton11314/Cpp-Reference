@@ -11,7 +11,7 @@ BinTree::BinTree() {
 // Preconditions: NONE
 // Postconditions: Bin tree will have all other's nodes
 BinTree::BinTree(const BinTree &other) {
-
+    copyHelper(root, other.root);
 } // end of copy constructor
 
 //------------------------------- ~BinTree ------------------------------------
@@ -235,6 +235,11 @@ bool BinTree::isEmpty() const {
 // Preconditions: NONE
 // Postconditions: BinTree wil be identical as other Bintree
 BinTree& BinTree::operator=(const BinTree& other) {
+    
+    // check if two root are not indentical
+    if (root != other.root) {
+        copyHelper(root, other.root);
+    }
     return *this;
 }
 
@@ -252,4 +257,20 @@ bool BinTree::operator==(const BinTree& other) const {
 // Postconditions: BinTree remains the same
 bool BinTree::operator!=(const BinTree& other) const {
     return false;
+}
+
+//------------------------------- copyHelper ----------------------------------
+// Helper method for copy constructor and operator=
+// Preconditions: NONE
+// Postconditions: BinTree has new identical data as other Bintree 
+void BinTree::copyHelper(Node*& thisCurrent, Node* otherCurrent) {  
+    if (otherCurrent == nullptr) {
+        thisCurrent = nullptr;
+    }
+    else {
+        thisCurrent = new Node;
+        thisCurrent->data = new NodeData(*otherCurrent->data);
+        copyHelper(thisCurrent->left, otherCurrent->left);
+        copyHelper(thisCurrent->right, otherCurrent->right);
+    }
 }

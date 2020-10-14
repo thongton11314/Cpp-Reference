@@ -42,4 +42,11 @@ int main() {
     test.insert(new NodeData("y"));
     test.insert(new NodeData("z"));
     test.displaySideways();
+    cout << endl << endl << endl << endl << endl;
+    BinTree testCopy(test);
+    testCopy.displaySideways();
+    cout << endl << endl << endl << endl << endl;
+    BinTree testOperator;
+    testOperator = testCopy;
+    testOperator.displaySideways();
 }
