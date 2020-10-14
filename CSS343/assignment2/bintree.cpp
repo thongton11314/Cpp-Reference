@@ -165,6 +165,10 @@ bool BinTree::retrieveHelper(Node* current,
 // Preconditions: NONE
 // Postconditions: BinTree will be empty
 int BinTree::getHeight(const NodeData& target) const {
+    return getHeightHelper(root, target);
+}
+
+int BinTree::getHeightHelper(Node* current, const NodeData& target) const {
     return 0;
 }
 
@@ -172,15 +176,71 @@ int BinTree::getHeight(const NodeData& target) const {
 // Assign all nodes from array to Bintree
 // Preconditions: NONE
 // Postconditions: array will be empty
-void BinTree::arrayToBSTree(NodeData* arr[]) {
+void BinTree::arrayToBST(NodeData* arr[]) {
+    
+    // clear this tree
+    makeEmpty();
+
+    // check max index
+    int high = 0;
+    for (int i = 0; i < ARRAYSIZE; i++) {
+        if (*(arr + i) != nullptr) {
+            high++;
+        }
+        else {
+            *(arr + i) = nullptr;
+        }
+        
+    }
+    
+    // assign new data from array to this tree
+    arrayToBSTHelper(root, arr, 0, high - 1);
+
     return;
+}
+
+//---------------------------- arrayToBSTHelper ----------------------------------
+// Assign all nodes from array to Bintree
+// Preconditions: NONE
+// Postconditions: array will be empty
+void BinTree::arrayToBSTHelper(Node* current, NodeData* arr[], int low, int high) {
+    
+    // base case
+    if (low > high) {
+        current = nullptr;
+    }
+
+    // recursively add to tree
+    else {
+        int mid = (low + high) / 2;
+        NodeData* newNodeData = *(arr + mid);
+        insert(newNodeData);
+        *(arr + mid) = nullptr;
+
+        // fill left
+        arrayToBSTHelper(current, arr, low, mid - 1);
+
+        // fill right
+        arrayToBSTHelper(current, arr, mid + 1, high);
+    }
 }
 
 //--------------------------- displaySideways ---------------------------------
 // Assign all node of Bintree to array
 // Preconditions: NONE
 // Postconditions: BinTree will be empty
-void BinTree::bstreeToArray(NodeData* arr[]) {
+void BinTree::bstToArray(NodeData* arr[]) {
+
+    // assign tree's data to arr
+    bstToArrayHelper(root, arr);
+
+    // clear this tree
+    makeEmpty();
+    return;
+}
+
+
+void BinTree::bstToArrayHelper(Node* current, NodeData* arr[]) {    
     return;
 }
 
@@ -316,6 +376,31 @@ bool BinTree::comparisionHelper(Node* root, Node* other) const {
 // Helper method for makeEmpty
 // Preconditions: NONE
 // Postconditions: BinTree remains the same
-bool BinTree::operator!=(const BinTree& other) const {
+bool BinTree::operator!=(const BinTree& other) const {    
     return !(*this == other);
+}
+
+ostream& operator<<(ostream& out, const BinTree& tree) {
+    tree.inOrderHelper(out, tree.root);
+    out << endl;
+    return out;
+}
+
+//------------------------------- inOrderHelper -------------------------------
+// Helper for operator<<
+// In-order traverse
+// Preconditions: NONE
+// Postconditions: BinTree remains the same
+void BinTree::inOrderHelper(ostream& out, Node * current) const {
+    
+    // base case
+    if (current == nullptr)
+        return;
+
+    // print from left to right subtree
+    else {
+        inOrderHelper(out, current->left);
+        out << *current->data << " ";
+        inOrderHelper(out, current->right);
+    }
 }

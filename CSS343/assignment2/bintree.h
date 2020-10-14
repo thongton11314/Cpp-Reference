@@ -5,16 +5,15 @@
 
 using namespace std;
 
+const int ARRAYSIZE = 100;
+
 // Assumption:
 //  - Duplicate notes will be discard
 //  - Smaller note will be stored at left, bigger will be stored at right
 class BinTree {
 
     // overloaded output operator for class Poly
-    friend ostream& operator<<(ostream &, const BinTree &);
-
-    // overloaded input operator for class Poly
-    friend istream& operator>>(istream &, BinTree &);
+    friend ostream& operator<<(ostream &, const BinTree&);
 
 public:
 
@@ -35,8 +34,8 @@ public:
     int getHeight(const NodeData &) const;
 
     // convert tree to array and vice versa
-    void arrayToBSTree(NodeData* []);   // array to tree
-    void bstreeToArray(NodeData* []);   // bts to tree
+    void arrayToBST(NodeData* []);   // array to tree
+    void bstToArray(NodeData* []);   // bts to tree
     
     // provided below, displays the tree sideways
     void displaySideways() const;
@@ -54,20 +53,24 @@ public:
 
 private:
     struct Node {
-        NodeData* data;                    // pointer to data object
-        Node* left;	                       // left subtree pointer
-        Node* right;					   // right subtree pointer
+        NodeData* data;                         // pointer to data object
+        Node* left;	                            // left subtree pointer
+        Node* right;					        // right subtree pointer
     };
-    Node* root;						       // root of the tree
+    Node* root;						            // root of the tree
 
     // utility functions
-    void copyHelper(Node*&, Node*);        // copy other Bintree
-    bool insertHelper(NodeData *, Node *&);// helper for insert
-    void makeEmptyHelper(Node*&);          // helper for make empty
+    void copyHelper(Node*&, Node*);             // copy other Bintree
+    bool insertHelper(NodeData *, Node *&);     // helper for insert
+    int getHeightHelper(Node*, const NodeData&) const;  // helper for getHeight
+    void makeEmptyHelper(Node*&);               // helper for make empty
     bool retrieveHelper(Node*, 
                         const NodeData &,
-                        NodeData*&) const; // helper for retrieve
-    void sideways(Node*, int) const;       // helper for displaySideways()
+                        NodeData*&) const;      // helper for retrieve
+    void sideways(Node*, int) const;            // helper for displaySideways()
+    void bstToArrayHelper(Node*, NodeData* []);
+    void arrayToBSTHelper(Node*, NodeData* [], int low, int high);
     bool comparisionHelper(Node*, Node*) const;
+    void inOrderHelper(ostream&, Node*) const;
 };
 #endif //!_Bin_Tree_

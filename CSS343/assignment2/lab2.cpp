@@ -55,5 +55,8 @@ int main() {
         && aaa != test)
         cout << "Operator" << "\t PASSED" << endl;
     else
-        cout << "Operator" << "\t FAILED" << endl; 
+        cout << "Operator" << "\t FAILED" << endl;
+    cout << endl << endl << endl << endl << endl;
+    cout << "aaa" << aaa << endl;
+    cout << "test" << test << endl;
 }
