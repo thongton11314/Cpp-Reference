@@ -61,8 +61,8 @@ private:
     Node* root;						       // root of the tree
 
     // utility functions
-    bool insertHelper() const;             // helper for insert
-    void makeEmptyHelper() const;          // helper for make empty
+    bool insertHelper(NodeData *, Node *&);          // helper for insert
+    void makeEmptyHelper(Node*&);          // helper for make empty
     bool retrieveHelper(Node*, 
                         const NodeData &,
                         NodeData*&) const; // helper for retrieve

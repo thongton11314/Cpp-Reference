@@ -4,7 +4,7 @@
 // Initialize the tree
 BinTree::BinTree() {
     root = nullptr;
-}
+} // end of constructor
 
 //------------------------------- BinTree -------------------------------------
 // Copy constructor
@@ -12,7 +12,7 @@ BinTree::BinTree() {
 // Postconditions: Bin tree will have all other's nodes
 BinTree::BinTree(const BinTree &other) {
 
-}
+} // end of copy constructor
 
 //------------------------------- ~BinTree ------------------------------------
 // Deconstructor
@@ -31,15 +31,19 @@ BinTree::~BinTree() {
 
     // root always null pointer
     root = nullptr;
-}
+} // end of deconstructor
 
 //--------------------------------- insert ------------------------------------
 // Insert the data into tree
 // Lesser data goes to left, greater data go to right
+// Duplicate data will be deleted
 // Preconditions: NONE
 // Postconditions: BinTree will have one more node
 bool BinTree::insert(NodeData* data) {
     
+    // use to check if successful insert
+    bool isInsert;
+
     // first node if tree is empty
     if (root == nullptr) {
 
@@ -48,16 +52,26 @@ bool BinTree::insert(NodeData* data) {
         return true;
     }
 
-    // tree already has root
-    else
-        return insertHelper(data, root);
-}
+    // if not null, insert
+    else {
+        isInsert = insertHelper(data, root);
+    }
+
+    // if duplicate, delete the node
+    if (isInsert == false) {
+        delete data;
+        data = nullptr;
+    }
+
+    // return
+    return isInsert;
+} // end of insert
 
 //------------------------------ insertHelper ---------------------------------
 // Helper method for insert
 // Preconditions: NONE
 // Postconditions: BinTree will have one more node
-bool BinTree::insertHelper(NodeData * newNodeData, Node *& current) const {
+bool BinTree::insertHelper(NodeData * newNodeData, Node *& current) {
 
     // base case
     if (current == nullptr) {
@@ -135,7 +149,7 @@ int BinTree::getHeight(const NodeData& target) const {
 // Assign all nodes from array to Bintree
 // Preconditions: NONE
 // Postconditions: array will be empty
-void BinTree::arrayToBSTree(NodeData* []arr) {
+void BinTree::arrayToBSTree(NodeData* arr[]) {
     return;
 }
 
@@ -143,7 +157,7 @@ void BinTree::arrayToBSTree(NodeData* []arr) {
 // Assign all node of Bintree to array
 // Preconditions: NONE
 // Postconditions: BinTree will be empty
-void BinTree::bstreeToArray(NodeData* []arr) {
+void BinTree::bstreeToArray(NodeData* arr[]) {
     return;
 }
 
@@ -198,7 +212,7 @@ void BinTree::makeEmpty() {
 // Helper method for makeEmpty
 // Preconditions: NONE
 // Postconditions: BinTree will be empty
-void BinTree::makeEmptyHelper() const {
+void BinTree::makeEmptyHelper(Node*& current) {
     
     // delete every node
     if (current != nullptr) {

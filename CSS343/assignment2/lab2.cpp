@@ -15,5 +15,31 @@
 using namespace std;
 
 int main() {
-	
+
+	// the NodeData class must have a constructor that takes a string
+    //iii not tttt eee r not and jj r eee pp r sssss eee not tttt ooo ff  m m y z
+    BinTree test;
+    test.insert(new NodeData("iii"));
+    test.insert(new NodeData("not"));
+    test.insert(new NodeData("tttt"));
+    test.insert(new NodeData("eee"));
+    test.insert(new NodeData("r"));
+    test.insert(new NodeData("not"));
+    test.insert(new NodeData("and"));
+    test.insert(new NodeData("jj"));
+    test.insert(new NodeData("r"));
+    test.insert(new NodeData("eee"));
+    test.insert(new NodeData("pp"));
+    test.insert(new NodeData("r"));
+    test.insert(new NodeData("sssss"));
+    test.insert(new NodeData("eee"));
+    test.insert(new NodeData("not"));
+    test.insert(new NodeData("tttt"));
+    test.insert(new NodeData("ooo"));
+    test.insert(new NodeData("ff"));
+    test.insert(new NodeData("m"));
+    test.insert(new NodeData("m"));
+    test.insert(new NodeData("y"));
+    test.insert(new NodeData("z"));
+    test.displaySideways();
 }
