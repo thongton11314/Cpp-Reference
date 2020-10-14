@@ -18,19 +18,20 @@ BinTree::BinTree(const BinTree &other) {
 // Helper method for copy constructor and operator=
 // Preconditions: NONE
 // Postconditions: BinTree has new identical data as other Bintree 
-void BinTree::copyHelper(Node*& thisCurrent, Node* otherCurrent) {
+void BinTree::copyHelper(Node*& current, Node* other) {
 
     // base case
-    if (otherCurrent == nullptr) {
-        thisCurrent = nullptr;
-    }
+    if (other != nullptr) {
 
-    // keep traverse other tree
-    else {
-        thisCurrent = new Node;                                 // new Node
-        thisCurrent->data = new NodeData(*otherCurrent->data);  // new NodeData
-        copyHelper(thisCurrent->left, otherCurrent->left);      // traverse left
-        copyHelper(thisCurrent->right, otherCurrent->right);    // traverse right
+        // create new node
+        // add new NodeData, assign left and right subtree to null pointer
+        current = new Node { new NodeData ( *other->data ), nullptr, nullptr };
+
+        // traverse left
+        copyHelper(current->left, other->left);
+
+        // traverse right
+        copyHelper(current->right, other->right);
     }
 }
 
@@ -253,13 +254,14 @@ bool BinTree::isEmpty() const {
 }
 
 //------------------------------- operator= -----------------------------------
-// Helper method for makeEmpty
-// Preconditions: NONE
+// Assign other BinTree to this BinTree
+// Preconditions: BinTree must be made to be empty first
 // Postconditions: BinTree wil be identical as other Bintree
 BinTree& BinTree::operator=(const BinTree& other) {
     
     // check if two root are not identical
     if (root != other.root) {
+        makeEmptyHelper(root);
         copyHelper(root, other.root);
     }
     return *this;

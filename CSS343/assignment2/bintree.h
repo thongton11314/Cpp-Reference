@@ -20,7 +20,7 @@ public:
 
     // constructor
     BinTree();                    // constructor
-    BinTree(const BinTree &);	  // copy constructor
+    BinTree(const BinTree &);     // copy constructor
                         
     // deconstructor
     ~BinTree();
@@ -61,8 +61,8 @@ private:
     Node* root;						       // root of the tree
 
     // utility functions
-    void copyHelper(Node*&, Node*);                      // copy other Bintree
-    bool insertHelper(NodeData *, Node *&);          // helper for insert
+    void copyHelper(Node*&, Node*);        // copy other Bintree
+    bool insertHelper(NodeData *, Node *&);// helper for insert
     void makeEmptyHelper(Node*&);          // helper for make empty
     bool retrieveHelper(Node*, 
                         const NodeData &,
