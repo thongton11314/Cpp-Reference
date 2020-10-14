@@ -49,4 +49,11 @@ int main() {
     BinTree testOperator;
     testOperator = testCopy;
     testOperator.displaySideways();
+    BinTree aaa;
+    if (testOperator == testCopy 
+        && testCopy == test
+        && aaa != test)
+        cout << "Operator" << "\t PASSED" << endl;
+    else
+        cout << "Operator" << "\t FAILED" << endl; 
 }
