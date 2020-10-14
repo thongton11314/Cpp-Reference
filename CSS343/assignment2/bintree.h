@@ -49,6 +49,7 @@ public:
     bool operator==(const BinTree &) const;
     bool operator!=(const BinTree &) const;
     
+    // Hi there
 private:
     struct Node {
         NodeData* data;                 // pointer to data object
