@@ -24,13 +24,6 @@ public:
                         
     // deconstructor
     ~BinTree();
-    
-
-    // true if tree is empty, otherwise false
-    bool isEmpty() const;
-
-    // make the tree empty so isEmpty returns true
-    void makeEmpty();
 
     // insert node
     bool insert(NodeData*);
@@ -48,22 +41,33 @@ public:
     // provided below, displays the tree sideways
     void displaySideways() const;
 
+    // make the tree empty so isEmpty returns true
+    void makeEmpty();
+
+    // true if tree is empty, otherwise false
+    bool isEmpty() const;
+
     // overload operator
     BinTree& operator=(const BinTree &);
     bool operator==(const BinTree &) const;
     bool operator!=(const BinTree &) const;
-    
-    // Hi there
+
 private:
     struct Node {
-        NodeData* data;                 // pointer to data object
-        Node* left;	                    // left subtree pointer
-        Node* right;					// right subtree pointer
+        NodeData* data;                    // pointer to data object
+        Node* left;	                       // left subtree pointer
+        Node* right;					   // right subtree pointer
     };
-    Node* root;						    // root of the tree
+    Node* root;						       // root of the tree
 
     // utility functions
-    void inorderHelper() const;
-    void sideways(Node*, int) const;    // helper for displaySideways()
+    bool insertHelper() const;             // helper for insert
+    void makeEmptyHelper() const;          // helper for make empty
+    bool retrieveHelper(Node*, 
+                        const NodeData &,
+                        NodeData*&) const; // helper for retrieve
+    void sideways(Node*, int) const;       // helper for displaySideways()
 };
+
+
 #endif //!_Bin_Tree_
