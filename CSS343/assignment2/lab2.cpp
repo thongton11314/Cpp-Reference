@@ -17,76 +17,108 @@ using namespace std;
 const int ARRAYSIZE = 100;
 
 //global function prototypes
-void buildTree(BinTree&, ifstream&);     // 
-void initArray(NodeData*[]);
-void printArray(NodeData*[]);
-void deleteArray(NodeData* ndArray[]);
+void buildTree(BinTree&, ifstream&);      // 
+void initArray(NodeData*[]);             // initialize array to NULL
+
 int main() {
+	// create file object infile and open it
+	// for testing, call your data file something appropriate, e.g., data2.txt
+	ifstream infile("data2.txt");
+	if (!infile) {
+		cout << "File could not be opened." << endl;
+		return 1;
+	}
 
 	// the NodeData class must have a constructor that takes a string
-    //iii not tttt eee r not and jj r eee pp r sssss eee not tttt ooo ff  m m y z
-    BinTree test;
-    test.insert(new NodeData("iii"));
-    test.insert(new NodeData("not"));
-    test.insert(new NodeData("tttt"));
-    test.insert(new NodeData("eee"));
-    test.insert(new NodeData("r"));
-    test.insert(new NodeData("not"));
-    test.insert(new NodeData("and"));
-    test.insert(new NodeData("jj"));
-    test.insert(new NodeData("r"));
-    test.insert(new NodeData("eee"));
-    test.insert(new NodeData("pp"));
-    test.insert(new NodeData("r"));
-    test.insert(new NodeData("sssss"));
-    test.insert(new NodeData("eee"));
-    test.insert(new NodeData("not"));
-    test.insert(new NodeData("tttt"));
-    test.insert(new NodeData("ooo"));
-    test.insert(new NodeData("ff"));
-    test.insert(new NodeData("m"));
-    test.insert(new NodeData("m"));
-    test.insert(new NodeData("y"));
-    test.insert(new NodeData("z"));
-    test.displaySideways();
-    cout << endl << endl << endl << endl << endl;
-    BinTree testCopy(test);
-    testCopy.displaySideways();
-    cout << endl << endl << endl << endl << endl;
-    BinTree testOperator;
-    testOperator = testCopy;
-    testOperator.displaySideways();
-    BinTree aaa;
-    if (testOperator == testCopy 
-        && testCopy == test
-        && aaa != test)
-        cout << "Operator" << "\t PASSED" << endl;
-    else
-        cout << "Operator" << "\t FAILED" << endl;
-    cout << endl << endl << endl << endl << endl;
-    cout << "aaa" << aaa << endl;
-    cout << "test: " << test << endl;
+	NodeData notND("not");
+	NodeData andND("and");
+	NodeData sssND("sss");
+	NodeData ttttND("tttt");
+	NodeData oooND("ooo");
+	NodeData yND("y");
+	NodeData eND("e");
+	NodeData mND("m");
+	NodeData tND("t");
 
-    // array
-    NodeData* ndArray[ARRAYSIZE];
-    initArray(ndArray);
+	BinTree T, T2, dup;
+	NodeData* ndArray[ARRAYSIZE];
+	initArray(ndArray);
+	cout << "Initial data:" << endl << "  ";
+	buildTree(T, infile);              // builds and displays initial data
+	cout << endl;
+	BinTree first(T);                  // test copy constructor
+	dup = dup = T;                     // test operator=, self-assignment
+	while (!infile.eof()) {
+		cout << "Tree Inorder:" << endl << T;             // operator<< does endl
+		T.displaySideways();
 
-    // bst -> arr
-    cout << "Test bst to array" << endl;
-	test.bstreeToArray(ndArray);
-	printArray(ndArray);
-    cout << endl;
+		// test retrieve 
+		NodeData* p;                    // pointer of retrieved object
+		bool found;                     // whether or not object was found in tree
+		found = T.retrieve(andND, p);
+		cout << "Retrieve --> and:  " << (found ? "found" : "not found") << endl;
+		found = T.retrieve(notND, p);
+		cout << "Retrieve --> not:  " << (found ? "found" : "not found") << endl;
+		found = T.retrieve(sssND, p);
+		cout << "Retrieve --> sss:  " << (found ? "found" : "not found") << endl;
 
-    // arr -> bst
-    cout << "Test array to bst" << endl;
-    test.arrayToBSTree(ndArray);
-    test.bstreeToArray(ndArray);
-	printArray(ndArray);
-    cout << endl;
-    
-    deleteArray(ndArray);
+		// test getHeight 
+		cout << "Height    --> and:  " << T.getHeight(andND) << endl;
+		cout << "Height    --> not:  " << T.getHeight(notND) << endl;
+		cout << "Height    --> sss:  " << T.getHeight(sssND) << endl;
+		cout << "Height    --> tttt:  " << T.getHeight(ttttND) << endl;
+		cout << "Height    --> ooo:  " << T.getHeight(oooND) << endl;
+		cout << "Height    --> y:  " << T.getHeight(yND) << endl;
+
+		// test ==, and != 
+		T2 = T;
+		cout << "T == T2?     " << (T == T2 ? "equal" : "not equal") << endl;
+		cout << "T != first?  " << (T != first ? "not equal" : "equal") << endl;
+		cout << "T == dup?    " << (T == dup ? "equal" : "not equal") << endl;
+		dup = T;
+
+		// somewhat test bstreeToArray and arrayToBSTree
+		T.bstreeToArray(ndArray);
+		T.arrayToBSTree(ndArray);
+		T.displaySideways();
+
+		T.makeEmpty();                  // empty out the tree
+		initArray(ndArray);             // empty out the array
+
+		cout << "---------------------------------------------------------------"
+			<< endl;
+		cout << "Initial data:" << endl << "  ";
+		buildTree(T, infile);
+		cout << endl;
+	}
+
+	return 0;
 }
 
+//------------------------------- buildTree ----------------------------------
+// YOU COMMENT
+
+// To build a tree, read strings from a line, terminating when "$$" is
+// encountered. Since there is some work to do before the actual insert that is
+// specific to the client problem, it's best that building a tree is not a 
+// member function. It's a global function. 
+
+void buildTree(BinTree& T, ifstream& infile) {
+	string s;
+
+	for (;;) {
+		infile >> s;
+		cout << s << ' ';
+		if (s == "$$") break;                // at end of one line
+		if (infile.eof()) break;             // no more lines of data
+		NodeData* ptr = new NodeData(s);     // NodeData constructor takes string
+		// would do a setData if there were more than a string
+
+		bool success = T.insert(ptr);
+		if (!success)
+			delete ptr;                       // duplicate case, not inserted 
+	}
+}
 
 //------------------------------- initArray ----------------------------------
 // initialize the array of NodeData* to NULL pointers
@@ -94,18 +126,4 @@ int main() {
 void initArray(NodeData* ndArray[]) {
 	for (int i = 0; i < ARRAYSIZE; i++)
 		ndArray[i] = NULL;
-}
-
-void printArray(NodeData* ndArray[]) {
-    int size = 0;
-    while (ndArray[size] != nullptr)
-        cout << *ndArray[size++] << " ";
-    cout << endl;
-}
-
-void deleteArray(NodeData* ndArray[]) {
-    int size = 0;
-    while (ndArray[size] != nullptr)
-        delete ndArray[size++];
-    cout << endl;
 }

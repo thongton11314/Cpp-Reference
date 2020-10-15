@@ -78,11 +78,13 @@ bool BinTree::insert(NodeData* data) {
         isInsert = insertHelper(data, root);
     }
 
+    /*
     // if duplicate, delete the node
     if (isInsert == false) {
         delete data;
         data = nullptr;
     }
+    */
 
     // return
     return isInsert;
@@ -168,7 +170,11 @@ int BinTree::getHeight(const NodeData& target) const {
     return getHeightHelper(root, target);
 }
 
+
 int BinTree::getHeightHelper(Node* current, const NodeData& target) const {
+    
+    // use inorder to find key
+    // look the dept of that key
     return 0;
 }
 
