@@ -18,7 +18,9 @@ const int ARRAYSIZE = 100;
 
 //global function prototypes
 void buildTree(BinTree&, ifstream&);     // 
-void initArray(NodeData*[]);  
+void initArray(NodeData*[]);
+void printArray(NodeData*[]);
+void deleteArray(NodeData* ndArray[]);
 int main() {
 
 	// the NodeData class must have a constructor that takes a string
@@ -63,15 +65,26 @@ int main() {
         cout << "Operator" << "\t FAILED" << endl;
     cout << endl << endl << endl << endl << endl;
     cout << "aaa" << aaa << endl;
-    cout << "test" << test << endl;
+    cout << "test: " << test << endl;
 
-    cout << "Test bst to array" <<;
+    // array
     NodeData* ndArray[ARRAYSIZE];
     initArray(ndArray);
+
+    // bst -> arr
+    cout << "Test bst to array" << endl;
+	test.bstreeToArray(ndArray);
+	printArray(ndArray);
+    cout << endl;
+
+    // arr -> bst
+    cout << "Test array to bst" << endl;
+    test.arrayToBSTree(ndArray);
+    test.bstreeToArray(ndArray);
+	printArray(ndArray);
+    cout << endl;
     
-    // somewhat test bstreeToArray and arrayToBSTree
-	T.bstreeToArray(ndArray);
-	T.arrayToBSTree(ndArray);
+    deleteArray(ndArray);
 }
 
 
@@ -81,4 +94,18 @@ int main() {
 void initArray(NodeData* ndArray[]) {
 	for (int i = 0; i < ARRAYSIZE; i++)
 		ndArray[i] = NULL;
+}
+
+void printArray(NodeData* ndArray[]) {
+    int size = 0;
+    while (ndArray[size] != nullptr)
+        cout << *ndArray[size++] << " ";
+    cout << endl;
+}
+
+void deleteArray(NodeData* ndArray[]) {
+    int size = 0;
+    while (ndArray[size] != nullptr)
+        delete ndArray[size++];
+    cout << endl;
 }

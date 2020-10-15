@@ -183,7 +183,7 @@ void BinTree::arrayToBSTree(NodeData* arr[]) {
 
     // check max index
     int high = 0;
-    for (int i = 0; i < ARRAYSIZE; i++) {
+    for (int i = 0; i < MAXSIZE; i++) {
         if (*(arr + i) != nullptr) {
             high++;
         }
@@ -212,9 +212,8 @@ void BinTree::arrayToBSTHelper(Node* current, NodeData* arr[], int low, int high
     // recursively add to tree
     else {
         int mid = (low + high) / 2;
-        NodeData* newNodeData = *(arr + mid);
-        insert(newNodeData);
-        *(arr + mid) = nullptr;
+        //NodeData* newNodeData = arr[mid];
+        insert(arr[mid]);
 
         // fill left
         arrayToBSTHelper(current, arr, low, mid - 1);
@@ -235,9 +234,12 @@ void BinTree::bstreeToArray(NodeData* arr[]) {
 
     // assign tree's data to arr
     bstToArrayHelper(root, arr, index);
+    
+    // last NodeData in array is nullptr
+    arr[index] = nullptr;
 
     // clear this tree
-    makeEmpty();
+    root = nullptr;
     return;
 }
 
@@ -248,9 +250,21 @@ void BinTree::bstreeToArray(NodeData* arr[]) {
 void BinTree::bstToArrayHelper(Node* current, NodeData* arr[], int& index) {
 
     if (current != nullptr) {
+
+         // traverse left
         bstToArrayHelper(current->left, arr, index);
-        *(arr + index++) = current->data;
+
+        // assign current node to array
+        arr[index++] = current->data;
+
+        // current node no long point to data
+        current->data = nullptr;
+
+        // traverse right
         bstToArrayHelper(current->right, arr, index);
+
+        // delete node
+        delete current;
     }    
     return;
 }
@@ -312,7 +326,12 @@ void BinTree::makeEmptyHelper(Node*& current) {
     if (current != nullptr) {
         makeEmptyHelper(current->left);   // traverse left
         makeEmptyHelper(current->right);  // traverse right
-        delete current->data;             // delete node data
+
+        // delete node data
+        if (current->data != nullptr) {
+            delete current->data;
+        }
+
         delete current;                   // delete node
     }
 }

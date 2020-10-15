@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const int ARRAYSIZE = 100;
+const int MAXSIZE = 100;
 
 // Assumption:
 //  - Duplicate notes will be discard
