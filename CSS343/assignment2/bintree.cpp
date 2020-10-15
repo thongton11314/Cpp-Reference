@@ -176,7 +176,7 @@ int BinTree::getHeightHelper(Node* current, const NodeData& target) const {
 // Assign all nodes from array to Bintree
 // Preconditions: NONE
 // Postconditions: array will be empty
-void BinTree::arrayToBST(NodeData* arr[]) {
+void BinTree::arrayToBSTree(NodeData* arr[]) {
     
     // clear this tree
     makeEmpty();
@@ -224,22 +224,34 @@ void BinTree::arrayToBSTHelper(Node* current, NodeData* arr[], int low, int high
     }
 }
 
-//--------------------------- displaySideways ---------------------------------
+//--------------------------- bstToArray ---------------------------------
 // Assign all node of Bintree to array
 // Preconditions: NONE
 // Postconditions: BinTree will be empty
-void BinTree::bstToArray(NodeData* arr[]) {
+void BinTree::bstreeToArray(NodeData* arr[]) {
+
+    // index for array
+    int index = 0;
 
     // assign tree's data to arr
-    bstToArrayHelper(root, arr);
+    bstToArrayHelper(root, arr, index);
 
     // clear this tree
     makeEmpty();
     return;
 }
 
+//--------------------------- bstToArrayHelper ---------------------------------
+// Assign all node of Bintree to array
+// Preconditions: NONE
+// Postconditions: BinTree will be empty
+void BinTree::bstToArrayHelper(Node* current, NodeData* arr[], int& index) {
 
-void BinTree::bstToArrayHelper(Node* current, NodeData* arr[]) {    
+    if (current != nullptr) {
+        bstToArrayHelper(current->left, arr, index);
+        *(arr + index++) = current->data;
+        bstToArrayHelper(current->right, arr, index);
+    }    
     return;
 }
 

@@ -34,8 +34,8 @@ public:
     int getHeight(const NodeData &) const;
 
     // convert tree to array and vice versa
-    void arrayToBST(NodeData* []);   // array to tree
-    void bstToArray(NodeData* []);   // bts to tree
+    void arrayToBSTree(NodeData* []);   // array to tree
+    void bstreeToArray(NodeData* []);   // bts to tree
     
     // provided below, displays the tree sideways
     void displaySideways() const;
@@ -68,7 +68,7 @@ private:
                         const NodeData &,
                         NodeData*&) const;      // helper for retrieve
     void sideways(Node*, int) const;            // helper for displaySideways()
-    void bstToArrayHelper(Node*, NodeData* []);
+    void bstToArrayHelper(Node*, NodeData* [], int& index);
     void arrayToBSTHelper(Node*, NodeData* [], int low, int high);
     bool comparisionHelper(Node*, Node*) const;
     void inOrderHelper(ostream&, Node*) const;

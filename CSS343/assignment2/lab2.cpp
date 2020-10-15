@@ -14,6 +14,11 @@
 #include <iostream>
 using namespace std;
 
+const int ARRAYSIZE = 100;
+
+//global function prototypes
+void buildTree(BinTree&, ifstream&);     // 
+void initArray(NodeData*[]);  
 int main() {
 
 	// the NodeData class must have a constructor that takes a string
@@ -59,4 +64,21 @@ int main() {
     cout << endl << endl << endl << endl << endl;
     cout << "aaa" << aaa << endl;
     cout << "test" << test << endl;
+
+    cout << "Test bst to array" <<;
+    NodeData* ndArray[ARRAYSIZE];
+    initArray(ndArray);
+    
+    // somewhat test bstreeToArray and arrayToBSTree
+	T.bstreeToArray(ndArray);
+	T.arrayToBSTree(ndArray);
+}
+
+
+//------------------------------- initArray ----------------------------------
+// initialize the array of NodeData* to NULL pointers
+
+void initArray(NodeData* ndArray[]) {
+	for (int i = 0; i < ARRAYSIZE; i++)
+		ndArray[i] = NULL;
 }
