@@ -62,9 +62,6 @@ BinTree::~BinTree() {
 // Postconditions: BinTree will have one more node
 bool BinTree::insert(NodeData* data) {
     
-    // use to check if successful insert
-    bool isInsert;
-
     // first node if tree is empty
     if (root == nullptr) {
 
@@ -72,22 +69,7 @@ bool BinTree::insert(NodeData* data) {
         root = new Node{ data, nullptr, nullptr };
         return true;
     }
-
-    // if not null, insert
-    else {
-        isInsert = insertHelper(data, root);
-    }
-
-    /*
-    // if duplicate, delete the node
-    if (isInsert == false) {
-        delete data;
-        data = nullptr;
-    }
-    */
-
-    // return
-    return isInsert;
+    return insertHelper(data, root);
 } // end of insert
 
 //------------------------------ insertHelper ---------------------------------
@@ -162,20 +144,72 @@ bool BinTree::retrieveHelper(Node* current,
 }
 
 //------------------------------ getHeight ------------------------------------
-// Return the node height of target
-// Count from 1 up to end. Leaf node is 1
+// Return target's height
 // Preconditions: NONE
-// Postconditions: BinTree will be empty
+// Postconditions: BinTree remains unchanged.
 int BinTree::getHeight(const NodeData& target) const {
     return getHeightHelper(root, target);
 }
 
-
+//------------------------------ getHeightHelper ------------------------------
+// Find the target and return it's height to getHeight function if found
+// Use pre-order to track target
+// Preconditions: NONE
+// Postconditions: BinTree remains unchanged.
 int BinTree::getHeightHelper(Node* current, const NodeData& target) const {
     
-    // use inorder to find key
-    // look the dept of that key
-    return 0;
+        
+    // base case, if not found data
+    if (current == nullptr) {
+        return 0;
+    }
+
+    // if found data
+    else if (*current->data == target) {
+
+        // recursive traverse to find max length of this node
+        return findMax(current);
+    }
+    else {
+        int maxLength; // hold max length                               
+
+        // traverse left and hold left max length
+        int left = getHeightHelper(current->left, target); 
+
+        // traverse right and hold right max length
+        int right = getHeightHelper(current->right, target);
+
+        // find max length
+        left > right ? maxLength = left : maxLength = right;
+        return maxLength;
+    }
+}
+
+//---------------------------------- findMax ----------------------------------
+// Return found node's max height to getHeightHelper function
+// Preconditions: The node must be found
+// Postconditions: Node remains unchanged.
+int BinTree::findMax(Node* current) const {
+
+    // base case
+    if (current == nullptr) {
+        return 0;
+    }
+
+    // add up if found more node
+    else {
+        int maxLength;  // hold max length
+
+        // traverse left and hold left max length
+        int left = findMax(current->left);
+
+        // traverse right and hold right max length
+        int right = findMax(current->right);
+
+        // find max length
+        left > right ? maxLength = left : maxLength = right;
+        return 1 + maxLength;
+    }
 }
 
 //---------------------------- arrayToBSTree ----------------------------------
@@ -321,7 +355,6 @@ void BinTree::makeEmpty() {
     root = nullptr;
 }
 
-
 //---------------------------- makeEmptyHelper --------------------------------
 // Helper method for makeEmpty
 // Preconditions: NONE
@@ -364,7 +397,7 @@ BinTree& BinTree::operator=(const BinTree& other) {
 }
 
 //------------------------------- operator== ----------------------------------
-// Compare two Bin Tree if they are same value and same structure
+// Compare two Bin Tree if they are same value and structure
 // Preconditions: NONE
 // Postconditions: BinTree remains the same
 bool BinTree::operator==(const BinTree& other) const {
@@ -409,16 +442,19 @@ bool BinTree::comparisionHelper(Node* root, Node* other) const {
 }
 
 //------------------------------- operator!= ----------------------------------
-// Helper method for makeEmpty
+// Compare two BinTree if they aren't same value and structure 
 // Preconditions: NONE
 // Postconditions: BinTree remains the same
 bool BinTree::operator!=(const BinTree& other) const {    
     return !(*this == other);
 }
 
+//------------------------------- operator<< ----------------------------------
+// Print out the BinTree
+// Preconditions: NONE
+// Postconditions: BinTree remains the same
 ostream& operator<<(ostream& out, const BinTree& tree) {
     tree.inOrderHelper(out, tree.root);
-    out << endl;
     return out;
 }
 

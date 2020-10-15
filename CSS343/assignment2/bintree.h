@@ -62,7 +62,8 @@ private:
     // utility functions
     void copyHelper(Node*&, Node*);             // copy other Bintree
     bool insertHelper(NodeData *, Node *&);     // helper for insert
-    int getHeightHelper(Node*, const NodeData&) const;  // helper for getHeight
+    int getHeightHelper(Node*, const NodeData&) const; // helper for getHeight
+    int findMax(Node*) const;
     void makeEmptyHelper(Node*&);               // helper for make empty
     bool retrieveHelper(Node*, 
                         const NodeData &,
