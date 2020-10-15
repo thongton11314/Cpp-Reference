@@ -189,8 +189,7 @@ void BinTree::arrayToBST(NodeData* arr[]) {
         }
         else {
             *(arr + i) = nullptr;
-        }
-        
+        }        
     }
     
     // assign new data from array to this tree
