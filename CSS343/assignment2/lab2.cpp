@@ -21,6 +21,7 @@ void buildTree(BinTree&, ifstream&);      //
 void initArray(NodeData*[]);             // initialize array to NULL
 
 int main() {
+	
 	// create file object infile and open it
 	// for testing, call your data file something appropriate, e.g., data2.txt
 	ifstream infile("data2.txt");
@@ -49,7 +50,7 @@ int main() {
 	BinTree first(T);                  // test copy constructor
 	dup = dup = T;                     // test operator=, self-assignment
 	while (!infile.eof()) {
-		cout << "Tree Inorder:" << endl << T;             // operator<< does endl
+		cout << "Tree Inorder:" << endl << T << endl;   // operator<< does endl
 		T.displaySideways();
 
 		// test retrieve 
