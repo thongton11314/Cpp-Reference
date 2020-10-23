@@ -1,23 +1,26 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "shell",
-			"label": "C/C++: g++ build active file",
-			"command": "/usr/local/bin/g++",
-			"args": [
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": "build"
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+                {
+                    "type": "shell",
+                    "label": "C/C++: g++ build active file.",
+                    "command": "/usr/local/bin/g++",
+                    "args": [
+                        "-std=c++11",           // c++ standard 11
+                        "-g",                   // generate
+                        "${fileDirname}/*.h",   // looking for header in current dir
+                        "${fileDirname}/*.cpp", // loong for implemenation in current dir
+                        "-o",                   // output
+                        "${fileDirname}/a.out", // convert to binary file name a.out
+                    ],
+                    "options": {
+                        "cwd": "${workspaceFolder}",
+                    },
+                    "problemMatcher": [
+                        "$gcc"
+                    ],
+                    "group": "build",
+                    "detail": "Compile c++ files on linux"                    
+                }
+    ]
 }

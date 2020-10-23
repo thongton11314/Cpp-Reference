@@ -18,10 +18,9 @@ const int ARRAYSIZE = 100;
 
 //global function prototypes
 void buildTree(BinTree&, ifstream&);      // 
-void initArray(NodeData*[]);             // initialize array to NULL
+void initArray(NodeData* []);             // initialize array to NULL
 
 int main() {
-	
 	// create file object infile and open it
 	// for testing, call your data file something appropriate, e.g., data2.txt
 	ifstream infile("data2.txt");
@@ -50,7 +49,7 @@ int main() {
 	BinTree first(T);                  // test copy constructor
 	dup = dup = T;                     // test operator=, self-assignment
 	while (!infile.eof()) {
-		cout << "Tree Inorder:" << endl << T << endl;   // operator<< does endl
+		cout << "Tree Inorder:" << endl << T;           // operator<< does endl
 		T.displaySideways();
 
 		// test retrieve 
@@ -67,9 +66,9 @@ int main() {
 		cout << "Height    --> and:  " << T.getHeight(andND) << endl;
 		cout << "Height    --> not:  " << T.getHeight(notND) << endl;
 		cout << "Height    --> sss:  " << T.getHeight(sssND) << endl;
-		cout << "Height    --> tttt:  " << T.getHeight(ttttND) << endl;
+		cout << "Height    --> tttt: " << T.getHeight(ttttND) << endl;
 		cout << "Height    --> ooo:  " << T.getHeight(oooND) << endl;
-		cout << "Height    --> y:  " << T.getHeight(yND) << endl;
+		cout << "Height    --> y:    " << T.getHeight(yND) << endl;
 
 		// test ==, and != 
 		T2 = T;

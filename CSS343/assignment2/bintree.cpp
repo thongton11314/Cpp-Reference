@@ -235,6 +235,7 @@ void BinTree::arrayToBSTree(NodeData* arr[]) {
 
     // check max index
     int high = 0;
+    int low = 0;
     for (int i = 0; i < MAXSIZE; i++) {
         if (arr[i] != nullptr) {
             high++;
@@ -245,7 +246,7 @@ void BinTree::arrayToBSTree(NodeData* arr[]) {
     }
     
     // assign new data from array to this tree
-    arrayToBSTHelper(root, arr, 0, high - 1);
+    arrayToBSTHelper(root, arr, low, high - 1);
     return;
 } // end of arrayToBSTree
 
@@ -316,6 +317,7 @@ void BinTree::bstToArrayHelper(Node* current, NodeData* arr[], int& index) {
 
         // delete node
         delete current;
+        current = nullptr;
     }    
     return;
 } // end of bstToArrayHelper
@@ -380,9 +382,11 @@ void BinTree::makeEmptyHelper(Node*& current) {
         // delete node data
         if (current->data != nullptr) {
             delete current->data;
+            current->data = nullptr;
         }
 
         delete current;                   // delete node
+        current = nullptr;
     }
 } // end of makeEmptyHelper
 
@@ -470,6 +474,7 @@ bool BinTree::operator!=(const BinTree& other) const {
 // Postconditions: BinTree remains the same
 ostream& operator<<(ostream& out, const BinTree& tree) {
     tree.inOrderHelper(out, tree.root);
+    cout << endl;
     return out;
 } // end of operator<<
 
