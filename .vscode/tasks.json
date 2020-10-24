@@ -3,7 +3,7 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "Thong Ton C/C++: g++ build/run active file.",
+            "label": "Thong Ton C/C++: g++ build/run/check leak active file.",
             "detail": "You need to open the current file to be build",
             "command": [
                 "cd ${fileDirname};",
