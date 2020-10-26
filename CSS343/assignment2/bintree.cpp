@@ -117,7 +117,7 @@ bool BinTree::retrieve(const NodeData& target, NodeData*& retriever) const {
     return retrieveHelper(root, target, retriever);
 } // end of retrieve
 
-//---------------------------- retrieveHelper ---------------------------------
+//---------------------------- retrieveHelper -----------------------------
 // Helper function for retrieve
 // Preconditions: retrieve must be called
 // Postconditions: BinTree remains unchanged.
