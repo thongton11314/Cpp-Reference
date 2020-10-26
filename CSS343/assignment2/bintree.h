@@ -1,4 +1,4 @@
-// ------------------------------- BinTree.h ----------------------------------
+// ------------------------------- bintree.h ----------------------------------
 // Programmer: Thong Ton
 // Course: CSS343
 // Creation Date: 10/14/2020
@@ -38,62 +38,75 @@ const int MAXSIZE = 100;
 //      - bstreeToArray: need bstToArrayHelper
 //      - makeEmpty: need makeEmptyHelper
 //  - After the call arrayToBSTree, array is empty, 
-//    the BinTree is filled by array value
+//    the BinTree is filled by array value.
 //  - After the call bstreeToArray, array BinTree is empty, 
-//    the array is filled by BinTree value     
+//    the array is filled by BinTree value.
 //-----------------------------------------------------------------------------
 class BinTree {
 
-    // overloaded output operator for class Poly
+    //------------------------------- operator<< ------------------------------
+    // Print out the BinTree
+    // Use In-order traverse method
+    // Preconditions: NONE
+    // Postconditions: BinTree remains the same
     friend ostream& operator<<(ostream &, const BinTree&);
 
 public:
 
     //------------------------------- BinTree ---------------------------------
-    // Initialize the tree
     // Default constructor
+    // Initialize the tree
     BinTree();
-    BinTree(const BinTree &);     // copy constructor
-                        
+
+
     //------------------------------- BinTree ---------------------------------
     // Copy constructor
     // Preconditions: NONE
     // Postconditions: BinTree will have all identical other's BinTree nodes
+    BinTree(const BinTree &);
+                        
+    //------------------------------- ~BinTree --------------------------------
+    // Deconstructor
+    // Delete all nodes
+    // Preconditions: BinTree must be instantiated.
+    // Postconditions: BinTree left empty node. This object is deleted
     ~BinTree();
 
     //--------------------------------- insert --------------------------------
     // Insert the data into tree
     // Lesser data goes to left subtree, greater data go to right subtree
-    // Ignore duplicated node
-    // Return true if successfully insert, false if not
-    // Preconditions: data must be given
+    // Ignore duplicated node, return false
+    // Return: true if successfully insert,
+    //         false if not and duplicated node
+    // Preconditions: NONE
     // Postconditions: BinTree have new node if insert successfully
     bool insert(NodeData*);
 
     //------------------------------- retrieve --------------------------------
-    // Make the retriever point to the target address
-    // Return true if target is matched, false if not
-    // Preconditions: target and a pointer must be given
+    // Make the retriever pointer point to the target address
+    // Return: true if target is matched, 
+    //         false if not
+    // Preconditions: NONE
     // Postconditions: BinTree remains the same
     bool retrieve(const NodeData &, NodeData* &) const;
 
     //------------------------------ getHeight --------------------------------
     // Return target's max height value
-    // Preconditions: node target must be given
+    // Preconditions: NONE
     // Postconditions: BinTree remains unchanged.
     int getHeight(const NodeData &) const;
 
     //---------------------------- arrayToBSTree ------------------------------
     // Assign all nodes from array to BinTree
-    // Preconditions: dynamic array must be given
+    // Preconditions: NONE
     // Postconditions: array will be empty, 
     //                 old BinTree will be replaced by new BinTree value
     void arrayToBSTree(NodeData* []);
 
     //--------------------------- bstreeToArray -------------------------------
     // Assign all node of Bintree to array
-    // Fill value from BinTree to array by in order traverse
-    // Preconditions: dynamic array must be given
+    // Use in order traverse to fill value from BinTree to array
+    // Preconditions: NONE
     // Postconditions: BinTree will be empty
     void bstreeToArray(NodeData* []);
     
@@ -111,27 +124,30 @@ public:
     void makeEmpty();
 
     //--------------------------------- isEmpty -------------------------------
-    // Return true if tree is empty, false if not
+    // Return: true if tree is empty, 
+    //         false if not
     // Preconditions: NONE
     // Postconditions: NONE
     bool isEmpty() const;
 
     //------------------------------- operator= -------------------------------
     // Assign other BinTree to this BinTree
-    // Preconditions: Other BinTree must be given
+    // Preconditions: NONE
     // Postconditions: BinTree wil be identical as other Bintree
     BinTree& operator=(const BinTree &);
 
     //------------------------------- operator== ------------------------------
     // Compare two BinTree if they are same value and structure
-    // Return true if identical, else false
+    // Return: true if identical, 
+    //         false if not
     // Preconditions: NONE
     // Postconditions: BinTree remains the same
     bool operator==(const BinTree &) const;
 
     //------------------------------- operator!= ------------------------------
     // Compare two BinTree if they aren't same value and structure
-    // Return true if not identical, else false
+    // Return: true if not identical, 
+    //         false if identical
     // Preconditions: NONE
     // Postconditions: BinTree remains the same
     bool operator!=(const BinTree &) const;
@@ -144,7 +160,7 @@ private:
     };
     Node* root;						            // root of the tree
 
-    // all bellow are utility functions
+    /* all bellow are utility functions */
 
     //------------------------------- copyHelper ------------------------------
     // Helper function for copy constructor and operator=
@@ -160,7 +176,7 @@ private:
 
     //---------------------------- retrieveHelper -----------------------------
     // Helper function for retrieve
-    // Preconditions: retrieve must be called
+    // Preconditions: retrieve must be exist
     // Postconditions: BinTree remains unchanged.
     bool retrieveHelper(Node*, 
                         const NodeData &,
@@ -168,7 +184,7 @@ private:
 
     //------------------------------ getHeightHelper --------------------------
     // Find the target and return it's height to getHeight function if found
-    // Use pre-order to track target
+    // Use pre-order method to track target
     // Preconditions: getHeight must be called
     // Postconditions: BinTree remains unchanged.
     int getHeightHelper(Node*, const NodeData&) const;
@@ -181,26 +197,26 @@ private:
 
     //--------------------------- bstToArrayHelper ----------------------------
     // Assign all node of Bintree to array
-    // Preconditions: bstreeToArray must be called
+    // Preconditions: bstreeToArray must be exist
     // Postconditions: BinTree will be empty, 
     //                 dynamic array will hold all BinTree's values
     void bstToArrayHelper(Node*, NodeData* [], int& index);
 
     //---------------------------- arrayToBSTHelper ---------------------------
     // Assign all nodes from array to BinTree
-    // Preconditions: arrayToBSTree must be called
+    // Preconditions: arrayToBSTree must be exist
     // Postconditions: array will be empty
     void arrayToBSTHelper(Node*, NodeData* [], int low, int high);
 
     //---------------------------- makeEmptyHelper ----------------------------
     // Helper function for makeEmpty
-    // Preconditions: NONE
+    // Preconditions: makeEmpty must exist
     // Postconditions: BinTree will be empty
     void makeEmptyHelper(Node*&);
 
     //----------------------------- comparisionHelper -------------------------
     // Helper function for operator==
-    // Preconditions: NONE
+    // Preconditions: comparision operator must exist
     // Postconditions: BinTree remains the same
     bool comparisionHelper(Node*, Node*) const;
 

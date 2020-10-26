@@ -1,11 +1,11 @@
-// ------------------------------- BinTree.cpp --------------------------------
+// ------------------------------- bintree.cpp --------------------------------
 // Programmer: Thong Ton
 // Course: CSS343
 // Creation Date: 10/14/2020
 // Date of Last Modification: 10/18/2020
 // ----------------------------------------------------------------------------
 // Purpose: 
-//  - This is implementation of BinTree.h
+//  - This is implementation of bintree.h
 // ----------------------------------------------------------------------------
 #include "bintree.h"
 
@@ -60,9 +60,10 @@ BinTree::~BinTree() {
 //--------------------------------- insert ------------------------------------
 // Insert the data into tree
 // Lesser data goes to left subtree, greater data go to right subtree
-// Ignore duplicated node
-// Return true if successfully insert, false if not
-// Preconditions: data must be given
+// Ignore duplicated node, return false
+// Return: true if successfully insert,
+//         false if not and duplicated node
+// Preconditions: NONE
 // Postconditions: BinTree have new node if insert successfully
 bool BinTree::insert(NodeData* data) {
     
@@ -109,7 +110,7 @@ bool BinTree::insertHelper(NodeData * newNodeData, Node *& current) {
 //------------------------------- retrieve ------------------------------------
 // Make the retriever point to the target address
 // Return true if target is matched, false if not
-// Preconditions: target and a pointer must be given
+// Preconditions: NONE
 // Postconditions: BinTree remains the same
 bool BinTree::retrieve(const NodeData& target, NodeData*& retriever) const {
     
@@ -119,7 +120,7 @@ bool BinTree::retrieve(const NodeData& target, NodeData*& retriever) const {
 
 //---------------------------- retrieveHelper -----------------------------
 // Helper function for retrieve
-// Preconditions: retrieve must be called
+// Preconditions: retrieve must be exist
 // Postconditions: BinTree remains unchanged.
 bool BinTree::retrieveHelper(Node* current,
                             const NodeData &target, 
@@ -150,7 +151,7 @@ bool BinTree::retrieveHelper(Node* current,
 
 //------------------------------ getHeight ------------------------------------
 // Return target's max height value
-// Preconditions: node target must be given
+// Preconditions: NONE
 // Postconditions: BinTree remains unchanged.
 int BinTree::getHeight(const NodeData& target) const {
 
@@ -160,7 +161,7 @@ int BinTree::getHeight(const NodeData& target) const {
 
 //------------------------------ getHeightHelper ------------------------------
 // Find the target and return it's height to getHeight function if found
-// Use pre-order to track target
+// Use pre-order method to track target
 // Preconditions: getHeight must be called
 // Postconditions: BinTree remains unchanged.
 int BinTree::getHeightHelper(Node* current, const NodeData& target) const {
@@ -252,7 +253,7 @@ void BinTree::arrayToBSTree(NodeData* arr[]) {
 
 //---------------------------- arrayToBSTHelper ----------------------------------
 // Assign all nodes from array to BinTree
-// Preconditions: arrayToBSTree must be called
+// Preconditions: arrayToBSTree must be exist
 // Postconditions: array will be empty
 void BinTree::arrayToBSTHelper(Node* current, NodeData* arr[], int low, int high) {
     
@@ -274,10 +275,10 @@ void BinTree::arrayToBSTHelper(Node* current, NodeData* arr[], int low, int high
     }
 } // end of arrayToBSTHelper
 
-//--------------------------- bstToArray ---------------------------------
+//--------------------------- bstreeToArray -----------------------------------
 // Assign all node of Bintree to array
-// Fill value from BinTree to array by in order traverse
-// Preconditions: dynamic array must be given
+// Use in order traverse to fill value from BinTree to array
+// Preconditions: NONE
 // Postconditions: BinTree will be empty
 void BinTree::bstreeToArray(NodeData* arr[]) {
 
@@ -297,7 +298,7 @@ void BinTree::bstreeToArray(NodeData* arr[]) {
 
 //--------------------------- bstToArrayHelper --------------------------------
 // Assign all node of Bintree to array
-// Preconditions: bstreeToArray must be called
+// Preconditions: bstreeToArray must be exist
 // Postconditions: BinTree will be empty, dynamic array hold all BinTree values
 void BinTree::bstToArrayHelper(Node* current, NodeData* arr[], int& index) {
 
@@ -370,7 +371,7 @@ void BinTree::makeEmpty() {
 
 //---------------------------- makeEmptyHelper --------------------------------
 // Helper function for makeEmpty
-// Preconditions: NONE
+// Preconditions: makeEmpty must exist
 // Postconditions: BinTree will be empty
 void BinTree::makeEmptyHelper(Node*& current) {
     
@@ -400,7 +401,7 @@ bool BinTree::isEmpty() const {
 
 //------------------------------- operator= -----------------------------------
 // Assign other BinTree to this BinTree
-// Preconditions: Other BinTree must be given
+// Preconditions: NONE
 // Postconditions: BinTree wil be identical as other Bintree
 BinTree& BinTree::operator=(const BinTree& other) {
     
@@ -431,7 +432,7 @@ bool BinTree::operator==(const BinTree& other) const {
 
 //----------------------------- comparisionHelper -----------------------------
 // Helper function for operator==
-// Preconditions: NONE
+// Preconditions: comparision operator must exist
 // Postconditions: BinTree remains the same
 bool BinTree::comparisionHelper(Node* current, Node* otherCurrent) const {
 
@@ -460,7 +461,8 @@ bool BinTree::comparisionHelper(Node* current, Node* otherCurrent) const {
 
 //------------------------------- operator!= ----------------------------------
 // Compare two BinTree if they aren't same value and structure
-// Return true if not identical, else false
+// Return: true if not identical, 
+//         false if identical
 // Preconditions: NONE
 // Postconditions: BinTree remains the same
 bool BinTree::operator!=(const BinTree& other) const {    
