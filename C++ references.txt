@@ -1,0 +1,31 @@
+Data Structures and Algorithms
+The Algorithm Design Manual, Second Edition, Steven S. Skiena, Springer-Verlag
+Introduction to Algorithms, second edition, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivrest, and Clifford Stein
+Concrete Mathematics: A Foundation for Computer Science, Ronald L. Graham, Donald E. Knuth, and Oren Batashnik
+Foundations of Computer Science, Alfred V. Aho and Jeffrey D. Ullman
+The Art of Computer Programming, Donald E. Knuth
+
+-------------------------------------------------------------------------------
+
+C++ Books
+Programming Principles and Practice Using C++, Bjarne Stroustrup, Addison-Wesley, 2009
+The C++ Programming Language, 3rd edition, Bjarne Stroustrup, Addison-Wesley
+The C++ Standard Library: A Tutorial and Reference, second edition, Nicolai M. Josuttis, Addison-Wesley
+C++ Templates: The Complete Guide, David Vandevoorde and Nicolai M. Josuttis, Addison-Wesley
+Effective C++: 50 Specific Ways to Improve Your Programs & Designs, Scott Meyers, Addison-Wesley
+C++ How to Program, H.M. Deitel and P. J. Deitel, Addison-Wesley
+C++ In Plain English, Brian Overland, Wiley
+
+-------------------------------------------------------------------------------
+
+C++ Web Pages
+www.cplusplus.com (Links to an external site.)Links to an external site.
+Software Design Using C++: http://cis.stvincent.edu/html/tutorials/swd/index.html  (Links to an external site.)Links to an external site.
+C++ Frequently Asked Questions: http://www.parashift.com/c++-faq-lite/index.html"  (Links to an external site.)Links to an external site.
+C++ Frequently Questioned answers: http://yosefk.com/c++fqa/  (Links to an external site.)Links to an external site.
+More C++ Idioms: http://en.wikibooks.org/wiki/More_C%2B%2B_Idioms  (Links to an external site.)Links to an external site.
+Wikibooks C++ Programming Language: http://en.wikibooks.org/wiki/C%2B%2B  (Links to an external site.)Links to an external site.
+Additional Topics
+The Mythical Man-Month: Essays on Software Engineering, Frederick P Brooks Jr.
+Programming Pearls, Jon Bentley
+Gödel, Escher, Bach: An Eternal Golden Braid, Douglas R. Hofstadter
