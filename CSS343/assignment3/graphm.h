@@ -1,3 +1,10 @@
+// -------------------------------- graphm.h ----------------------------------
+//
+// Thong Ton, CSS 343
+// Created:         October 27, 2020
+// Last Modified:   
+// Purpose: Implementation of  Dijkstra's shortest path algorithm
+// ----------------------------------------------------------------------------
 #ifndef _GRAPH_M_
 #define _GRAPH_M_
 
@@ -5,50 +12,55 @@
 #include "nodedata.h"
 
 using namespace std;
-const int MAXNODES = 9999;
+
+const int POSITIVE_MAX = 2147483647; // Use to keep the max size of int
+const int MAXNODES = 101;            // constant type for T and C table
+
 class GraphM {
 
     public:
 
     //------------------------------- GraphM ----------------------------------
-    // among others that need to be initialized, 
-    // the data member T is initialized to sets all dist to infinity, 
-    // sets all visited to false,
-    // and sets all path to 0.
+    //Constructor
+    //Description: Among others that need to be initialized, 
+    //             data member T is initialized to sets all dist to infinity, 
+    //             sets all visited to false,
+    //             and sets all path to 0.
     GraphM();
 
     //------------------------------- buildGraph ------------------------------
-    // builds up graph node information and adjacency matrix of edges 
-    // between each node reading from a data file.
+    //Description: Builds up graph node and adjacency matrix of edges 
+    //              between each node reading from a data file.
     void buildGraph(ifstream &);
 
     //------------------------------- insertEdge ------------------------------
-    // insert an edge into graph between two given nodes
-    bool insertEdge();
+    //Description: insert an edge into graph between two given nodes
+    bool insertEdge(int from, int to, int dist);
     
     //------------------------------- removeEdge ------------------------------
-    // remove an edge between two given nodes
-    bool removeEdge();
+    //Description: Remove an edge between two given nodes
+    bool removeEdge(int from, int to);
 
-    //------------------------------- findShortestPath ------------------------------
-    // find the shortest path between every node to every other node in the graph
-    // , i.e., TableType T is updated with shortest path information
+    //------------------------------- findShortestPath ------------------------
+    //Description: Find the shortest path between every node to other nodes,
+    //             i.e., TableType T is updated with shortest path information
     void findShortestPath();
 
     //------------------------------- displayAll ------------------------------
-    // uses couts to demonstrate that the algorithm works properly
+    //Description: Uses couts to demonstrate that the algorithm works properly
     void displayAll();
 
     //------------------------------- display ---------------------------------
-    // uses couts to display the shortest distance with path info 
-    // between the fromNode to toNode
-    void display();
-    
+    //Description: Uses couts to display the shortest distance with path info
+    //             between the fromNode to toNode
+    void display(int from, int to);
+
     private:
 
-    //------------------------------- TableType ------------------------------
-    // TableType is a struct to keep the current shortest distance (and associated path info) 
-    // known at any point in the algorithm.
+    //------------------------------- Struct TableType ------------------------
+    // Description: A struct to keep the current shortest distance 
+    //              (and associated path info) known at any point 
+    //              in the algorithm.
     struct TableType {
         bool visited;   // whether node has been visited
         int dist;       // shortest distance from source known so far           
