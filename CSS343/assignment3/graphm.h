@@ -9,6 +9,7 @@
 #define _GRAPH_M_
 
 #include <iostream>
+#include <iomanip>
 #include "nodedata.h"
 
 using namespace std;
@@ -17,8 +18,8 @@ const int POSITIVE_MAX = 2147483647; // Use to keep the max size of int
 const int MAXNODES = 101;            // constant type for T and C table
 
 class GraphM {
-
-    public:
+    
+public:
 
     //------------------------------- GraphM ----------------------------------
     //Constructor
@@ -55,7 +56,7 @@ class GraphM {
     //             between the fromNode to toNode
     void display(int from, int to);
 
-    private:
+private:
 
     //------------------------------- Struct TableType ------------------------
     // Description: A struct to keep the current shortest distance 
@@ -72,4 +73,4 @@ class GraphM {
     int size;                           // number of nodes in the 
     TableType T[MAXNODES][MAXNODES];    // stores visited, distance
 };
-#endif
+#endif // !_GRAPH_M_

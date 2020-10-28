@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iomanip": "cpp",
+        "exception": "cpp"
     },
     "cSpell.words": [
         "Inorder"
