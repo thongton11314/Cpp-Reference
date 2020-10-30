@@ -149,7 +149,25 @@ void GraphM::findShortestPath() {
 //------------------------------- findPath ------------------------------------
 //Description: Find the associated path between from node/to node
 void GraphM::findPath(int from, int to) {
-    return;
+
+    // path is not exist
+    if (T[from][to].dist == POSITIVE_MAX) {
+        return;
+    }
+
+    // path is current path
+    else if (from == to) {
+        cout << to << " ";
+        return;
+    }
+
+    // if path exist, recursive find path
+    else {
+        int pathData = to;
+        to = T[from][to].path;
+        findPath(from, to);
+        cout << pathData << " ";
+    }
 }
 
 //-------------------------------- display ------------------------------------
@@ -166,36 +184,36 @@ void GraphM::displayAll() {
         << endl;
 
     // depart node (from node)
-    for (int f = 1; f <= size; f++) {
+    for (int from = 1; from <= size; from++) {
 
         // depart node name
-        cout << data[f] << endl << endl;
+        cout << data[from] << endl << endl;
 
         // destination node (to node)
-        for (int t = 1; t <= size; t++) {
+        for (int to = 1; to <= size; to++) {
 
             // no need to print itself path
-            if (f != t) {
+            if (from != to) {
 
                 // Using T table not C table,
                 // because we later get the shortest path
-                if (T[f][t].dist != 0) {
-                    cout << setw(25) << f;              // from node
-                    cout << setw(10) << t;              // to node
+                if (T[from][to].dist != 0) {
+                    cout << setw(25) << from;            // from node
+                    cout << setw(10) << to;              // to node
 
                     // no way from depart node (from node)
                     // to destination node(to node)
-                    if (T[f][t].dist == POSITIVE_MAX) {
+                    if (T[from][to].dist == POSITIVE_MAX) {
                         cout << setw(10) << "----" << endl;
                     }
 
                     // there are ways from depart node to destination node
                     else {
-                        cout << setw(12) << T[f][t].dist;
-                        cout << setw(10);
+                        cout << setw(10) << T[from][to].dist;
+                        cout << setw(13);
 
                         // find path
-                        findPath(f, t);
+                        findPath(from, to);
                         cout << endl;
                     }
                 }
