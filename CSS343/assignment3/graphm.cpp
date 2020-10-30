@@ -43,25 +43,50 @@ GraphM::GraphM() {
 //                  - After the description, each line consists of 3 integers 
 //                    representing an edge. Data is: from to distance
 //                  - If the first integer is zero, it the end of graph
-void GraphM::buildGraph(ifstream &inFile) {
+void GraphM::buildGraph(ifstream &infile) {
 
     // read the first line, it is always a size
-    inFile >> size;
+    infile >> size;
 
     // read the line after first line, node description
     string temp;
-    getline(inFile, temp); // initialize inFile as a string type
+    getline(infile, temp); // initialize inFile as a string type
     
     // initialize the node data
     for (int i = 1; i <= size; i++) {
-        data[i].setData(inFile);    // this will handle read next line as well
+        data[i].setData(infile);    // this will handle read next line as well
     }
 
     // initialize the distance between nodes
     int from, to, dist;
-    while (inFile >> from >> to >> dist && from != 0) {
+    while (infile >> from >> to >> dist && from != 0) {
         C[from][to] = dist;
     }
+}
+
+//------------------------------- insertEdge ----------------------------------
+//Description: insert an edge into graph between two given nodes
+bool GraphM::insertEdge(int from, int to, int dist) {
+    return false;
+}
+
+//------------------------------- removeEdge ----------------------------------
+//Description: Remove an edge between two given nodes
+bool GraphM::removeEdge(int from, int to) {
+    return false;
+}
+
+//------------------------------- findShortestPath ----------------------------
+//Description: Find the shortest path between every node to other nodes,
+//             i.e., TableType T is updated with shortest path information
+void GraphM::findShortestPath() {
+    return; 
+}
+
+//------------------------------- findPath ------------------------------------
+//Description: Find the associated path between from node/to node
+void GraphM::findPath(int from, int to) {
+    return;
 }
 
 //-------------------------------- display ------------------------------------
@@ -86,29 +111,32 @@ void GraphM::displayAll() {
         // destination node (to node)
         for (int t = 1; t <= size; t++) {
 
-            // Using T table not C table,
-            // because we later get the shortest path
-            if (T[f][t].dist != 0) {
-                cout << setw(25) << f;              // from node
-                cout << setw(10) << t;              // to node
+            // no need to print itself path
+            if (f != t) {
 
-                // no way from depart node (from node)
-                // to destination node(to node)
-                if (T[f][t].dist == POSITIVE_MAX) {
-                    cout << setw(12) << "----" << endl;
-                }
+                // Using T table not C table,
+                // because we later get the shortest path
+                if (T[f][t].dist != 0) {
+                    cout << setw(25) << f;              // from node
+                    cout << setw(10) << t;              // to node
 
-                // 
-                else {
-                    cout << setw(12) << T[f][t].dist;
-                    cout << setw(10);
+                    // no way from depart node (from node)
+                    // to destination node(to node)
+                    if (T[f][t].dist == POSITIVE_MAX) {
+                        cout << setw(10) << "----" << endl;
+                    }
 
-                    // find path
-                    // add function path here
-                    cout << endl;
+                    // there are ways from depart node to destination node
+                    else {
+                        cout << setw(12) << T[f][t].dist;
+                        cout << setw(10);
+
+                        // find path
+                        findPath(f, t);
+                        cout << endl;
+                    }
                 }
             }
         }
-        cout << endl;
     }
 }

@@ -47,6 +47,10 @@ public:
     //             i.e., TableType T is updated with shortest path information
     void findShortestPath();
 
+    //------------------------------- findPath ------------------------
+    //Description: Find the associated path between from node/to node
+    void findPath(int from, int to);
+
     //------------------------------- displayAll ------------------------------
     //Description: Uses couts to demonstrate that the algorithm works properly
     void displayAll();
