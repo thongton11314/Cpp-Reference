@@ -80,7 +80,70 @@ bool GraphM::removeEdge(int from, int to) {
 //Description: Find the shortest path between every node to other nodes,
 //             i.e., TableType T is updated with shortest path information
 void GraphM::findShortestPath() {
-    return; 
+
+    int v;
+    int min;
+
+    for (int source = 1; source <= size; source++) {
+        T[source][source].dist = 0;
+        T[source][source].visited = true;
+
+        // find the shortest distance from source to all other nodes
+        for (int i = 1; i <= size; i++) {
+            
+            // find v // not visited, shortest distance at this point
+            if (C[source][i] != POSITIVE_MAX) {
+                T[source][i].dist = C[source][i];
+                T[source][i].path = source;
+            }           
+        }
+
+        // for each adjacent to v
+        v = -1;
+        while (v != 0) {
+            v = 0;
+            min = POSITIVE_MAX;
+            for (int n = 1; n <= size; n++)
+            {
+                if (!T[source][n].visited && (C[source][n] < min))
+                {
+                    min = C[source][n];
+                    v = n;
+                }
+            }
+
+            if (v != 0)
+            {
+                T[source][v].visited = true; // node visited
+                for (int w = 1; w <= size; w++) {
+
+                    // make sure node is not visited
+                    if (!T[source][w].visited) {
+
+                        // make sure there is a path exist
+                        if (C[v][w] != POSITIVE_MAX) {
+
+                            // make sure not repeat node
+                            if (v != w) {
+
+                                // compare which path is smaller
+                                if (T[source][w].dist > T[source][v].dist 
+                                                        + C[v][w]) {
+                                    
+                                    // add up value to distance
+                                    T[source][w].dist = T[source][v].dist 
+                                                        + C[v][w];
+
+                                    // create path
+                                    T[source][w].path = v;
+                                }
+                            }
+                        }
+                    }
+                }   
+            }
+        }
+    }
 }
 
 //------------------------------- findPath ------------------------------------
