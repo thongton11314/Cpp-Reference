@@ -103,17 +103,14 @@ void GraphM::findShortestPath() {
         while (v != 0) {
             v = 0;
             min = POSITIVE_MAX;
-            for (int n = 1; n <= size; n++)
-            {
-                if (!T[source][n].visited && (C[source][n] < min))
-                {
+            for (int n = 1; n <= size; n++) {
+                if (!T[source][n].visited && (C[source][n] < min)) {
                     min = C[source][n];
                     v = n;
                 }
             }
 
-            if (v != 0)
-            {
+            if (v != 0) {
                 T[source][v].visited = true; // node visited
                 for (int w = 1; w <= size; w++) {
 
@@ -143,30 +140,6 @@ void GraphM::findShortestPath() {
                 }   
             }
         }
-    }
-}
-
-//------------------------------- findPath ------------------------------------
-//Description: Find the associated path between from node/to node
-void GraphM::findPath(int from, int to) {
-
-    // path is not exist
-    if (T[from][to].dist == POSITIVE_MAX) {
-        return;
-    }
-
-    // path is current path
-    else if (from == to) {
-        cout << to << " ";
-        return;
-    }
-
-    // if path exist, recursive find path
-    else {
-        int pathData = to;
-        to = T[from][to].path;
-        findPath(from, to);
-        cout << pathData << " ";
     }
 }
 
@@ -213,11 +186,108 @@ void GraphM::displayAll() {
                         cout << setw(13);
 
                         // find path
-                        findPath(from, to);
+                        nodeShortestPath(from, to);
                         cout << endl;
                     }
                 }
             }
         }
+    }
+}
+
+//------------------------------- display ---------------------------------
+//Description: Uses couts to display the shortest distance with path info
+//             between the fromNode to toNode
+void GraphM::display(int from, int to) {
+
+    // path is out of range
+    if (from > size || to > size
+        || from <= 0 || to <= 0) {
+        cout << setw(5) << from 
+            << setw(11) << to;
+        cout << setw(9) << "----" << endl;
+        return;
+    }
+
+    // path in range
+    else {
+        cout << setw(5) << from 
+            << setw(11) << to;
+
+        // path exist between two nodes
+        if (T[from][to].dist != POSITIVE_MAX) {
+
+            // print out shorest path
+            cout << setw(9) << T[from][to].dist 
+                << setw(14);
+
+            // print out shortest path node (node's number)
+            nodeShortestPath(from, to);
+            cout << endl;
+
+            // print out shortest path name (node's name)
+            nodeDataName(from, to);
+        }
+
+        // path is not exist
+        else {
+            cout << setw(9) << "----" << endl;
+        }
+        cout << endl;
+    }
+}
+
+//------------------------------- findPath ------------------------------------
+//Description: Find the associated path between from node/to node
+//             print out shortest path node (node's number)
+void GraphM::nodeShortestPath(int from, int to) {
+
+    // path is not exist
+    if (T[from][to].dist == POSITIVE_MAX) {
+        return;
+    }
+
+    // path is current path
+    else if (from == to) {
+
+        // print out path
+        cout << to << " ";
+        return;
+    }
+
+    // if path exist, recursive find path
+    else {
+        int nodeNumber = to;        // keep previous node's number
+        nodeShortestPath(from, T[from][to].path);
+
+        // print out path
+        cout << nodeNumber << " ";
+    }
+}
+
+//------------------------------- nodeData --------------------------------
+//Description: Find the associated path between from node/to node
+//             print out node data (node's name)
+void GraphM::nodeDataName(int from, int to) {
+
+    // path is not exist
+    if (T[from][to].dist == POSITIVE_MAX) {
+        return;
+    }
+
+    // path is current path
+    else if (from == to) {
+
+        // print out name of path
+        cout << data[to] << endl << endl;
+        return;
+    }
+
+    // if path exist, recursive find path
+    else {
+        nodeDataName(from, T[from][to].path);
+
+        // print out name path
+        cout << data[to] << endl << endl;
     }
 }

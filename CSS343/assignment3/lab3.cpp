@@ -35,9 +35,9 @@ int main() {
 			break;
 		G.findShortestPath();
 		G.displayAll();              // display shortest distance, path to cout
-		//G.display(3, 1);              // display path from node 3 to 1 to cout
-		//G.display(1, 2);
-		//G.display(1, 4);
+		G.display(3, 1);           // display path from node 3 to 1 to cout
+		G.display(1, 2);
+		G.display(1, 4);
 	}
 	
 	/*

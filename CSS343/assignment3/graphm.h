@@ -47,10 +47,6 @@ public:
     //             i.e., TableType T is updated with shortest path information
     void findShortestPath();
 
-    //------------------------------- findPath ------------------------
-    //Description: Find the associated path between from node/to node
-    void findPath(int from, int to);
-
     //------------------------------- displayAll ------------------------------
     //Description: Uses couts to demonstrate that the algorithm works properly
     void displayAll();
@@ -60,6 +56,7 @@ public:
     //             between the fromNode to toNode
     void display(int from, int to);
 
+    
 private:
 
     //------------------------------- Struct TableType ------------------------
@@ -76,5 +73,16 @@ private:
     int C[MAXNODES][MAXNODES];          // Cost array, the adjacency matrix
     int size;                           // number of nodes in the 
     TableType T[MAXNODES][MAXNODES];    // stores visited, distance
+
+    //------------------------------- nodePath --------------------------------
+    //Description: Find the associated path between from node/to node
+    //             print out shortest path node (node's number)
+    void nodeShortestPath(int from, int to);
+
+    //------------------------------- nodeData --------------------------------
+    //Description: Find the associated path between from node/to node
+    //             print out node data (node's name)
+    void nodeDataName(int from, int to);
+
 };
 #endif // !_GRAPH_M_
