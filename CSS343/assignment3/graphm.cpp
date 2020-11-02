@@ -19,8 +19,8 @@ GraphM::GraphM() {
     size = 0;
 
     // initialize data to infinitive,  and all visit path to false,
-    for (int i = 1; i < MAXNODES; i++) {
-        for (int j = 1; j < MAXNODES; j++) {
+    for (int i = 0; i < MAXNODES; i++) {
+        for (int j = 0; j < MAXNODES; j++) {
 
             // cost array, the adjacency matrix 
             C[i][j] = POSITIVE_MAX;
@@ -81,37 +81,46 @@ bool GraphM::removeEdge(int from, int to) {
 //             i.e., TableType T is updated with shortest path information
 void GraphM::findShortestPath() {
 
+    // declare data here to prevent re-declare multiple time in loop laler
     int v;
-    int min;
+    int minDist;
 
-    for (int source = 1; source <= size; source++) {
-        T[source][source].dist = 0;
-        T[source][source].visited = true;
+    // T[row][column], this is follow by row
+    for (int source = 1; source <= size; source++) {        
+        T[source][source].dist = 0;         // shortest to it self node is 0
+        T[source][source].visited = true;   // visit it's self node is true
 
-        // find the shortest distance from source to all other nodes
+        // temporary shortest path base on original
         for (int i = 1; i <= size; i++) {
-            
-            // find v // not visited, shortest distance at this point
+
+            // if there is exist the path
             if (C[source][i] != POSITIVE_MAX) {
                 T[source][i].dist = C[source][i];
                 T[source][i].path = source;
-            }           
+            }
         }
 
+        // keep finding shortest distance
         // for each adjacent to v
-        v = -1;
-        while (v != 0) {
-            v = 0;
-            min = POSITIVE_MAX;
+        for(;;) {
+            v = 0;                  // reset vertice everytime 
+            minDist = POSITIVE_MAX; // temporary min distance
+
+            // check source node vertices
             for (int n = 1; n <= size; n++) {
-                if (!T[source][n].visited && (C[source][n] < min)) {
-                    min = C[source][n];
-                    v = n;
+
+                // get smallest source's vertice
+                if (!T[source][n].visited) {
+                    if (C[source][n] < minDist) {
+                        minDist = C[source][n];
+                        v = n;
+                    }
                 }
             }
 
+            // source's vertices haven't visit
             if (v != 0) {
-                T[source][v].visited = true; // node visited
+                T[source][v].visited = true; // mark as visited
                 for (int w = 1; w <= size; w++) {
 
                     // make sure node is not visited
@@ -124,20 +133,23 @@ void GraphM::findShortestPath() {
                             if (v != w) {
 
                                 // compare which path is smaller
-                                if (T[source][w].dist > T[source][v].dist 
-                                                        + C[v][w]) {
+                                if (T[source][v].dist + C[v][w] 
+                                                    < T[source][w].dist) {
                                     
-                                    // add up value to distance
+                                    // replace value
                                     T[source][w].dist = T[source][v].dist 
                                                         + C[v][w];
 
-                                    // create path
+                                    // create previous path
                                     T[source][w].path = v;
                                 }
                             }
                         }
                     }
                 }   
+            }
+            else {
+                break;
             }
         }
     }

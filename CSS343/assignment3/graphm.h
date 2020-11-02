@@ -1,7 +1,7 @@
 // -------------------------------- graphm.h ----------------------------------
 //
 // Thong Ton, CSS 343
-// Created:         October 27, 2020
+// Created:       October 27, 2020
 // Last Modified:   
 // Purpose: Implementation of  Dijkstra's shortest path algorithm
 // ----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ private:
     struct TableType {
         bool visited;   // whether node has been visited
         int dist;       // shortest distance from source known so far           
-        int path;       // previous node in path of min dist
+        int path;       // previous node
     };
 
     NodeData data[MAXNODES];            // data for graph nodes
