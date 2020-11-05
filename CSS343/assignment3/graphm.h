@@ -15,7 +15,7 @@
 using namespace std;
 
 const int POSITIVE_MAX = 2147483647; // Use to keep the max size of int
-const int MAXNODES = 101;            // constant type for T and C table
+const int MAXNODES_M = 101;            // constant type for T and C table
 
 class GraphM {
     
@@ -34,8 +34,11 @@ public:
     //              between each node reading from a data file.
     void buildGraph(ifstream &);
 
-    //------------------------------- insertEdge ------------------------------
-    //Description: insert an edge into graph between two given nodes
+    //------------------------------- insertEdge ----------------------------------
+    //Description: insert an edge into graph between two given nodes.
+    //             Return false if one of from, to dist is negative value
+    //Precondition: None
+    //Poscondition: None
     bool insertEdge(int from, int to, int dist);
     
     //------------------------------- removeEdge ------------------------------
@@ -55,7 +58,6 @@ public:
     //Description: Uses couts to display the shortest distance with path info
     //             between the fromNode to toNode
     void display(int from, int to);
-
     
 private:
 
@@ -69,10 +71,10 @@ private:
         int path;       // previous node
     };
 
-    NodeData data[MAXNODES];            // data for graph nodes
-    int C[MAXNODES][MAXNODES];          // Cost array, the adjacency matrix
+    NodeData data[MAXNODES_M];            // data for graph nodes
+    int C[MAXNODES_M][MAXNODES_M];          // Cost array, the adjacency matrix
     int size;                           // number of nodes in the 
-    TableType T[MAXNODES][MAXNODES];    // stores visited, distance
+    TableType T[MAXNODES_M][MAXNODES_M];    // stores visited, distance
 
     //------------------------------- nodePath --------------------------------
     //Description: Find the associated path between from node/to node

@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include <fstream>
-//#include "graphl.h"
+#include "graphl.h"
 #include "graphm.h"
 using namespace std;
 

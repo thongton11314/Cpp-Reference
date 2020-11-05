@@ -19,8 +19,8 @@ GraphM::GraphM() {
     size = 0;
 
     // initialize data to infinitive,  and all visit path to false,
-    for (int i = 0; i < MAXNODES; i++) {
-        for (int j = 0; j < MAXNODES; j++) {
+    for (int i = 0; i < MAXNODES_M; i++) {
+        for (int j = 0; j < MAXNODES_M; j++) {
 
             // cost array, the adjacency matrix 
             C[i][j] = POSITIVE_MAX;
@@ -65,15 +65,63 @@ void GraphM::buildGraph(ifstream &infile) {
 }
 
 //------------------------------- insertEdge ----------------------------------
-//Description: insert an edge into graph between two given nodes
+//Description: insert an edge into graph between two given nodes.
+//             Return true if successful insert, otherwise false
+//Precondition: NONE
+//Poscondition: NONE
 bool GraphM::insertEdge(int from, int to, int dist) {
-    return false;
+
+    // non-negative distance
+    if (dist < 0) {
+        return false;
+    }
+    
+    // path of itself must be 0
+    if (dist != 0 && from == to) {
+        return false;
+    }
+
+    // out of current matrix value, from must be positive value
+    if (from > size || from < 1) {
+        return false;
+    }
+
+    // out of current matrix value, to must be positive value
+    if (to > size || to < 1) {
+        return false;
+    } 
+
+    // add new edge
+    C[from][to] = dist;
+
+    // update shortest path
+    findShortestPath();
+    return true;
 }
 
 //------------------------------- removeEdge ----------------------------------
-//Description: Remove an edge between two given nodes
+//Description: Remove an edge between two given nodes.
+//             Return true if successful remove edge, otherwise false.
+//Precondition: NONE
+//Postcondition: NONE
 bool GraphM::removeEdge(int from, int to) {
-    return false;
+
+    // out of current matrix value, from must be positive value
+    if (from > size || from < 1) {
+        return false;
+    }
+
+    // out of current matrix value, to must be positive value
+    if (to > size || to < 1) {
+        return false;
+    }
+
+    // add new edge
+    C[from][to] = POSITIVE_MAX;
+
+    // Update sortest path
+    findShortestPath();
+    return true;
 }
 
 //------------------------------- findShortestPath ----------------------------
