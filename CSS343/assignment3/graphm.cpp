@@ -23,11 +23,11 @@ GraphM::GraphM() {
         for (int j = 0; j < MAXNODES_M; j++) {
 
             // cost array, the adjacency matrix 
-            C[i][j] = POSITIVE_MAX;
+            C[i][j] = POSITIVE_MAX_M;
 
             // stores visited, distance, path
             T[i][j].visited = false;
-            T[i][j].dist = POSITIVE_MAX;
+            T[i][j].dist = POSITIVE_MAX_M;
             T[i][j].path = 0;
         }
     }
@@ -43,23 +43,25 @@ GraphM::GraphM() {
 //                  - After the description, each line consists of 3 integers 
 //                    representing an edge. Data is: from to distance
 //                  - If the first integer is zero, it the end of graph
-void GraphM::buildGraph(ifstream &infile) {
+void GraphM::buildGraph(ifstream &inFile) {
 
     // read the first line, it is always a size
-    infile >> size;
+    inFile >> size;
 
     // read the line after first line, node description
     string temp;
-    getline(infile, temp); // initialize inFile as a string type
-    
+    getline(inFile, temp);
+
     // initialize the node data
     for (int i = 1; i <= size; i++) {
-        data[i].setData(infile);    // this will handle read next line as well
+
+        // this will handle read next line as well
+        nodeList[i].setData(inFile);
     }
 
     // initialize the distance between nodes
     int from, to, dist;
-    while (infile >> from >> to >> dist && from != 0) {
+    while (inFile >> from >> to >> dist && from != 0) {
         C[from][to] = dist;
     }
 }
@@ -117,7 +119,7 @@ bool GraphM::removeEdge(int from, int to) {
     }
 
     // add new edge
-    C[from][to] = POSITIVE_MAX;
+    C[from][to] = POSITIVE_MAX_M;
 
     // Update sortest path
     findShortestPath();
@@ -142,7 +144,7 @@ void GraphM::findShortestPath() {
         for (int i = 1; i <= size; i++) {
 
             // if there is exist the path
-            if (C[source][i] != POSITIVE_MAX) {
+            if (C[source][i] != POSITIVE_MAX_M) {
                 T[source][i].dist = C[source][i];
                 T[source][i].path = source;
             }
@@ -152,7 +154,7 @@ void GraphM::findShortestPath() {
         // for each adjacent to v
         for(;;) {
             v = 0;                  // reset vertice everytime 
-            minDist = POSITIVE_MAX; // temporary min distance
+            minDist = POSITIVE_MAX_M; // temporary min distance
 
             // check source node vertices
             for (int n = 1; n <= size; n++) {
@@ -175,7 +177,7 @@ void GraphM::findShortestPath() {
                     if (!T[source][w].visited) {
 
                         // make sure there is a path exist
-                        if (C[v][w] != POSITIVE_MAX) {
+                        if (C[v][w] != POSITIVE_MAX_M) {
 
                             // make sure not repeat node
                             if (v != w) {
@@ -220,7 +222,7 @@ void GraphM::displayAll() {
     for (int from = 1; from <= size; from++) {
 
         // depart node name
-        cout << data[from] << endl << endl;
+        cout << nodeList[from] << endl << endl;
 
         // destination node (to node)
         for (int to = 1; to <= size; to++) {
@@ -236,7 +238,7 @@ void GraphM::displayAll() {
 
                     // no way from depart node (from node)
                     // to destination node(to node)
-                    if (T[from][to].dist == POSITIVE_MAX) {
+                    if (T[from][to].dist == POSITIVE_MAX_M) {
                         cout << setw(10) << "----" << endl;
                     }
 
@@ -275,7 +277,7 @@ void GraphM::display(int from, int to) {
             << setw(11) << to;
 
         // path exist between two nodes
-        if (T[from][to].dist != POSITIVE_MAX) {
+        if (T[from][to].dist != POSITIVE_MAX_M) {
 
             // print out shorest path
             cout << setw(9) << T[from][to].dist 
@@ -303,7 +305,7 @@ void GraphM::display(int from, int to) {
 void GraphM::nodeShortestPath(int from, int to) {
 
     // path is not exist
-    if (T[from][to].dist == POSITIVE_MAX) {
+    if (T[from][to].dist == POSITIVE_MAX_M) {
         return;
     }
 
@@ -331,7 +333,7 @@ void GraphM::nodeShortestPath(int from, int to) {
 void GraphM::nodeDataName(int from, int to) {
 
     // path is not exist
-    if (T[from][to].dist == POSITIVE_MAX) {
+    if (T[from][to].dist == POSITIVE_MAX_M) {
         return;
     }
 
@@ -339,7 +341,7 @@ void GraphM::nodeDataName(int from, int to) {
     else if (from == to) {
 
         // print out name of path
-        cout << data[to] << endl << endl;
+        cout << nodeList[to] << endl << endl;
         return;
     }
 
@@ -348,6 +350,6 @@ void GraphM::nodeDataName(int from, int to) {
         nodeDataName(from, T[from][to].path);
 
         // print out name path
-        cout << data[to] << endl << endl;
+        cout << nodeList[to] << endl << endl;
     }
 }

@@ -40,7 +40,6 @@ int main() {
 		G.display(1, 4);
 	}
 	
-	/*
 	// part 2 
 	ifstream infile2("data32.txt");
 	if (!infile2) {
@@ -60,5 +59,4 @@ int main() {
 	
 	cout << endl;
 	return 0;
-	*/
 }

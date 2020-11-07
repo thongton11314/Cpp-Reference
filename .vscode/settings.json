@@ -4,6 +4,9 @@
         "type_traits": "cpp",
         "xlocmon": "cpp",
         "xtr1common": "cpp",
-        "iosfwd": "cpp"
-    }
+        "iosfwd": "cpp",
+        "string": "cpp",
+        "iomanip": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
