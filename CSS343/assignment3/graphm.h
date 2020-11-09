@@ -2,7 +2,7 @@
 //
 // Thong Ton, CSS 343
 // Created:       October 27, 2020
-// Last Modified:   
+// Last Modified: November 9, 2020  
 // Purpose: This is the header file of Dijkstra's shortest path algorithm
 // ----------------------------------------------------------------------------
 #ifndef _GRAPH_M_

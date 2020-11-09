@@ -83,12 +83,12 @@ bool GraphM::insertEdge(int from, int to, int dist) {
         return false;
     }
 
-    // out of current matrix value, from must be positive value
+    // out of current real matrix size, from must be positive value
     if (from > size || from < 1) {
         return false;
     }
 
-    // out of current matrix value, to must be positive value
+    // out of current real matrix size, to must be positive value
     if (to > size || to < 1) {
         return false;
     } 
@@ -131,9 +131,8 @@ bool GraphM::removeEdge(int from, int to) {
 //             i.e., TableType T is updated with shortest path information
 void GraphM::findShortestPath() {
 
-    // declare data here to prevent re-declare multiple time in loop laler
-    int v;
-    int minDist;
+    int v;          // vertice
+    int minDist;    // minimum distance
 
     // T[row][column], this is follow by row
     for (int source = 1; source <= size; source++) {        
@@ -153,7 +152,7 @@ void GraphM::findShortestPath() {
         // keep finding shortest distance
         // for each adjacent to v
         for(;;) {
-            v = 0;                  // reset vertice everytime 
+            v = 0;                    // reset vertice everytime
             minDist = POSITIVE_MAX_M; // temporary min distance
 
             // check source node vertices

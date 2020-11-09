@@ -2,7 +2,7 @@
 //
 // Thong Ton, CSS 343
 // Created:       October 27, 2020
-// Last Modified: November 7, 2020  
+// Last Modified: November 9, 2020  
 // Purpose: This is the header file of depth first search algorithm
 // ----------------------------------------------------------------------------
 #ifndef _GRAPH_L_
@@ -41,7 +41,7 @@ public:
     GraphL();
 
     //------------------------------- ~GraphL ---------------------------------
-    //Deconstructor
+    //Destructor
     ~GraphL();
 
     //------------------------------- buildGraph ------------------------------
@@ -80,7 +80,7 @@ private:
         bool visited;
     };
 
-    //------------------------------- Struct EdgeNode ------------------------
+    //------------------------------- Struct EdgeNode -------------------------
     //Description: Use to store associted nodes
     struct EdgeNode {
         int adjGraphNode;
@@ -92,13 +92,13 @@ private:
     //------------------------------- makeEmpty -------------------------------
     //Description: Destructor envokes this function
     //PRECONDITION: Destructor must exist
-    //POSTCONDITION: Graph is empty
+    //POSTCONDITION: Graph is empty, all node is deleted carefully
     void makeEmpty();
 
     //------------------------------- depthFirstSearchHelper ------------------
     //Description: depthFirstSearch funtion envokes this function for recursive
     //PRECONDITION: depthFirstSearch must exist
-    //POSTCONDITION: NONE
+    //POSTCONDITION: List remains the same
     void depthFirstSearchHelper(int v);
 };
 

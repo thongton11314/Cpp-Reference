@@ -2,7 +2,7 @@
 //
 // Thong Ton, CSS 343
 // Created:       October 27, 2020
-// Last Modified: November 7, 2020  
+// Last Modified: November 9, 2020  
 // Purpose: This is implementation of depth first search algorithm
 // ----------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ void GraphL::buildGraph(ifstream& inFile) {
     // read the first line, it is always a size
     inFile >> size;
 
-    // read the line after first line, node description
+    // use for reading the line after first line, node description
     string tempName;
     getline(inFile, tempName);
 
@@ -53,26 +53,26 @@ void GraphL::buildGraph(ifstream& inFile) {
         nodeList[i].data = new NodeData(tempName);
     }
 
+    // read associate nodes
     int from, to;
-    EdgeNode* temp = nullptr;
     while (inFile >> from >> to && from != 0) {
 
-        // first node in array
+        // first node
         if (nodeList[from].edgeHead == nullptr) {
 
-            // create a node that have adjacent 
-            // and next node is nullptr
-            temp = new EdgeNode { to, nullptr };
-            nodeList[from].edgeHead = temp;
+            // create a node that have adjacent
+            // and last node is null pointer
+            nodeList[from].edgeHead = new EdgeNode { to, nullptr };
         }
 
-        // next node in array
+        // insert next node at front
         else {
 
             // create a node that have adjacent 
             // and next node is nodeList[from].edgeHead
-            temp = new EdgeNode { to, nodeList[from].edgeHead };
-            nodeList[from].edgeHead = temp;
+            nodeList[from].edgeHead = new EdgeNode { to,
+                                                    nodeList[from].edgeHead };
+            
         }
     }
 }
@@ -80,23 +80,26 @@ void GraphL::buildGraph(ifstream& inFile) {
 //-------------------------------- makeEmpty ----------------------------------
 //Description: Destructor envokes this function
 //PRECONDITION: Destructor must exist
-//POSTCONDITION: Graph is empty
+//POSTCONDITION: Graph is empty, all node is deleted carefull
 void GraphL::makeEmpty(){
 
+    // temporary data uses for walking through list
     EdgeNode *temp = nullptr;
+
+    // deleting every node
     for (int i = 1; i <= size; i++) {
 
         // delete node data
-        delete nodeList[i].data; 
+        delete nodeList[i].data;
         nodeList[i].data = nullptr;
 
-        // set this note as un visited
+        // set this note as unvisited
         nodeList[i].visited = false;
 
         // delete every node's edge
         while (nodeList[i].edgeHead != nullptr) {
 
-            // temporary value
+            // keeping head
             temp = nodeList[i].edgeHead;
 
             // next node
@@ -115,13 +118,19 @@ void GraphL::makeEmpty(){
 //POSTCONDITION: NONE
 void GraphL::displayGraph() {
     cout << endl << "Graph:" << endl;
+
+    // temporary value for walking the list
     EdgeNode* current = nullptr;
     for (int i = 1; i <= size; i++) {
+
+        // print out data
         cout << "Node"
             << i << setw(9)
             << " " << *nodeList[i].data
             << endl << endl;
         current = nodeList[i].edgeHead;
+
+        // print out adjacency
         while (current != nullptr) {
             cout << setw(6) << "edge"
                 << setw(3) << i
@@ -154,9 +163,9 @@ void GraphL::depthFirstSearch() {
 }
 
 //------------------------------- depthFirstSearchHelper ----------------------
-//Description: depthFirstSearch funtion envokes this function for recursive
+//Description: depthFirstSearch funtion envokes this function for traversing
 //PRECONDITION: depthFirstSearch must exist
-//POSTCONDITION: NONE
+//POSTCONDITION: List remains the same
 void GraphL::depthFirstSearchHelper(int v) {
 
     // print node
@@ -165,7 +174,7 @@ void GraphL::depthFirstSearchHelper(int v) {
     // mark this node as visited
     nodeList[v].visited = true;
 
-    // point to the parent node
+    // temporary value for walking the list
     EdgeNode *current = nodeList[v].edgeHead;
 
     // walk from parent node
