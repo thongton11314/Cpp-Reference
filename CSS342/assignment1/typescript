@@ -1,0 +1,29 @@
+Script started on Fri 10 Apr 2020 11:17:37 PM PDT
+]0;tonthong@csslab1:~/Assignment1[?1034h[tonthong@csslab1 Assignment1]$ g++ st[K[K-std=1[Kc++11 cp[K[Klab1.cpoo[K[Kp
+]0;tonthong@csslab1:~/Assignment1[tonthong@csslab1 Assignment1]$ ./out[K[K[Ka.out
+65 duck donald
+60 frog freddie
+71 ghost casper
+85 mouse abby
+73 mouse mickey
+95 mouse minnie
+
+Histogram of grades :
+ 0-->    9:
+10-->   19:
+20-->   29:
+30-->   39:
+40-->   49:
+50-->   59:
+60-->   69:**
+70-->   79:**
+80-->   89:*
+90-->   99:*
+100--> 100:
+
+Average grade: 74
+]0;tonthong@csslab1:~/Assignment1[tonthong@csslab1 Assignment1]$ ^C
+]0;tonthong@csslab1:~/Assignment1[tonthong@csslab1 Assignment1]$ exit
+exit
+
+Script done on Fri 10 Apr 2020 11:18:11 PM PDT
