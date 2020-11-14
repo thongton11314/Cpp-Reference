@@ -84,8 +84,8 @@ void Manager::buildTransactions(ifstream & infile) {
 // it will perform transaction type of D, W, M, H.
 // if the transaction type history, then print out that client history
 // after all transaction process, shows error message of invalid transaction
-void Manager::processTransactions()
-{
+void Manager::processTransactions() {
+    
     // early exist
     if (transactionContainer.isEmpty()) {
         cout << "No transaction to process." << endl;
