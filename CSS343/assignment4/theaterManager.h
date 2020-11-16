@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "commands.h"
-
+#include "customers_collection.h"
 using namespace std;
 
 // Class TheaterManager:
@@ -30,6 +30,7 @@ class TheaterManager {
         void report() const;
     private:
         Command commands;
+        CustomerCollection customers;
         // add more data or private function if needed
 };
 
