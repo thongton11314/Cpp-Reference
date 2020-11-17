@@ -6,7 +6,9 @@
 #include "media_movie.h"
 
 class Comedy : public Movie {
-    virtual friend ostream& operator<<(ostream &, const Comedy &);
+
+    friend ostream& operator<<(ostream &, const Comedy &);
+
 public:
 
     // constructor
@@ -28,5 +30,11 @@ public:
     virtual bool operator>=(const Comedy&) const;
     virtual bool operator==(const Comedy&) const;
     virtual bool operator!=(const Comedy&) const;
+
+private:
+
+    // overload ostream
+    virtual ostream& outout(ostream &) const;
 };
+
 #endif //!_CLASSIC_

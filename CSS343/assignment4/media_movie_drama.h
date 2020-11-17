@@ -6,14 +6,16 @@
 #include "media_movie.h"
 
 class Drama : public Movie {
-    virtual friend ostream& operator<<(std::ostream &, const Drama &);
+
+    friend ostream& operator<<(ostream &, const Drama &);
+    
 public:
 
     // constructor
     Drama();
 
     // copy constructor
-    Drama(const Comedy &drama);
+    Drama(const Drama &drama);
 
     // deconstructor
     virtual ~Drama();
@@ -28,5 +30,10 @@ public:
     virtual bool operator>=(const Drama&) const;
     virtual bool operator==(const Drama&) const;
     virtual bool operator!=(const Drama&) const;
+    
+private:
+
+    // overload ostream
+    virtual ostream& outout(ostream &) const;
 };
 #endif //!_DRAMA_

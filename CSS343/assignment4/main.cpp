@@ -1,12 +1,12 @@
 #include <iostream>
-#include "theaterManager.h"
+#include "store_manager.h"
 
 using namespace std;
 
 int main () {
 
     // instantiate theater manager class
-    TheaterManager theaterManager;
+    StoreManager storeManager;
 
     // instantiate file stream for setting data
     ifstream customerFile("data4customers.txt"),  // customer file
@@ -14,16 +14,16 @@ int main () {
              commandFile("data4commands.txt");  // command file
 
     // reads all customers information from text file
-    theaterManager.buildCustomersFromFile(customerFile);
+    StoreManager.buildCustomersFromFile(customerFile);
 
     // reads all movies command from text file
-    theaterManager.buildMoviesFromFile(movieFile);
+    StoreManager.buildMoviesFromFile(movieFile);
 
     // process all commands from file
-    theaterManager.processCommandsFromFile(commandFile);
+    StoreManager.processCommandsFromFile(commandFile);
     
     // display customer history, commands, or error message
-    theaterManager.report();
+    StoreManager.report();
 
     return 0;
 }

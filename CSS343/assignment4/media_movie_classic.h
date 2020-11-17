@@ -6,7 +6,9 @@
 #include "media_movie.h"
 
 class Classic : public Movie {
-    virtual friend ostream& operator<<(ostream &, const Classic &);
+
+    friend ostream& operator<<(ostream &, const Classic &);
+    
 public:
 
     // constructor
@@ -37,6 +39,9 @@ public:
 
 private:
     string majorActor; 
-    int month; 
+    int month;
+
+    // overload ostream
+    virtual ostream& outout(ostream &) const;
 };
 #endif //!_CLASSIC_

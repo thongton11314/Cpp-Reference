@@ -15,6 +15,6 @@ public:
     bool retrieveCustomer(const int & id, Customer *& retriever) const;
     bool removeCustomerByID(const int & id);
 private:
-    Hashtable<int, Customer*> collection;
+    Hashtable<int, Customer> customerCollection;
 };
 #endif //!_CUSTOMER_COLLECTION_

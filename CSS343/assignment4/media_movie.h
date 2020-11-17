@@ -6,19 +6,10 @@
 #define _MOVIE_
 #include "media.h"
 
-enum MovieType {
-
-    // current type
-    ComedyType,     // enum = 0
-    DramaType,      // enum = 1
-    ClassicalType   // enum = 2
-    
-    // for future type go here
-    // ...
-};
-
 // add comments here
 class Movie : public Media {
+
+    friend ostream& operator<<(ostream &, const Movie &);
     
 public:
 
@@ -31,17 +22,21 @@ public:
     virtual void setYear(int year);
 
     // getter
-    virtual const std::string & getDirector() const;
-    virtual const std::string & getTitle() const; 
+    virtual const string & getDirector() const;
+    virtual const string & getTitle() const; 
     virtual int getYear() const;   
     
     // pure virtual function
     virtual MovieType getMovieType() const = 0;
     virtual MediaType getMediaType() const;
-	
+
 protected:
     string director;
     string title;
     int year;
+
+    // overload ostream
+    virtual ostream& outout(ostream &) const = 0;
 };
+
 #endif // !_MOVIE_
