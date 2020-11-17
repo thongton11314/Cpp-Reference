@@ -25,15 +25,3 @@ void StoreManager::processCommandsFromFile(ifstream &inFile) {
         // set command data : command->setData(inFile)
         // command.processCommand(collectionMedias, collectionCustomers);
 }
-
-void StoreManager::report() const {
-
-    // display error
-    // get customer's error
-    // get movie's error
-
-    // display inventory
-    // get all movies
-    
-    // print all of the movies
-}

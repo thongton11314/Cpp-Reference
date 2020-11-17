@@ -1,0 +1,13 @@
+// include needed library such asmanager
+
+// start main
+    // instantiate manager class: storeManager
+    // instantiate file stream for setting data: 
+        // read data4customers.txt 
+            // then storeManager.buildCustomersFromFile(file)
+        // read data4movies.txt 
+            // then storeManager.buildMoviesFromFile(file)
+        // read data4commands.txt 
+            // then storeManager.processCommandsFromFile(file)
+    // report: storeManager.report()
+// end of main

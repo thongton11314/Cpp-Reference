@@ -22,8 +22,5 @@ int main () {
     // process all commands from file
     StoreManager.processCommandsFromFile(commandFile);
     
-    // display customer history, commands, or error message
-    StoreManager.report();
-
     return 0;
 }
