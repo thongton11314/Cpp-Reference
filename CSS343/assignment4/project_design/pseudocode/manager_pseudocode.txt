@@ -3,19 +3,19 @@
 // instance customer collection
 // instance media type movie collection
 
-// function name: buildCustomersFromFile(file)
+// function name: buildCustomers(file)
     // read until the end of file
         // add each customer CollectionCustomers.insert(customer)
         // if CollectionCustomers.insert(customer) return false
             // handling error here
 
-// function name: buildMoviesFromFile
+// function name: buildMovies
     // read until the end of file
         // add each movie CollectionMovies.insert(movie)
         // if CollectionMovies.insert(movie)
             // handling error here
 
-// function name: processCommandsFromFile
+// function name: processCommands
     // read until the end of commands file, read line by line,
     // not need to store commands lines
         // create a new command: command = new Command;

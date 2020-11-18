@@ -19,16 +19,14 @@ class StoreManager {
         ~StoreManager();  // destructor 
 
         // reads all customers information from text file
-        void buildCustomersFromFile(ifstream &inFile);
+        void buildCustomers(ifstream &inFile);
 
         // reads all movies command from text file
-        void buildMoviesFromFile(ifstream &inFile);
+        void buildMovies(ifstream &inFile);
 
         // process all commands from file
-        void processCommandsFromFile(ifstream &inFile);
+        void processCommands(ifstream &inFile);
 
-        // display customer history, commands, or error message
-        void report() const;
     private:
         CustomerCollection collectionCustomers;
         MediaMovieCollection collectionMedias;

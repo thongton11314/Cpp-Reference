@@ -4,10 +4,9 @@
     // instantiate manager class: storeManager
     // instantiate file stream for setting data: 
         // read data4customers.txt 
-            // then storeManager.buildCustomersFromFile(file)
+            // then build customer by: storeManager.buildCustomers(file)
         // read data4movies.txt 
-            // then storeManager.buildMoviesFromFile(file)
+            // then build movies by: storeManager.buildMovies(file)
         // read data4commands.txt 
-            // then storeManager.processCommandsFromFile(file)
-    // report: storeManager.report()
+            // then build commands by: storeManager.processCommands(file)
 // end of main

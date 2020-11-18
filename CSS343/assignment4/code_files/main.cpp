@@ -14,13 +14,13 @@ int main () {
              commandFile("data4commands.txt");  // command file
 
     // reads all customers information from text file
-    StoreManager.buildCustomersFromFile(customerFile);
+    StoreManager.buildCustomers(customerFile);
 
     // reads all movies command from text file
-    StoreManager.buildMoviesFromFile(movieFile);
+    StoreManager.buildMovies(movieFile);
 
     // process all commands from file
-    StoreManager.processCommandsFromFile(commandFile);
+    StoreManager.processCommands(commandFile);
     
     return 0;
 }
