@@ -45,7 +45,7 @@ class Customer {
         string getLastName() const;             // get last name
 
         // get history borrow or return
-        const vector<Command *> getHistories() const;
+        const vector<Command*> getHistories() const;
 
         // function
         void borrowMedia(Media * media);        // customer has borrowed media

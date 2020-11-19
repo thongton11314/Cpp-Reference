@@ -17,13 +17,13 @@ public:
     virtual ~Movie();
     
     // setter
-    virtual void setDirector(const string & director);
-    virtual void setTitle(const string & title);
+    virtual void setDirector(string director);
+    virtual void setTitle(string title);
     virtual void setYear(int year);
 
     // getter
-    virtual const string & getDirector() const;
-    virtual const string & getTitle() const; 
+    virtual string getDirector() const;
+    virtual string getTitle() const; 
     virtual int getYear() const;   
     
     // pure virtual function
@@ -34,9 +34,6 @@ protected:
     string director;
     string title;
     int year;
-
-    // overload ostream
-    virtual ostream& out(ostream &) const = 0;
 };
 
 #endif // !_MOVIE_

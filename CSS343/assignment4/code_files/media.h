@@ -46,20 +46,14 @@ public :
     virtual int getStock() const;
 
     // function
-    virtual void addStock(int add);
-    virtual void reduceStock(int reduce);
+    virtual void addStock(int amount);
+    virtual void reduceStock(int amount);
     
     // pure virtual function
     virtual MediaType getMediaType() const = 0;
 
 protected:
     int stock;
-    virtual ostream& out(ostream &, const Media &);
 };
-
-//#include "media_movie.h"
-//#include "media_movie_classic.h"
-//#include "media_movie_comedy.h"
-//#include "media_movie_drama.h"
 
 #endif //!_MEDIA_

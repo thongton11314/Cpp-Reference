@@ -30,11 +30,6 @@ public:
     virtual bool operator>=(const Comedy&) const;
     virtual bool operator==(const Comedy&) const;
     virtual bool operator!=(const Comedy&) const;
-
-private:
-
-    // overload ostream
-    virtual ostream& out(ostream &) const;
 };
 
 #endif //!_CLASSIC_
