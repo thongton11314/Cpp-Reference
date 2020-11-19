@@ -34,7 +34,7 @@ public:
 private:
 
     // overload ostream
-    virtual ostream& outout(ostream &) const;
+    virtual ostream& out(ostream &) const;
 };
 
 #endif //!_CLASSIC_

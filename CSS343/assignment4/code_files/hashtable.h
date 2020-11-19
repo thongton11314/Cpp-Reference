@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int TABLE_SIZE = 97; // better with prime number
+const int TABLE_SIZE = 97;
 
 // add comment here
 template <typename Key, typename Val>

@@ -7,10 +7,12 @@
 
 using namespace std;
 
-class Commands;
+class Command;
 
 const int MINID = 1;                    // smallest id
-const int MAXID = 9999;                 // highest id
+const int MAXID = 9999;                 // max id
+const int DEFAULT_ID = 0;               // default id
+const string DEFAULT_NAME = "DEFAULT";  // default name
 
 // add comments
 class Customer {
@@ -24,29 +26,35 @@ class Customer {
         Customer();
 
         // copy constructor
-        Customer(const Customer &customer);
+        Customer(const Customer &other);
 
         // deconstructor
         ~Customer();
 
         // setter
-        bool setData(ifstream&);        // fill object with data from file
+        void setID(int id);                     // set id
+        void setFirstName(string first);        // set last name
+        void setLastName(string last);          // set first name
+        bool setData(ifstream&);                // fill data from file
         
         // getter
-        int getId() const;              // get customer ID
-        string getLastName() const;     // get customer last name
-        string getFirstName() const;    // get customer first name
-        vector<Commands *> getHistory();// get custoer history
+        int getId() const;                      // get ID
+        string getFirstName() const;            // get first name
+        string getLastName() const;             // get last name
+
+        // get history borrow or return
+        const vector<Command *> getHistories() const;
 
         // function
-        bool borrowMedia(Media * media);
-        bool returnMedia(Media * media);
+        void borrowMedia(Media * media);        // customer has borrowed media
+        bool returnMedia(Media * target);       // customer has returned media
+        void addHistory(Command * command);     // add commands history
 
     private:
-    int customerID;                     // customer ID
-    string firstName;                   // customer first name
-    string lastName;                    // customer last name
-    vector<Commands *> history;         // customer history commands
-	vector<Media *> borrowed;           // customer media borrow currently
+        int id;                     // customer ID
+        string firstName;           // customer first name
+        string lastName;            // customer last name
+        vector<Command *> history;  // customer history borrow or return
+        vector<Media *> borrowing;   // customer media borrow currently
 };
 #endif // !_CUSTOMER_

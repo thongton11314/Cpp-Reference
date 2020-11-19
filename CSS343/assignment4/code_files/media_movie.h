@@ -36,7 +36,7 @@ protected:
     int year;
 
     // overload ostream
-    virtual ostream& outout(ostream &) const = 0;
+    virtual ostream& out(ostream &) const = 0;
 };
 
 #endif // !_MOVIE_

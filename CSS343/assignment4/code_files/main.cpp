@@ -3,8 +3,11 @@
 
 using namespace std;
 
+Customer testCustomer(ifstream);
+
 int main () {
 
+    /*
     // instantiate theater manager class
     StoreManager storeManager;
 
@@ -23,4 +26,35 @@ int main () {
     storeManager.processCommands(commandFile);
     
     return 0;
+    */
+    ifstream customerFile("data4customers.txt");
+    testCustomer(ifstream);
+}
+
+Customer testCustomer(ifstream infile) {
+
+    // early exit, and show error message that can not be read
+    if (!infile) {
+        cout << "Could not read client file" << endl;
+        return;
+    }
+    
+    Customer* ptr;
+    bool checkData;                       // used for reading good data
+    while (!infile.eof()) {
+        ptr = new Customer;                 // create new client object
+        
+        // must have setData implementation of client
+        checkData = ptr->setData(infile); // fill the client object
+        
+        // add valid client
+        if (checkData) {
+            cout << *ptr << endl;
+        }
+        
+        // ignore invalid client
+        else {
+            delete ptr;
+        }
+    }   
 }

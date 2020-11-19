@@ -1,0 +1,12 @@
+- Can your design be extended beyond the specifications given here?
+    Yes.
+- Could you easily add new videos or DVDs to your design?
+    Yes.
+- Can you easily add other categories of videos or DVDs?
+    Yes. This design has parent movie class which can be extend other videos.
+- Could you easily add new categories of media to your design, for example, music?
+    Yes. This design has Media parent class which can be extend other categories of media.
+- Could you expand to check out other kinds of items, for example VCRs or DVD players?
+    Yes.
+- Could you easily add new operations to your design?
+    Yes. Since we have manager class will connect other classes to process together.

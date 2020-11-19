@@ -54,7 +54,7 @@ public :
 
 protected:
     int stock;
-    virtual ostream& outout(ostream &, const Media &);
+    virtual ostream& out(ostream &, const Media &);
 };
 
 //#include "media_movie.h"
