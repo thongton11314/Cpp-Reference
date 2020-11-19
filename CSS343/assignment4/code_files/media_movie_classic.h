@@ -22,11 +22,11 @@ public:
 
     // setter
     void setMonth(int month);
-    virtual void setMajorActor(const string &name);
+    virtual void setMajorActor(string name);
 
     // getter
     int getMonth() const;
-    virtual const string & getMajorActor() const;
+    virtual string getMajorActor() const;
     virtual MovieType getMovieType() const;
 
     // comparison operators 
@@ -40,8 +40,5 @@ public:
 private:
     string majorActor; 
     int month;
-
-    // overload ostream
-    virtual ostream& out(ostream &) const;
 };
 #endif //!_CLASSIC_

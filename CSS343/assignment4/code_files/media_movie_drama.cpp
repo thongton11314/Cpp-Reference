@@ -1,57 +1,57 @@
-#include "media_movie_comedy.h"
+#include "media_movie_drama.h"
 
-Comedy::Comedy() {
+Drama::Drama() {
     this->stock = DEFAULT_STOCK;
     this->title = DEFAULT_TITLE;
     this->director = DEFAULT_PERSON;
     this->year = DEFAULT_NUM;
 }
 
-Comedy::Comedy(const Comedy & other) {
+Drama::Drama(const Drama & other) {
     this->stock = other.stock;
     this->title = other.title;
     this->director = other.director;
     this->year = other.year;
 }
 
-Comedy::~Comedy() {
+Drama::~Drama() {
 
 }
 
-MovieType Comedy::getMovieType() const {
-    return MovieType::ComedyType;
+MovieType Drama::getMovieType() const {
+    return MovieType::DramaType;
 }
 
 // need to be done
-bool Comedy::operator<(const Comedy & other) const {
+bool Drama::operator<(const Drama & other) const {
     return false;
 }
 
 // need to be done
-bool Comedy::operator<=(const Comedy & other) const {
+bool Drama::operator<=(const Drama & other) const {
     return false;
 }
 
 // need to be done
-bool Comedy::operator>(const Comedy & other) const {
+bool Drama::operator>(const Drama & other) const {
     return false;
 }
 
 // need to be done
-bool Comedy::operator>=(const Comedy & other) const {
+bool Drama::operator>=(const Drama & other) const {
     return false;
 }
 
 // need to be done
-bool Comedy::operator==(const Comedy & other) const {
+bool Drama::operator==(const Drama & other) const {
     return false;
 }
 
-bool Comedy::operator!=(const Comedy & other) const {
+bool Drama::operator!=(const Drama & other) const {
     return !(*this == other);
 }
 
-ostream & operator<<(ostream & out, const Comedy & movie) {
+ostream & operator<<(ostream & out, const Drama & movie) {
     out << "Stock: " << movie.getStock() << ", "
         << "Director: " << movie.getDirector() << ", "
         << "Title: " << movie.getTitle() << ", "

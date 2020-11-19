@@ -30,10 +30,5 @@ public:
     virtual bool operator>=(const Drama&) const;
     virtual bool operator==(const Drama&) const;
     virtual bool operator!=(const Drama&) const;
-    
-private:
-
-    // overload ostream
-    virtual ostream& out(ostream &) const;
 };
 #endif //!_DRAMA_

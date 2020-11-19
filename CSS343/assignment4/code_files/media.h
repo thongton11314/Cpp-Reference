@@ -7,6 +7,11 @@
 
 using namespace std;
 
+const int DEFAULT_STOCK = 0;
+const string DEFAULT_TITLE = "DEFAULT";
+const string DEFAULT_PERSON = "DEFAULT";
+const int DEFAULT_NUM = 0;
+
 // for specific media's type
 enum MediaType
 {

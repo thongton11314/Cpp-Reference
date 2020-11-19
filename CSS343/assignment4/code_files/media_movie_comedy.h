@@ -15,7 +15,7 @@ public:
     Comedy();
 
     // copy constructor
-    Comedy(const Comedy &comedy);
+    Comedy(const Comedy & other);
 
     // deconstructor
     virtual ~Comedy();
