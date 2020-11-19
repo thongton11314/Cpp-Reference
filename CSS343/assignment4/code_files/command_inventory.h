@@ -12,7 +12,7 @@ public:
     ~Inventory();
 
     // show inventory in here
-    void processInventory(MediaMovieCollection&);
+    void processInventory(MediaCollection&);
 };
 
 #endif //!_COMMAND_INVENTORY_

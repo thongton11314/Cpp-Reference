@@ -4,7 +4,7 @@
 #include <iostream>
 #include "command.h"
 #include "customers_collection.h"
-#include "media_movies_collection.h"
+#include "media_collection.h"
 using namespace std;
 
 // Class TheaterManager:
@@ -29,7 +29,7 @@ class StoreManager {
 
     private:
         CustomerCollection collectionCustomers;
-        MediaMovieCollection collectionMedias;
+        MediaCollection collectionMedias;
         // add more data or private function if needed
 };
 

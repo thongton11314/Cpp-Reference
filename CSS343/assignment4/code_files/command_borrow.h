@@ -27,13 +27,13 @@ public:
     const MovieType getMovieType() const;
 
     // function
-    void process(MediaMovieCollection&, CustomerCollection&);
-    bool borrowProcess(Media*, Customer*); // part of process function
+    void process(MediaCollection&, CustomerCollection&);
+    bool procesReturn(Media*, Customer*); // part of process function
 
 private:
     MediaType mediaType;
     MovieType movieType;
-    virtual ostream& outout(ostream &) const;
+    virtual ostream& out(ostream &) const;
 };
 
 #endif //!_COMMAND_BORROW_

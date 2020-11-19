@@ -10,17 +10,17 @@ int main () {
 
     // instantiate file stream for setting data
     ifstream customerFile("data4customers.txt"),  // customer file
-             movieFile("data4movies.txt"),      // movies file
-             commandFile("data4commands.txt");  // command file
+             movieFile("data4movies.txt"),        // movies file
+             commandFile("data4commands.txt");    // command file
 
     // reads all customers information from text file
-    StoreManager.buildCustomers(customerFile);
+    storeManager.buildCustomers(customerFile);
 
     // reads all movies command from text file
-    StoreManager.buildMovies(movieFile);
+    storeManager.buildMovies(movieFile);
 
     // process all commands from file
-    StoreManager.processCommands(commandFile);
+    storeManager.processCommands(commandFile);
     
     return 0;
 }

@@ -1,7 +1,7 @@
 #ifndef _COMMANDS_
 #define _COMMANDS_
 #include "customers_collection.h"
-#include "media_movies_collection.h"
+#include "media_collection.h"
 
 // for specific command's type
 enum CommandType{
@@ -22,6 +22,9 @@ class Command {
         // constructor
         Command();
 
+        // copy constructor
+        Command(const Command &);
+
         // deconstructor
         virtual ~Command();
 
@@ -35,14 +38,14 @@ class Command {
 
         // function
         // process
-        virtual void process(MediaMovieCollection&, CustomerCollection&);
+        virtual void process(MediaCollection&, CustomerCollection&);
 
     protected:
         CommandType type;
         string fullCommand;
         int customerID;
 
-        virtual ostream& outout(ostream &) const;
+        virtual ostream& out(ostream &) const;
         // add more data if needed
 };
 

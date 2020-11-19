@@ -23,8 +23,7 @@ public:
     void processHistory(CustomerCollection&);
     
 private:
-
-    virtual ostream& outout(ostream &) const;
+    virtual ostream& out(ostream &) const;
 };
 
 #endif //!_COMMAND_HISTORY_
