@@ -61,9 +61,9 @@ bool Comedy::operator>=(const Comedy & other) const {
 }
 
 bool Comedy::operator==(const Comedy & other) const {
-    if (this->getDirector().compare(other.getDirector()) == 0
-        && this->getTitle().compare(other.getTitle()) == 0
-        && this->getYear() == other.getYear())
+    if ((this->getDirector().compare(other.getDirector()) == 0)
+        && (this->getTitle().compare(other.getTitle()) == 0)
+        && (this->getYear() == other.getYear()))
         return true;
     return false;
 }

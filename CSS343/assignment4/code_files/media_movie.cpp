@@ -27,9 +27,10 @@ int Movie::getYear() const {
 }
 
 MediaType Movie::getMediaType() const {
-    return MediaType::DVDType;
+    return MediaType::DVDMovieType;
 }
 
 ostream& operator<<(ostream & out, const Movie & movie) {
+    out << "Movie, " << movie;
     return out;
 }

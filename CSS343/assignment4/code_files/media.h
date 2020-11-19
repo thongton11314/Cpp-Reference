@@ -16,7 +16,7 @@ const int DEFAULT_NUM = 0;
 enum MediaType
 {
     // current type
-    DVDType
+    DVDMovieType
 
     // for future type go here
     // ...
@@ -36,7 +36,7 @@ enum MovieType {
 
 class Media 
 {
-    // display client information
+    // display media information
     friend ostream& operator<<(ostream &, const Media &);
 
 public :
@@ -51,7 +51,7 @@ public :
     virtual int getStock() const;
 
     // function
-    virtual bool addStock(unsigned int amount);
+    virtual void addStock(unsigned int amount);
     virtual bool reduceStock(int amount);
     
     // pure virtual function
