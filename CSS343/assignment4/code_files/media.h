@@ -45,14 +45,14 @@ public :
 	virtual ~Media();
 
     // setter
-    virtual void setStock(int stock);
+    virtual void setStock(unsigned int amount);
 	
     // getter
     virtual int getStock() const;
 
     // function
-    virtual void addStock(int amount);
-    virtual void reduceStock(int amount);
+    virtual bool addStock(unsigned int amount);
+    virtual bool reduceStock(int amount);
     
     // pure virtual function
     virtual MediaType getMediaType() const = 0;

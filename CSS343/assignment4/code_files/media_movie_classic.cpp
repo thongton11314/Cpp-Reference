@@ -18,9 +18,7 @@ Classic::Classic(const Classic & other) {
     this->year = other.year;
 }
 
-Classic::~Classic() {
-
-}
+Classic::~Classic() {}
 
 void Classic::setMajorActor(string name) {
     this->majorActor = name;
@@ -42,28 +40,52 @@ MovieType Classic::getMovieType() const {
     return MovieType::ClassicalType;
 }
 
-// need to be done
 bool Classic::operator<(const Classic & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) != 0)
+		return this->getDirector().compare(other.getDirector()) < 0;
+	
+	if (this->getTitle().compare(other.getTitle()) != 0)
+		return this->getTitle().compare(other.getTitle()) < 0;	
+
+	return this->getYear() < other.getYear();
 }
 
-// need to be done
+// need to fix
 bool Classic::operator<=(const Classic & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) > 0)
+        return false;
+
+	if (this->getTitle().compare(other.getTitle()) > 0)
+        return false;
+        
+	return this->getYear() <= other.getYear();
 }
 
-// need to be done
 bool Classic::operator>(const Classic & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) != 0)
+		return this->getDirector().compare(other.getDirector()) > 0;
+	
+	if (this->getTitle().compare(other.getTitle()) != 0)
+		return this->getTitle().compare(other.getTitle()) > 0;	
+
+	return this->getYear() > other.getYear();
 }
 
-// need to be done
 bool Classic::operator>=(const Classic & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) < 0)
+        return false;
+
+	if (this->getTitle().compare(other.getTitle()) < 0)
+        return false;
+
+	return this->getYear() >= other.getYear();
 }
 
-// need to be done
 bool Classic::operator==(const Classic & other) const {
+    if (this->getDirector().compare(other.getDirector()) == 0
+        && this->getTitle().compare(other.getTitle()) == 0
+        && this->getYear() == other.getYear())
+        return true;
     return false;
 }
 
@@ -72,11 +94,11 @@ bool Classic::operator!=(const Classic & other) const {
 }
 
 ostream & operator<<(ostream & out, const Classic & movie) {
-    out << "Stock: " << movie.getStock() << ", "
-        << "Director: " << movie.getDirector() << ", "
-        << "Title: " << movie.getTitle() << ", "
-        << "Major actor: " << movie.getMajorActor() << ", "
-        << "Month: " << movie.getMonth() << ", "
-        << "Year: " << movie.getYear() << ". ";
+    out << "Stock: " << movie.stock << ", "
+        << "Director: " << movie.director << ", "
+        << "Title: " << movie.title << ", "
+        << "Major actor: " << movie.majorActor << ", "
+        << "Month: " << movie.month << ", "
+        << "Year: " << movie.year << ". ";
     return out;
 }

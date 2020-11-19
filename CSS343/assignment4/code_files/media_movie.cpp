@@ -1,8 +1,6 @@
 #include "media_movie.h"
 
-Movie::~Movie() {
-
-}
+Movie::~Movie() {}
 
 void Movie::setDirector(string director) {
     this->director = director;

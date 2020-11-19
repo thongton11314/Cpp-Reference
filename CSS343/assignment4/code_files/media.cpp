@@ -2,18 +2,21 @@
 
 Media::~Media() {}
 
-void Media::setStock(int stock) {
-    this->stock = stock;
+void Media::setStock(unsigned int amount) {
+    this->stock = amount;
 }
 	
 int Media::getStock() const {
     return this->stock;
 }
 
-void Media::addStock(int amount) {
+void Media::addStock(unsigned int amount) {
     this->stock += amount;
 }
 
-void Media::reduceStock(int amount) {
+bool Media::reduceStock(int amount) {
+    if (amount > this->stock)
+        return false;
     this->stock -= amount;
+    return true;
 }

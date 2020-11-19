@@ -14,36 +14,57 @@ Comedy::Comedy(const Comedy & other) {
     this->year = other.year;
 }
 
-Comedy::~Comedy() {
-
-}
+Comedy::~Comedy() {}
 
 MovieType Comedy::getMovieType() const {
     return MovieType::ComedyType;
 }
-
-// need to be done
 bool Comedy::operator<(const Comedy & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) != 0)
+		return this->getDirector().compare(other.getDirector()) < 0;
+	
+	if (this->getTitle().compare(other.getTitle()) != 0)
+		return this->getTitle().compare(other.getTitle()) < 0;	
+
+	return this->getYear() < other.getYear();
 }
 
-// need to be done
+// need to be fix
 bool Comedy::operator<=(const Comedy & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) > 0)
+        return false;
+
+	if (this->getTitle().compare(other.getTitle()) > 0)
+        return false;
+        
+	return this->getYear() <= other.getYear();
 }
 
-// need to be done
 bool Comedy::operator>(const Comedy & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) != 0)
+		return this->getDirector().compare(other.getDirector()) > 0;
+	
+	if (this->getTitle().compare(other.getTitle()) != 0)
+		return this->getTitle().compare(other.getTitle()) > 0;	
+
+	return this->getYear() > other.getYear();
 }
 
-// need to be done
 bool Comedy::operator>=(const Comedy & other) const {
-    return false;
+    if (this->getDirector().compare(other.getDirector()) < 0)
+        return false;
+
+	if (this->getTitle().compare(other.getTitle()) < 0)
+        return false;
+
+	return this->getYear() >= other.getYear();
 }
 
-// need to be done
 bool Comedy::operator==(const Comedy & other) const {
+    if (this->getDirector().compare(other.getDirector()) == 0
+        && this->getTitle().compare(other.getTitle()) == 0
+        && this->getYear() == other.getYear())
+        return true;
     return false;
 }
 
