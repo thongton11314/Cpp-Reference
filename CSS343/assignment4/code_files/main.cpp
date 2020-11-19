@@ -1,9 +1,11 @@
 #include <iostream>
+#include <fstream>
+#include <ostream>
 #include "store_manager.h"
 
 using namespace std;
 
-Customer testCustomer(ifstream);
+void testCustomer();
 
 int main () {
 
@@ -27,11 +29,13 @@ int main () {
     
     return 0;
     */
-    ifstream customerFile("data4customers.txt");
-    testCustomer(ifstream);
+    testCustomer();
+    return 0;
 }
 
-Customer testCustomer(ifstream infile) {
+void testCustomer() {
+
+    ifstream infile("data4customers.txt");
 
     // early exit, and show error message that can not be read
     if (!infile) {
@@ -40,7 +44,7 @@ Customer testCustomer(ifstream infile) {
     }
     
     Customer* ptr;
-    bool checkData;                       // used for reading good data
+    bool checkData;                         // used for reading good data
     while (!infile.eof()) {
         ptr = new Customer;                 // create new client object
         
@@ -50,11 +54,12 @@ Customer testCustomer(ifstream infile) {
         // add valid client
         if (checkData) {
             cout << *ptr << endl;
+            delete ptr;
         }
         
         // ignore invalid client
         else {
             delete ptr;
         }
-    }   
+    }
 }

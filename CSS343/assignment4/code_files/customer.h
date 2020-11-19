@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <stdio.h>
 #include "media.h"
 
 using namespace std;
@@ -50,11 +52,19 @@ class Customer {
         bool returnMedia(Media * target);       // customer has returned media
         void addHistory(Command * command);     // add commands history
 
+        // operator in case needed
+        bool operator<(const Customer&) const;
+        bool operator<=(const Customer&) const;
+        bool operator>(const Customer&) const;
+        bool operator>=(const Customer&) const;
+        bool operator==(const Customer&) const;
+        bool operator!=(const Customer&) const;
+
     private:
         int id;                     // customer ID
         string firstName;           // customer first name
         string lastName;            // customer last name
-        vector<Command *> history;  // customer history borrow or return
-        vector<Media *> borrowing;   // customer media borrow currently
+        vector<Command*> history;  // customer history borrow or return
+        vector<Media*> borrowing;   // customer media borrow currently
 };
 #endif // !_CUSTOMER_
