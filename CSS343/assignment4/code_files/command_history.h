@@ -16,7 +16,7 @@ public:
 
     // setter
     // initialize data
-    bool setData(ifstream inFile);
+    bool setData(ifstream & inFile);
 
     // function
     // process customer history

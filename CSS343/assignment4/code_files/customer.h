@@ -37,7 +37,7 @@ class Customer {
         void setID(int id);                     // set id
         void setFirstName(string first);        // set last name
         void setLastName(string last);          // set first name
-        bool setData(ifstream&);                // fill data from file
+        bool setData(ifstream & infile);        // fill data from file
         
         // getter
         int getId() const;                      // get ID

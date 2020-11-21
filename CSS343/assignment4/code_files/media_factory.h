@@ -4,8 +4,6 @@
 
 class MediaFactory {
 public:
-    static Media * createMedia(ifstream & infile);
-private:
     static Media * createDVDMovie(ifstream & infile);
     // further media type add here
 };

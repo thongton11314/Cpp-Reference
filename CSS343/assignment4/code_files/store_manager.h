@@ -5,6 +5,7 @@
 #include "command.h"
 #include "customers_collection.h"
 #include "media_collection.h"
+#include "media_factory.h"
 using namespace std;
 
 // Class TheaterManager:

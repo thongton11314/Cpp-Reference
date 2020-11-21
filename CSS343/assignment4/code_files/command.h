@@ -30,7 +30,7 @@ class Command {
 
         // setter
         void setCommandType(char);
-        virtual bool setData(ifstream inFile);
+        virtual bool setData(ifstream & infile);
 
         // getter
         int getCustomerId() const;
