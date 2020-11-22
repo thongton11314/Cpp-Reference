@@ -1,4 +1,4 @@
-// include needed library such as manager
+// include needed library such as store manager
 
 // start main
     // instantiate manager class: storeManager
@@ -8,5 +8,6 @@
         // read data4movies.txt 
             // then build storeManager.buildMovies(file)
         // read data4commands.txt 
-            // then build storeManager.processCommands(file)
+            // then process processCommands
+            // storeManager.processCommands(file)
 // end of main

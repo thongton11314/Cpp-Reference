@@ -1,0 +1,12 @@
+// start function Command::createCommand(infile)
+    // create Command* Command  = nullptr;
+    // making a switch or if-else
+        // case B, create new Borrow();
+        // case R, create new Return();
+        // case H, create new History();
+        // Case I, create new Inventory();
+        // default, if not B,R, H, I in valid command
+    // if command exist
+        // set data movie, Command->setData(infile)
+    //return command 
+// end function
