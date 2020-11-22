@@ -22,17 +22,11 @@ public:
     // initialize data
     bool setData(ifstream & inFile);
 
-    // getter
-    const MediaType getMediaType() const;
-    const MovieType getMovieType() const;
-
     // function
     void process(MediaCollection&, CustomerCollection&);
     bool procesReturn(Media*, Customer*); // part of process function
 
 private:
-    MediaType mediaType;
-    MovieType movieType;
     virtual ostream& out(ostream &) const;
 };
 

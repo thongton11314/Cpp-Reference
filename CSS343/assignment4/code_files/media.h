@@ -4,6 +4,9 @@
 #define _MEDIA_
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <ostream>
+#include <sstream>
 
 using namespace std;
 
@@ -11,34 +14,11 @@ const int DEFAULT_STOCK = 0;
 const string DEFAULT_TITLE = "DEFAULT";
 const string DEFAULT_PERSON = "DEFAULT";
 const int DEFAULT_NUM = 0;
-
-// for specific media's type
-enum MediaType
-{
-    // current type
-    DVDMovieType
-
-    // for future type go here
-    // ...
-};
-
-// for specific movie's type
-enum MovieType {
-
-    // current type
-    ComedyType,     // enum = 0
-    DramaType,      // enum = 1
-    ClassicalType   // enum = 2
+class Media {
     
-    // for future type go here
-    // ...
-};
-
-class Media 
-{
-    // display media information
-    friend ostream& operator<<(ostream &, const Media &);
-
+    // use to use << opertor
+    friend ostream& operator<<(ostream & out, const Media & media);
+    
 public :
 
     // deconstructor, for late binding
@@ -46,6 +26,7 @@ public :
 
     // setter
     virtual void setStock(unsigned int amount);
+    virtual bool setData(ifstream & infile) = 0;
 	
     // getter
     virtual int getStock() const;
@@ -55,10 +36,13 @@ public :
     virtual bool reduceStock(int amount);
     
     // pure virtual function
-    virtual MediaType getMediaType() const = 0;
+    virtual string getMediaType() const = 0;
 
 protected:
     int stock;
+
+    // subfunction for operator<<
+    virtual void print(ostream & out) const = 0;
 };
 
 #endif //!_MEDIA_

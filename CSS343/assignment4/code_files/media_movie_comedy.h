@@ -17,11 +17,15 @@ public:
     // copy constructor
     Comedy(const Comedy & other);
 
+    // set data
+    bool setData(ifstream & infile);
+
     // deconstructor
     virtual ~Comedy();
 
     // getter
-    virtual MovieType getMovieType() const;
+    virtual char getMovieType() const;
+    void print(ostream & out) const;
 
     // comparison operators
     virtual bool operator<(const Comedy&) const;

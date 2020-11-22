@@ -16,8 +16,41 @@ Drama::Drama(const Drama & other) {
 
 Drama::~Drama() {}
 
-MovieType Drama::getMovieType() const {
-    return MovieType::DramaType;
+bool Drama::setData(ifstream & infile) {
+
+    // set up stock
+    infile.ignore();
+    infile >> this->stock;
+ 
+    // set up director
+    infile.ignore();
+    getline(infile >> ws, this->director, ',');
+
+    // set up title
+    infile.ignore();
+    getline(infile >> ws, this->title, ',');
+
+    // set up year
+    infile.ignore();
+    string strToYear;
+    getline(infile >> ws, strToYear, '\n'); // end of line
+    stringstream ss;
+    ss << strToYear;
+    ss >> this->year;
+
+    return true;
+}
+
+char Drama::getMovieType() const {
+    return 'D';
+}
+
+void Drama::print(ostream & stream) const {
+    cout << this->getMovieType() << ", "
+    << this->stock << ", "
+    << this->director << ", "
+    << this->title << ", "
+    << this->year << ". ";
 }
 
 bool Drama::operator<(const Drama & other) const {
@@ -74,9 +107,6 @@ bool Drama::operator!=(const Drama & other) const {
 }
 
 ostream & operator<<(ostream & out, const Drama & movie) {
-    out << "Stock: " << movie.stock << ", "
-        << "Director: " << movie.director << ", "
-        << "Title: " << movie.title << ", "
-        << "Year released: " << movie.year << ". ";
+    movie.print(out);
     return out;
 }

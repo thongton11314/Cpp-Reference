@@ -21,7 +21,7 @@ bool Media::reduceStock(int amount) {
     return true;
 }
 
-ostream& operator<<(ostream &out, const Media & media) {
-    out << "Media: " << media;
+ostream& operator<<(ostream & out, const Media & media) {
+    media.print(out);
     return out;
 }

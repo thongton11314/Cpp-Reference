@@ -8,9 +8,9 @@
 
 // add comments here
 class Movie : public Media {
-
-    friend ostream& operator<<(ostream &, const Movie &);
     
+    // use to use << opertor
+    friend ostream& operator<<(ostream & out, const Movie & Movie);
 public:
 
     // destructor, for late biding
@@ -24,16 +24,18 @@ public:
     // getter
     virtual string getDirector() const;
     virtual string getTitle() const; 
-    virtual int getYear() const;   
+    virtual int getYear() const;
+    virtual bool setData(ifstream & infile) = 0;
     
     // pure virtual function
-    virtual MovieType getMovieType() const = 0;
-    virtual MediaType getMediaType() const;
-
+    virtual char getMovieType() const = 0;
+    virtual string getMediaType() const;
+    
 protected:
     string director;
     string title;
     int year;
+    virtual void print(ostream & out) const = 0;
 };
 
 #endif // !_MOVIE_

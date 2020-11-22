@@ -20,13 +20,13 @@ class StoreManager {
         ~StoreManager();  // destructor 
 
         // reads all customers information from text file
-        void buildCustomers(ifstream &inFile);
+        void buildCustomers(ifstream & inFile);
 
         // reads all movies command from text file
-        void buildMovies(ifstream &inFile);
+        void buildMovies(ifstream & inFile);
 
         // process all commands from file
-        void processCommands(ifstream &inFile);
+        void processCommands(ifstream & inFile);
 
     private:
         CustomerCollection collectionCustomers;

@@ -16,6 +16,8 @@ public:
 
     // copy constructor
     Classic(const Classic &classic);
+    
+    bool setData(ifstream & infile);
 
     // deconstructor
     virtual ~Classic();
@@ -27,7 +29,10 @@ public:
     // getter
     int getMonth() const;
     virtual string getMajorActor() const;
-    virtual MovieType getMovieType() const;
+    virtual char getMovieType() const;
+
+    // function
+    void print(ostream & out) const;
 
     // comparison operators 
     virtual bool operator<(const Classic&) const;

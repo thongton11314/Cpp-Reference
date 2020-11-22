@@ -1,4 +1,4 @@
-// start function Command * createCommand(ifstream & infile) 
+// start function createCommand(ifstream & infile) 
     // create Command* command  = nullptr;
     // add code here
     // making a switch or if-else

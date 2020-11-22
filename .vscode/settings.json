@@ -58,7 +58,9 @@
         "optional": "cpp",
         "random": "cpp",
         "string_view": "cpp",
-        "shared_mutex": "cpp"
+        "shared_mutex": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

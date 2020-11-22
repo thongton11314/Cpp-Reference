@@ -20,6 +20,43 @@ Classic::Classic(const Classic & other) {
 
 Classic::~Classic() {}
 
+bool Classic::setData(ifstream & infile) {
+
+    // set up stock
+    infile.ignore();
+    infile >> this->stock;
+
+    // set up director
+    infile.ignore();
+    getline(infile >> ws, this->director, ',');
+
+    // set up title
+    infile.ignore();
+    getline(infile >> ws, this->title, ',');
+
+    // set major actor
+    string majorActorFirstName;
+    infile >> majorActorFirstName;
+    string majorActorLastName;
+    infile >> majorActorLastName;
+    this->majorActor = majorActorFirstName + " " + majorActorLastName;
+
+    // set month
+    infile.ignore();
+    infile >> this->month;
+
+    // set year
+    infile.ignore();
+    infile >> this->year;
+
+    // end of line
+    infile.ignore();
+    string eol;
+    getline(infile, eol);
+
+    return true;
+}
+
 void Classic::setMajorActor(string name) {
     this->majorActor = name;
 }
@@ -36,8 +73,18 @@ string Classic::getMajorActor() const {
     return this->majorActor;
 }
 
-MovieType Classic::getMovieType() const {
-    return MovieType::ClassicalType;
+char Classic::getMovieType() const {
+    return 'C';
+}
+
+void Classic::print(ostream & stream) const {
+    cout << this->getMovieType() << ", " 
+    << this->stock << ", "
+    << this->director << ", "
+    << this->title << ", "
+    << this->majorActor << ", "
+    << this->month << ", "
+    << this->year << ". ";
 }
 
 bool Classic::operator<(const Classic & other) const {
@@ -94,11 +141,6 @@ bool Classic::operator!=(const Classic & other) const {
 }
 
 ostream & operator<<(ostream & out, const Classic & movie) {
-    out << "Stock: " << movie.stock << ", "
-        << "Director: " << movie.director << ", "
-        << "Title: " << movie.title << ", "
-        << "Major actor: " << movie.majorActor << ", "
-        << "Month: " << movie.month << ", "
-        << "Year: " << movie.year << ". ";
+    movie.print(out);
     return out;
 }

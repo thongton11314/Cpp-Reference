@@ -1,6 +1,9 @@
 #ifndef _MEDIA_MOVIE_FACTORY_
 #define _MEDIA_MOVIE_FACTORY_
 #include "media_movie.h"
+#include "media_movie_comedy.h"
+#include "media_movie_drama.h"
+#include "media_movie_classic.h"
 
 class MovieFactory {
 public:

@@ -3,14 +3,6 @@
 #include "customers_collection.h"
 #include "media_collection.h"
 
-// for specific command's type
-enum CommandType{
-    Borrow,
-    Return,
-    History,
-    Inventory
-};
-
 // add comments here
 class Command {
 
@@ -34,14 +26,14 @@ class Command {
 
         // getter
         int getCustomerId() const;
-        CommandType getCommandType() const;
+        char getCommandType() const;
 
         // function
         // process
         virtual void process(MediaCollection&, CustomerCollection&);
 
     protected:
-        CommandType type;
+        char type;
         string fullCommand;
         int customerID;
 
