@@ -45,6 +45,61 @@ char Comedy::getMovieType() const {
     return 'F';
 }
 
+bool Comedy::operator<(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Comedy * ptrComedy = dynamic_cast<const Comedy*>(ptrMedia);
+
+    // compare title first
+    if (this->getTitle().compare(ptrComedy->getTitle()) != 0)
+		return this->getTitle().compare(ptrComedy->getTitle()) < 0;  
+	
+    // then compare year
+	return this->getYear() < ptrComedy->getYear();
+}
+
+bool Comedy::operator<=(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Comedy * ptrComedy = dynamic_cast<const Comedy*>(ptrMedia);
+
+    // compare title first
+    if (this->getTitle().compare(ptrComedy->getTitle()) > 0)
+		return false; 
+	
+    // then compare year
+	return this->getYear() <= ptrComedy->getYear();
+}
+
+bool Comedy::operator>(const Media & other) const {
+    const Media * ptr = &other;
+    return !(*this < *(dynamic_cast<const Comedy*>(ptr)));
+}
+
+bool Comedy::operator>=(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Comedy * ptrComedy = dynamic_cast<const Comedy*>(ptrMedia);
+
+    // compare title first
+    if (this->getTitle().compare(ptrComedy->getTitle()) < 0)
+		return false; 
+	
+    // then compare year
+	return this->getYear() <= ptrComedy->getYear();
+}
+
+bool Comedy::operator==(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Comedy * ptrComedy = dynamic_cast<const Comedy*>(ptrMedia);
+    if ((this->getTitle().compare(ptrComedy->getTitle()) == 0)
+        && (this->getYear() == ptrComedy->getYear()))
+        return true;
+    return false;
+}
+
+bool Comedy::Comedy::operator!=(const Media & other) const {
+    const Media * ptr = &other;
+    return !(*this == *(dynamic_cast<const Comedy*>(ptr)));
+}
+
 void Comedy::print(ostream & stream) const {
     cout << this->getMovieType() << ", "
     << this->stock << ", "

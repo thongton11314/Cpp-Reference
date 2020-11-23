@@ -61,7 +61,8 @@
         "shared_mutex": "cpp",
         "xstring": "cpp",
         "xutility": "cpp",
-        "xmemory": "cpp"
+        "xmemory": "cpp",
+        "locale": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

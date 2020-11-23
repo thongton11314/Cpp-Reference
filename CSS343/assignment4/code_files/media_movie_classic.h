@@ -24,18 +24,29 @@ public:
 
     // setter
     void setMonth(int month);
-    virtual void setMajorActor(string name);
+    void setMajorActorFirst(string name);
+    void setMajorActorLast(string name);
 
     // getter
     int getMonth() const;
-    virtual string getMajorActor() const;
+    string getMajorActorFirst() const;
+    string getMajorActorLast() const;
     virtual char getMovieType() const;
 
     // function
     void print(ostream & out) const;
 
+    // arithmetic operator, sort by release date and major actor
+    virtual bool operator<(const Media&) const;
+    virtual bool operator<=(const Media&) const;
+    virtual bool operator>(const Media&) const;
+    virtual bool operator>=(const Media&) const;
+    virtual bool operator==(const Media&) const;
+    virtual bool operator!=(const Media&) const;
+
 private:
-    string majorActor; 
+    string majorActorFirst; 
+    string majorActorLast;
     int month;
 };
 #endif //!_CLASSIC_

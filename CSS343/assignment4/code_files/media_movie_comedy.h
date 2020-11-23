@@ -26,6 +26,14 @@ public:
     // getter
     virtual char getMovieType() const;
     void print(ostream & out) const;
+
+    // arithmetic operator, sort by title and then year release
+    virtual bool operator<(const Media&) const;
+    virtual bool operator<=(const Media&) const;
+    virtual bool operator>(const Media&) const;
+    virtual bool operator>=(const Media&) const;
+    virtual bool operator==(const Media&) const;
+    virtual bool operator!=(const Media&) const;
 };
 
 #endif //!_CLASSIC_

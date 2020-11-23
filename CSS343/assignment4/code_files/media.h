@@ -38,14 +38,14 @@ public :
     // pure virtual function
     virtual string getMediaType() const = 0;
 
-    // arithmetic operator
+    // arithmetic operator    
     virtual bool operator<(const Media&) const = 0;
     virtual bool operator<=(const Media&) const = 0;
     virtual bool operator>(const Media&) const = 0;
     virtual bool operator>=(const Media&) const = 0;
     virtual bool operator==(const Media&) const = 0;
     virtual bool operator!=(const Media&) const = 0;
-
+    
 protected:
     int stock;
 

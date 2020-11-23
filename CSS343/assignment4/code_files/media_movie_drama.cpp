@@ -45,6 +45,84 @@ char Drama::getMovieType() const {
     return 'D';
 }
 
+bool Drama::operator<(const Media & other) const {    
+    const Media * ptrMedia = &other;
+    const Drama * ptrDrama = dynamic_cast<const Drama*>(ptrMedia);
+
+    // compare director first
+    if (this->getDirector().compare(ptrDrama->getDirector()) != 0)
+		return this->getDirector().compare(ptrDrama->getDirector()) < 0;  
+	
+    // then compare title
+	if (this->getTitle().compare(ptrDrama->getTitle()) != 0)
+		return this->getTitle().compare(ptrDrama->getTitle()) < 0;
+
+    // return false when greater
+    return false;
+}
+
+bool Drama::operator<=(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Drama * ptrDrama = dynamic_cast<const Drama*>(ptrMedia);
+
+    // compare director first
+    if (this->getDirector().compare(ptrDrama->getDirector()) > 0)
+        return false;
+
+    // then compare title
+	if (this->getTitle().compare(ptrDrama->getTitle()) > 0)
+        return false;
+
+    // return true when less than or equal
+    return true;
+}
+
+bool Drama::operator>(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Drama * ptrDrama = dynamic_cast<const Drama*>(ptrMedia);
+
+    // compare director first
+    if (this->getDirector().compare(ptrDrama->getDirector()) != 0)
+		return this->getDirector().compare(ptrDrama->getDirector()) > 0;  
+	
+    // then compare title
+	if (this->getTitle().compare(ptrDrama->getTitle()) != 0)
+		return this->getTitle().compare(ptrDrama->getTitle()) > 0;
+
+    // return false when greater
+    return false;
+}
+
+bool Drama::operator>=(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Drama * ptrDrama = dynamic_cast<const Drama*>(ptrMedia);
+
+    // compare director first
+    if (this->getDirector().compare(ptrDrama->getDirector()) < 0)
+        return false;
+
+    // then compare title
+	if (this->getTitle().compare(ptrDrama->getTitle()) < 0)
+        return false;
+
+    // return true when less than or equal
+    return true;
+}
+
+bool Drama::operator==(const Media & other) const {
+    const Media * ptrMedia = &other;
+    const Drama * ptrDrama = dynamic_cast<const Drama*>(ptrMedia);
+    if ((this->getDirector().compare(ptrDrama->getDirector()) == 0)
+        && (this->getTitle().compare(ptrDrama->getTitle()) == 0))
+        return true;
+    return false;
+}
+
+bool Drama::operator!=(const Media & other) const {
+    const Media * ptr = &other;
+    return !(*this == *(dynamic_cast<const Drama*>(ptr)));
+}
+
 void Drama::print(ostream & stream) const {
     cout << this->getMovieType() << ", "
     << this->stock << ", "

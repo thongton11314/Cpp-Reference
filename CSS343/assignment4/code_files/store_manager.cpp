@@ -55,7 +55,7 @@ void StoreManager::buildMovies(ifstream & infile) {
         if(obj != nullptr) {
 
             // comedy type
-            if (dynamic_cast<Movie*>(obj)->getMovieType() == 'F') {
+            if (dynamic_cast<Movie*>(obj)->getMovieType() == 'F') {              
                 isDuplicate = collectionComedies.insert(dynamic_cast<Comedy*>(obj));
             }
 

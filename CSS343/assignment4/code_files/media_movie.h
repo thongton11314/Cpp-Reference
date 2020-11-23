@@ -32,12 +32,12 @@ public:
     virtual string getMediaType() const;
 
     // arithmetic operator
-    virtual bool operator<(const Media&) const;
-    virtual bool operator<=(const Media&) const;
-    virtual bool operator>(const Media&) const;
-    virtual bool operator>=(const Media&) const;
-    virtual bool operator==(const Media&) const;
-    virtual bool operator!=(const Media&) const;
+    virtual bool operator<(const Media&) const = 0;
+    virtual bool operator<=(const Media&) const = 0;
+    virtual bool operator>(const Media&) const = 0;
+    virtual bool operator>=(const Media&) const = 0;
+    virtual bool operator==(const Media&) const = 0;
+    virtual bool operator!=(const Media&) const = 0;
 
 protected:
     string director;
