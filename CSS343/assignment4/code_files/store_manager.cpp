@@ -5,11 +5,6 @@ StoreManager::StoreManager() {}
 StoreManager::~StoreManager() {}
 
 void StoreManager::buildCustomers(ifstream & infile) {
-    // read until the end of file
-        // create a customer object, set object data customer->setData(infile)
-        // add each customer CollectionCustomers.insert(customer)
-        // if CollectionCustomers.insert(customer) return false
-            // handling error here
 
     // early exit, and show error message that can not be read
     if (!infile) {
@@ -20,10 +15,10 @@ void StoreManager::buildCustomers(ifstream & infile) {
     Customer* ptr;
     bool checkData;                         // used for reading good data
     while (!infile.eof()) {
-        ptr = new Customer();                 // create new client object
+        ptr = new Customer();               // create new client object
         
         // must have setData implementation of client
-        checkData = ptr->setData(infile); // fill the client object
+        checkData = ptr->setData(infile);   // fill the client object
         
         // add valid client
         if (checkData) {
@@ -39,29 +34,45 @@ void StoreManager::buildCustomers(ifstream & infile) {
 }
 
 void StoreManager::buildMovies(ifstream & infile) {
-    // read until the end of file
-        // create a movie object by MediaFactory::createDVDMovie(infile)
-        // add each movie CollectionMovies.insert(movie)
-        // if CollectionMovies.insert(movie)
-            // handling error here
 
-    
+    // check if can read file
     if (!infile) {
         cout << "Could not read Movies file" << endl;
         return;
     }
     
-    Media* ptr;
+    // use for create movie object
+    Media* obj;
+    bool isDuplicate = false;
+
+    // read entire file information
     while (!infile.eof()) {
-        ptr = MediaFactory::createDVDMovie(infile); // create new client object
-        if(ptr != nullptr) {
-            cout << *dynamic_cast<Movie*>(ptr) << endl;
-            delete ptr;
+
+        // create new client object
+        obj = MediaFactory::createDVDMovie(infile);
+
+        // valid movies
+        if(obj != nullptr) {
+
+            // comedy type
+            if (dynamic_cast<Movie*>(obj)->getMovieType() == 'F') {
+                isDuplicate = collectionComedies.insert(dynamic_cast<Comedy*>(obj));
+            }
+
+            // dramma type
+            else if (dynamic_cast<Movie*>(obj)->getMovieType() == 'D') {
+                isDuplicate = collectionDramas.insert(dynamic_cast<Drama*>(obj));
+            }
+
+            // classic type
+            else {
+                isDuplicate = collectionClassics.insert(dynamic_cast<Classic*>(obj));
+            }
         }
+
+        if (isDuplicate)
+            delete obj;
     }
-    // if not null, add to collection
-    
-   //Media* ptr = MediaFactory::createDVDMovie(infile);
 }
 
 void StoreManager::processCommands(ifstream &infile) {
@@ -70,4 +81,13 @@ void StoreManager::processCommands(ifstream &infile) {
         // create a command object by CommandFactory::createCommand(infile)
         // process commannd
             // command.processCommand(collectionMedias, collectionCustomers)
+}
+
+void StoreManager::test() {
+    collectionComedies.display();
+    cout << endl;
+    collectionDramas.display();
+    cout << endl;
+    collectionClassics.display();
+    cout << endl;
 }

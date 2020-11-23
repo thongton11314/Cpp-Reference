@@ -24,9 +24,10 @@ Movie * MovieFactory::createMovie(ifstream & infile) {
         newMovie = createMovieClassic(infile);
         break;
     default:
-        cerr << "Type \"" << movieType << "\" is not recognized" << endl;
-        infile.clear();
-        infile.ignore(99, '\n');        
+        string fullInfor;
+        getline(infile, fullInfor);
+        cerr << "Type \"" << movieType << "\" is not recognized: "
+            << movieType << fullInfor << endl;     
         break;
     }
     return newMovie;

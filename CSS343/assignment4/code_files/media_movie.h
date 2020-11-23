@@ -30,7 +30,15 @@ public:
     // pure virtual function
     virtual char getMovieType() const = 0;
     virtual string getMediaType() const;
-    
+
+    // arithmetic operator
+    virtual bool operator<(const Media&) const;
+    virtual bool operator<=(const Media&) const;
+    virtual bool operator>(const Media&) const;
+    virtual bool operator>=(const Media&) const;
+    virtual bool operator==(const Media&) const;
+    virtual bool operator!=(const Media&) const;
+
 protected:
     string director;
     string title;

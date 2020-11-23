@@ -26,13 +26,5 @@ public:
     // getter
     virtual char getMovieType() const;
     void print(ostream & out) const;
-
-    // comparison operators
-    virtual bool operator<(const Drama&) const;
-    virtual bool operator<=(const Drama&) const;
-    virtual bool operator>(const Drama&) const;
-    virtual bool operator>=(const Drama&) const;
-    virtual bool operator==(const Drama&) const;
-    virtual bool operator!=(const Drama&) const;
 };
 #endif //!_DRAMA_

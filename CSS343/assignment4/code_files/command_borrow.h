@@ -20,7 +20,7 @@ public:
 
     // setter
     // initialize data
-    bool setData(ifstream & inFile);
+    bool setData(ifstream & infile);
 
     // function
     void process(MediaCollection&, CustomerCollection&);

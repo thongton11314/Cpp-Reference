@@ -60,7 +60,8 @@
         "string_view": "cpp",
         "shared_mutex": "cpp",
         "xstring": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "xmemory": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

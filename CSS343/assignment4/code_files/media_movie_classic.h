@@ -34,14 +34,6 @@ public:
     // function
     void print(ostream & out) const;
 
-    // comparison operators 
-    virtual bool operator<(const Classic&) const;
-    virtual bool operator<=(const Classic&) const;
-    virtual bool operator>(const Classic&) const;
-    virtual bool operator>=(const Classic&) const;
-    virtual bool operator==(const Classic&) const;
-    virtual bool operator!=(const Classic&) const;
-
 private:
     string majorActor; 
     int month;

@@ -24,6 +24,7 @@
 
 template <typename T>
 class BSTree {
+    
 public:
     BSTree();          // constructor
     ~BSTree();         // calls makeEmpty which deallocates all memory

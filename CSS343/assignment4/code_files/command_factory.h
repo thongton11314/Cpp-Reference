@@ -5,7 +5,7 @@
 
 class CommandFactory {
 public:
-    static Command * createCommand(ifstream &);
+    static Command * createCommand(ifstream & infile);
 };
 
 #endif //!_COMMAND_FACTORY_

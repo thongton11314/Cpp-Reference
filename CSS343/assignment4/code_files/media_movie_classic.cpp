@@ -87,59 +87,6 @@ void Classic::print(ostream & stream) const {
     << this->year << ". ";
 }
 
-bool Classic::operator<(const Classic & other) const {
-    if (this->getDirector().compare(other.getDirector()) != 0)
-		return this->getDirector().compare(other.getDirector()) < 0;
-	
-	if (this->getTitle().compare(other.getTitle()) != 0)
-		return this->getTitle().compare(other.getTitle()) < 0;	
-
-	return this->getYear() < other.getYear();
-}
-
-// need to fix
-bool Classic::operator<=(const Classic & other) const {
-    if (this->getDirector().compare(other.getDirector()) > 0)
-        return false;
-
-	if (this->getTitle().compare(other.getTitle()) > 0)
-        return false;
-        
-	return this->getYear() <= other.getYear();
-}
-
-bool Classic::operator>(const Classic & other) const {
-    if (this->getDirector().compare(other.getDirector()) != 0)
-		return this->getDirector().compare(other.getDirector()) > 0;
-	
-	if (this->getTitle().compare(other.getTitle()) != 0)
-		return this->getTitle().compare(other.getTitle()) > 0;	
-
-	return this->getYear() > other.getYear();
-}
-
-bool Classic::operator>=(const Classic & other) const {
-    if (this->getDirector().compare(other.getDirector()) < 0)
-        return false;
-
-	if (this->getTitle().compare(other.getTitle()) < 0)
-        return false;
-
-	return this->getYear() >= other.getYear();
-}
-
-bool Classic::operator==(const Classic & other) const {
-    if ((this->getDirector().compare(other.getDirector()) == 0)
-        && (this->getTitle().compare(other.getTitle()) == 0)
-        && (this->getYear() == other.getYear()))
-        return true;
-    return false;
-}
-
-bool Classic::operator!=(const Classic & other) const {
-    return !(*this == other);
-}
-
 ostream & operator<<(ostream & out, const Classic & movie) {
     movie.print(out);
     return out;

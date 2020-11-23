@@ -20,18 +20,19 @@ class StoreManager {
         ~StoreManager();  // destructor 
 
         // reads all customers information from text file
-        void buildCustomers(ifstream & inFile);
+        void buildCustomers(ifstream & infile);
 
         // reads all movies command from text file
-        void buildMovies(ifstream & inFile);
+        void buildMovies(ifstream & infile);
 
         // process all commands from file
-        void processCommands(ifstream & inFile);
-
+        void processCommands(ifstream & infile);
+        void test();
     private:
         CustomerCollection collectionCustomers;
-        MediaCollection collectionMedias;
-        // add more data or private function if needed
+        MediaCollection collectionComedies;
+        MediaCollection collectionClassics;
+        MediaCollection collectionDramas;
 };
 
 #endif // !THEATER_MANAGER

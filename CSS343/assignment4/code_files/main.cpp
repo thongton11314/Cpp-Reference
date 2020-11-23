@@ -2,11 +2,10 @@
 #include <fstream>
 #include <ostream>
 #include "store_manager.h"
-
+#include "bst.h"
 using namespace std;
 int main () {
 
-    
     // instantiate theater manager class
     StoreManager storeManager;
 
@@ -20,9 +19,9 @@ int main () {
     
     // reads all movies command from text file
     storeManager.buildMovies(movieFile);
+    storeManager.test();
 
     // process all commands from file
     storeManager.processCommands(commandFile);
-    
     return 0;
 }

@@ -4,18 +4,18 @@ MediaCollection::MediaCollection() {}
 
 MediaCollection::~MediaCollection() {}
 
-bool MediaCollection::insertMedia(Media *movie) {
-    return false; 
+bool MediaCollection::insert(Media * movie) {
+    return collection.insert(movie);
 }
 
-bool MediaCollection::retrieveMedia(const Media & target, Media *& retriever) {
-    return false;
+bool MediaCollection::retrieve(const Media& target, Media *& retriever) {
+    return collection.retrieve(target, retriever);
 }
 
-const Media * getAMedia(const Media & target) {
+const Media * MediaCollection::getAMedia(const Media & target) {
     return nullptr;
 }
 
-ostream& operator<<(ostream& out, const MediaCollection& collection) {
-    return out;
+void MediaCollection::display() const {
+    collection.display();
 }
