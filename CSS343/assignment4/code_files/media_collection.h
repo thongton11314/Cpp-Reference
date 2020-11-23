@@ -2,8 +2,8 @@
 #ifndef _MEDIA_COLLECTION_
 #define _MEDIA_COLLECTION_
 #include <iostream>
-#include "hashtable.h"
 #include "media.h"
+#include "bst.h"
 
 // add comments here
 class MediaCollection {
@@ -15,7 +15,7 @@ public:
     bool retrieveMedia(const Media & target, Media *& retriever);
     const Media * getAMedia(const Media & target);
 private:
-    Hashtable<string, Media*> collection;
+    BSTree<Media*> collection;
 };
 
 #endif //!_MEDIA_COLLECTION_
