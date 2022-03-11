@@ -1,0 +1,141 @@
+Script started on Tue 08 Dec 2020 08:36:58 PM PST
+[?1034hbash-4.2$ g++ -std=c++11 *.h *.cpp
+bash-4.2$ valgrind ./a.out
+==17102== Memcheck, a memory error detector
+==17102== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17102== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==17102== Command: ./a.out
+==17102== 
+Media, type 'Z' is not recognized:
+  Z, 10, Hal Ashby, Harold and Maude, Bud Cort 3 1971
+Media, type 'Z' is not recognized:
+  Z, 10, Frank Capra, It's a Wonderful Life, James Steward 11 1946
+Inventory:
+  F, 10, Woody Allen, Annie Hall, 1977
+  F, 10, Joel Coen, Fargo, 1996
+  F, 10, John Landis, National Lampoon's Animal House, 1978
+  F, 10, Gore Verbinski, Pirates of the Caribbean, 2003
+  F, 10, Nora Ephron, Sleepless in Seattle, 1993
+  F, 10, Rob Reiner, When Harry Met Sally, 1989
+  F, 10, Nora Ephron, You've Got Mail, 1998
+  D, 10, Barry Levinson, Good Morning Vietnam, 1988
+  D, 10, Clint Eastwood, Unforgiven, 1992
+  D, 10, Gus Van Sant, Good Will Hunting, 2000
+  D, 10, Jonathan Demme, Silence of the Lambs, 1991
+  D, 10, Nancy Savoca, Dogfight, 1991
+  D, 10, Phillippe De Broca, King of Hearts, 1967
+  D, 10, Steven Spielberg, Schindler's List, 1993
+  C, 10, George Cukor, Holiday, Cary Grant, 9, 1938
+  C, 10, George Cukor, Holiday, Katherine Hepburn, 9, 1938
+  C, 10, Victor Fleming, Gone With the Wind, Clark Gable, 2, 1939
+  C, 10, Victor Fleming, Gone With the Wind, Vivien Leigh, 2, 1939
+  C, 10, Victor Fleming, The Wizard of Oz, Judy Garland, 7, 1939
+  C, 10, George Cukor, The Philadelphia Story, Cary Grant, 5, 1940
+  C, 10, George Cukor, The Philadelphia Story, Katherine Hepburn, 5, 1940
+  C, 10, John Huston, The Maltese Falcon, Humphrey Bogart, 10, 1941
+  C, 10, Michael Curtiz, Casablanca, Humphrey Bogart, 8, 1942
+  C, 10, Michael Curtiz, Casablanca, Ingrid Bergman, 8, 1942
+  C, 10, Frank Capra, It's a Wonderful Life, Donna Reed, 11, 1946
+  C, 10, Frank Capra, It's a Wonderful Life, James Steward, 11, 1946
+  C, 10, Stanley Kubrick, A Clockwork Orange, Malcolm McDowell, 2, 1971
+  C, 10, Hal Ashby, Harold and Maude, Ruth Gordon, 3, 1971
+History of 1000 Minnie Mouse:
+  Empty!
+History of 5000 Freddie Frog:
+  Empty!
+History of 8000 Wally Wacky:
+  Empty!
+Command, invalid movie type 'Z':
+  B 1111 D Z 2 1971 Malcolm McDowell
+Command, invalid command type 'X':
+  X
+Command, invalid command type 'Z':
+  Z 1000 D C 10 1941 Humphrey Bogart
+Command, customer does not exist:
+  B 1234 D C 2 1971 Malcolm McDowell
+Command, media is not in media collection:
+  B 1000 D F Bogus Title, 2001
+Command, invalid media type 'Z':
+  B 1000 Z F Fargo, 1996
+Command, media is out of stock:
+  B 9000 D C 3 1971 Ruth Gordon
+Command, media is out of stock:
+  B 3333 D C 3 1971 Ruth Gordon
+Command, media is out of stock:
+  B 7777 D C 3 1971 Ruth Gordon
+Command, media is not in media collection:
+  B 1000 D D Steven Spielberg, Bogus Title, 
+Inventory:
+  F, 9, Woody Allen, Annie Hall, 1977
+  F, 9, Joel Coen, Fargo, 1996
+  F, 9, John Landis, National Lampoon's Animal House, 1978
+  F, 10, Gore Verbinski, Pirates of the Caribbean, 2003
+  F, 9, Nora Ephron, Sleepless in Seattle, 1993
+  F, 9, Rob Reiner, When Harry Met Sally, 1989
+  F, 9, Nora Ephron, You've Got Mail, 1998
+  D, 9, Barry Levinson, Good Morning Vietnam, 1988
+  D, 9, Clint Eastwood, Unforgiven, 1992
+  D, 9, Gus Van Sant, Good Will Hunting, 2000
+  D, 9, Jonathan Demme, Silence of the Lambs, 1991
+  D, 8, Nancy Savoca, Dogfight, 1991
+  D, 9, Phillippe De Broca, King of Hearts, 1967
+  D, 9, Steven Spielberg, Schindler's List, 1993
+  C, 9, George Cukor, Holiday, Cary Grant, 9, 1938
+  C, 10, George Cukor, Holiday, Katherine Hepburn, 9, 1938
+  C, 10, Victor Fleming, Gone With the Wind, Clark Gable, 2, 1939
+  C, 10, Victor Fleming, Gone With the Wind, Vivien Leigh, 2, 1939
+  C, 10, Victor Fleming, The Wizard of Oz, Judy Garland, 7, 1939
+  C, 9, George Cukor, The Philadelphia Story, Cary Grant, 5, 1940
+  C, 9, George Cukor, The Philadelphia Story, Katherine Hepburn, 5, 1940
+  C, 9, John Huston, The Maltese Falcon, Humphrey Bogart, 10, 1941
+  C, 10, Michael Curtiz, Casablanca, Humphrey Bogart, 8, 1942
+  C, 10, Michael Curtiz, Casablanca, Ingrid Bergman, 8, 1942
+  C, 10, Frank Capra, It's a Wonderful Life, Donna Reed, 11, 1946
+  C, 10, Frank Capra, It's a Wonderful Life, James Steward, 11, 1946
+  C, 9, Stanley Kubrick, A Clockwork Orange, Malcolm McDowell, 2, 1971
+  C, 0, Hal Ashby, Harold and Maude, Ruth Gordon, 3, 1971
+History of 1000 Minnie Mouse:
+  B 1000 D D Barry Levinson, Good Morning Vietnam, 
+  B 1000 D C 5 1940 Katherine Hepburn
+  B 1000 D D Gus Van Sant, Good Will Hunting, 
+  B 1000 D C 5 1940 Cary Grant
+  B 1000 D C 3 1971 Ruth Gordon
+History of 1111 Mickey Mouse:
+  B 1111 D C 2 1971 Malcolm McDowell
+  B 1111 D C 3 1971 Ruth Gordon
+  B 1111 D C 10 1941 Humphrey Bogart
+  B 1111 D C 9 1938 Cary Grant
+History of 5000 Freddie Frog:
+  B 5000 D C 3 1971 Ruth Gordon
+  R 5000 D C 3 1971 Ruth Gordon
+  B 5000 D C 3 1971 Ruth Gordon
+  R 5000 D C 3 1971 Ruth Gordon
+  B 5000 D C 3 1971 Ruth Gordon
+  R 5000 D C 3 1971 Ruth Gordon
+  B 5000 D C 3 1971 Ruth Gordon
+History of 8000 Wally Wacky:
+  B 8000 D F You've Got Mail, 1998
+  R 8000 D F You've Got Mail, 1998
+  B 8000 D C 3 1971 Ruth Gordon
+  B 8000 D C 3 1971 Ruth Gordon
+  B 8000 D F National Lampoon's Animal House, 1978
+History of 8888 Porky Pig:
+  B 8888 D F Annie Hall, 1977
+  B 8888 D F When Harry Met Sally, 1989
+  B 8888 D D Jonathan Demme, Silence of the Lambs, 
+  B 8888 D D Nancy Savoca, Dogfight, 
+  B 8888 D C 3 1971 Ruth Gordon
+sh: pause: command not found
+==17102== 
+==17102== HEAP SUMMARY:
+==17102==     in use at exit: 0 bytes in 0 blocks
+==17102==   total heap usage: 739 allocs, 739 frees, 131,370 bytes allocated
+==17102== 
+==17102== All heap blocks were freed -- no leaks are possible
+==17102== 
+==17102== For lists of detected and suppressed errors, rerun with: -s
+==17102== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+bash-4.2$ exit
+exit
+
+Script done on Tue 08 Dec 2020 08:37:40 PM PST
